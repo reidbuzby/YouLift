@@ -12,6 +12,13 @@
 		CD4BF9211EAFC37B0054E940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4BF91F1EAFC37B0054E940 /* Main.storyboard */; };
 		CD4BF9231EAFC37B0054E940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD4BF9221EAFC37B0054E940 /* Assets.xcassets */; };
 		CD4BF9261EAFC37B0054E940 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4BF9241EAFC37B0054E940 /* LaunchScreen.storyboard */; };
+		CD4BF92E1EB027930054E940 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF92D1EB027930054E940 /* BrowseViewController.swift */; };
+		CD4BF9341EB02B950054E940 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF9331EB02B950054E940 /* Workout.swift */; };
+		CD4BF9361EB02D510054E940 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF9351EB02D510054E940 /* Exercise.swift */; };
+		CD4BF9381EB02E660054E940 /* WorkoutCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF9371EB02E660054E940 /* WorkoutCollection.swift */; };
+		CD4BF93A1EB030910054E940 /* ExerciseCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF9391EB030910054E940 /* ExerciseCollection.swift */; };
+		CD4BF93E1EB03AA60054E940 /* WorkoutListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF93D1EB03AA60054E940 /* WorkoutListingCell.swift */; };
+		CD4BF9401EB03C660054E940 /* WorkoutListingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF93F1EB03C660054E940 /* WorkoutListingController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		CD4BF9221EAFC37B0054E940 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD4BF9251EAFC37B0054E940 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD4BF9271EAFC37B0054E940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD4BF92D1EB027930054E940 /* BrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
+		CD4BF9331EB02B950054E940 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Workout.swift; path = ../Workout.swift; sourceTree = "<group>"; };
+		CD4BF9351EB02D510054E940 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		CD4BF9371EB02E660054E940 /* WorkoutCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutCollection.swift; sourceTree = "<group>"; };
+		CD4BF9391EB030910054E940 /* ExerciseCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCollection.swift; sourceTree = "<group>"; };
+		CD4BF93D1EB03AA60054E940 /* WorkoutListingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutListingCell.swift; sourceTree = "<group>"; };
+		CD4BF93F1EB03C660054E940 /* WorkoutListingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutListingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,11 @@
 		CD4BF91A1EAFC37B0054E940 /* YouLift */ = {
 			isa = PBXGroup;
 			children = (
+				CD4BF9331EB02B950054E940 /* Workout.swift */,
+				CD4BF9351EB02D510054E940 /* Exercise.swift */,
+				CD4BF9371EB02E660054E940 /* WorkoutCollection.swift */,
+				CD4BF9391EB030910054E940 /* ExerciseCollection.swift */,
+				CD4BF93C1EB039E90054E940 /* Browse Files */,
 				CD4BF91B1EAFC37B0054E940 /* AppDelegate.swift */,
 				CD4BF91D1EAFC37B0054E940 /* ViewController.swift */,
 				CD4BF91F1EAFC37B0054E940 /* Main.storyboard */,
@@ -62,6 +81,16 @@
 				CD4BF9271EAFC37B0054E940 /* Info.plist */,
 			);
 			path = YouLift;
+			sourceTree = "<group>";
+		};
+		CD4BF93C1EB039E90054E940 /* Browse Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD4BF92D1EB027930054E940 /* BrowseViewController.swift */,
+				CD4BF93D1EB03AA60054E940 /* WorkoutListingCell.swift */,
+				CD4BF93F1EB03C660054E940 /* WorkoutListingController.swift */,
+			);
+			name = "Browse Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +166,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD4BF92E1EB027930054E940 /* BrowseViewController.swift in Sources */,
 				CD4BF91E1EAFC37B0054E940 /* ViewController.swift in Sources */,
+				CD4BF9341EB02B950054E940 /* Workout.swift in Sources */,
+				CD4BF9401EB03C660054E940 /* WorkoutListingController.swift in Sources */,
+				CD4BF93E1EB03AA60054E940 /* WorkoutListingCell.swift in Sources */,
 				CD4BF91C1EAFC37B0054E940 /* AppDelegate.swift in Sources */,
+				CD4BF9381EB02E660054E940 /* WorkoutCollection.swift in Sources */,
+				CD4BF9361EB02D510054E940 /* Exercise.swift in Sources */,
+				CD4BF93A1EB030910054E940 /* ExerciseCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
