@@ -164,5 +164,9 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
             fatalError("Unexpeced segue identifier: \(segue.identifier)")
         }
     }
+    
+    @IBAction func unwindFromEdit(sender: UIStoryboardSegue){
+        tableView.reloadData()
+    }
 
 }
