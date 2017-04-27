@@ -21,6 +21,9 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
+    //@IBOutlet weak var weightInput: UITextField!
+    //@IBOutlet weak var repsInput: UITextField!
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -76,5 +79,22 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let button = sender as? UIBarButtonItem, button === saveButton else{
+            print("The save button was not pressed")
+            
+            return
+        }
+        
+        let name = exerciseName.text ?? ""
+        let description = exerciseDescription.text ?? ""
+        //let weight = weightInput.text ?? ""
+        //let reps = repsInput.text ?? ""
+        
+        exercise = Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
+        
+    }
 
 }
