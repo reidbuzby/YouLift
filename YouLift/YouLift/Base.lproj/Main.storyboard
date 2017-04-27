@@ -41,15 +41,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gdn-Lj-cA6">
-                                <rect key="frame" x="16" y="28" width="343" height="558"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gdn-Lj-cA6">
+                                <rect key="frame" x="16" y="75" width="343" height="517"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0Dt-Ay-gyu">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="274"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0Dt-Ay-gyu">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="248.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Default Workouts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kb-V3-1Kh">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="36"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Workouts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kb-V3-1Kh">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -91,11 +90,11 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6bF-Fv-1CN">
-                                        <rect key="frame" x="0.0" y="284" width="343" height="274"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6bF-Fv-1CN">
+                                        <rect key="frame" x="0.0" y="268.5" width="343" height="248.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Custom Workouts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XvG-d8-Sjh">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="36"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Workouts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XvG-d8-Sjh">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -138,9 +137,19 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="6bF-Fv-1CN" firstAttribute="width" secondItem="0Dt-Ay-gyu" secondAttribute="width" id="0e6-0B-neX"/>
+                                    <constraint firstItem="6bF-Fv-1CN" firstAttribute="height" secondItem="0Dt-Ay-gyu" secondAttribute="height" id="Mv8-i7-ZYe"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gdn-Lj-cA6" firstAttribute="top" secondItem="7Gw-O5-Moa" secondAttribute="topMargin" constant="75" id="8uZ-w7-H2S"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Gdn-Lj-cA6" secondAttribute="bottom" constant="75" id="F1r-sq-naJ"/>
+                            <constraint firstItem="Gdn-Lj-cA6" firstAttribute="centerY" secondItem="7Gw-O5-Moa" secondAttribute="centerY" id="P0l-9N-C8c"/>
+                            <constraint firstItem="Gdn-Lj-cA6" firstAttribute="centerX" secondItem="7Gw-O5-Moa" secondAttribute="centerX" id="fz6-up-6mi"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Browse" id="Yyz-Nf-5yF" userLabel="Browse"/>
                     <connections>
@@ -185,14 +194,18 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yT-wJ-upr">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yT-wJ-upr">
                                                             <rect key="frame" x="8" y="11" width="246" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="6yT-wJ-upr" secondAttribute="trailing" constant="81" id="4Ef-4h-y51"/>
+                                                        <constraint firstItem="6yT-wJ-upr" firstAttribute="centerY" secondItem="riz-9A-jvf" secondAttribute="centerY" id="X9k-qk-cYY"/>
+                                                        <constraint firstItem="6yT-wJ-upr" firstAttribute="leading" secondItem="riz-9A-jvf" secondAttribute="leadingMargin" id="mJf-U2-MF6"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="exerciseName" destination="6yT-wJ-upr" id="MW2-Cg-u7a"/>
@@ -541,11 +554,11 @@
             </objects>
             <point key="canvasLocation" x="-778" y="826"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--YouLift-->
         <scene sceneID="oGJ-DI-9dY">
             <objects>
                 <tabBarController id="268-Gx-OdZ" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="PWy-nx-oFP"/>
+                    <navigationItem key="navigationItem" title="YouLift" id="PWy-nx-oFP"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Im3-VB-Y3X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
