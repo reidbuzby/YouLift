@@ -11,6 +11,7 @@ import UIKit
 class ExerciseTableViewCell: UITableViewCell {
 
     @IBOutlet weak var exerciseName: UILabel!
+    @IBOutlet weak var exerciseName2: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +25,11 @@ class ExerciseTableViewCell: UITableViewCell {
     }
     
     func configureCell(exercise: Exercise) {
-        exerciseName.text = exercise.name
+        if exerciseName != nil {
+            exerciseName.text = exercise.name
+        }
+        if exerciseName2 != nil {
+            exerciseName2.text = exercise.name
+        }
     }
-
 }

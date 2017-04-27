@@ -26,9 +26,15 @@ class SetTableViewCell: UITableViewCell {
     }
     
     func configureCell(setNumber: Int, weight: Int, numberOfReps: Int) {
-        self.setNumber.text = String(setNumber)
-        self.weight.text = String(weight)
-        self.numberOfReps.text = String(numberOfReps)
+        if self.setNumber != nil {
+            self.setNumber.text = String(setNumber)
+        }
+        if self.weight != nil {
+            self.weight.text = String(weight)
+        }
+        if self.numberOfReps != nil {
+            self.numberOfReps.text = String(numberOfReps)
+        }
     }
 
 }

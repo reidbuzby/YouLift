@@ -16,17 +16,17 @@ import Foundation
 
 class ExerciseCollection {
     
-    var collection = [String: Exercise]()
+    var collection = [Exercise]()
     
     init() {
-        collection["Squat"] = Exercise(name: "Squat", description: "This is how to do a squat", sets: 3, setsArray: [(100, 2), (100, 2), (100, 2)])
+        collection.append(Exercise(name: "Squat", description: "This is how to do a squat", sets: 3, setsArray: [(100, 2), (100, 2), (100, 2)]))
     }
     
-    func add(name:String, description:String, sets:Int, setsArray:[(Int, Int)]) {
-        collection[name] = Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
+    func add(exercise: Exercise) {
+        collection.append(exercise)
     }
     
-    func remove(exercise_name:String) {
-        collection.removeValue(forKey: exercise_name)
+    func remove(at_index:Int) {
+        collection.remove(at: at_index)
     }
 }
