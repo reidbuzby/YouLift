@@ -11,7 +11,7 @@ import UIKit
 class ExerciseTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let exercises = ExerciseCollection()
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -102,5 +102,53 @@ class ExerciseTableViewController: UIViewController, UITableViewDelegate, UITabl
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        switch(segue.identifier ?? ""){
+            
+        case "ViewExercise":
+            
+            guard let destination = segue.destination as? ExerciseDetailViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let cell = sender as? ExerciseTableViewCell else{
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: cell) else{
+                fatalError("The selected cell can't be found")
+            }
+            
+            let exercise = exercises.collection[indexPath.row]
+            
+            destination.exercise = exercise
+            
+        case "AddExercise":
+            
+            guard let destination = segue.destination as? ExerciseDetailViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let cell = sender as? ExerciseTableViewCell else{
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: cell) else{
+                fatalError("The selected cell can't be found")
+            }
+            
+            let exercise = exercises.collection[indexPath.row]
+            
+            destination.exercise = exercise
+            
+        default:
+            fatalError("Unexpeced segue identifier: \(segue.identifier)")
+        }
+    }
+
 
 }

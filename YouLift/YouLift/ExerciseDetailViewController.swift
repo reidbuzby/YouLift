@@ -18,6 +18,9 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var exerciseName: UILabel!
     @IBOutlet weak var exerciseDescription: UILabel!
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
