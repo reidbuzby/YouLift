@@ -19,7 +19,7 @@ class ExerciseCollection {
     var collection = [Exercise]()
     
     init() {
-        collection += [Exercise(name: "Squat", description: "This is how to do a squat", sets: 3, setsArray: [(100, 2), (100, 2), (100, 2)])]
+        collection.append(Exercise(name: "Squat", description: "This is how to do a squat", sets: 3, setsArray: [(100, 2), (100, 2), (100, 2)]))
     }
     
     func add(exercise: Exercise) {
