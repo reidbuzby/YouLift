@@ -15,6 +15,7 @@
 		CD4BF9361EB02D510054E940 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF9351EB02D510054E940 /* Exercise.swift */; };
 		CD4BF9381EB02E660054E940 /* WorkoutCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF9371EB02E660054E940 /* WorkoutCollection.swift */; };
 		CD4BF93A1EB030910054E940 /* ExerciseCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF9391EB030910054E940 /* ExerciseCollection.swift */; };
+		CD4DDD531EB1AB0100ABFEA6 /* ExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4DDD521EB1AB0100ABFEA6 /* ExerciseTableViewController.swift */; };
 		CDF5B0771EB1041C00750A1F /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5B0761EB1041C00750A1F /* WorkoutTableViewCell.swift */; };
 		CDF5B0791EB1058000750A1F /* WorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5B0781EB1058000750A1F /* WorkoutTableViewController.swift */; };
 		CDF5B07D1EB17B4F00750A1F /* WorkoutDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5B07C1EB17B4F00750A1F /* WorkoutDetailViewController.swift */; };
@@ -30,10 +31,11 @@
 		CD4BF9221EAFC37B0054E940 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD4BF9251EAFC37B0054E940 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD4BF9271EAFC37B0054E940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD4BF9331EB02B950054E940 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Workout.swift; path = ../Workout.swift; sourceTree = "<group>"; };
+		CD4BF9331EB02B950054E940 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		CD4BF9351EB02D510054E940 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		CD4BF9371EB02E660054E940 /* WorkoutCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutCollection.swift; sourceTree = "<group>"; };
 		CD4BF9391EB030910054E940 /* ExerciseCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseCollection.swift; sourceTree = "<group>"; };
+		CD4DDD521EB1AB0100ABFEA6 /* ExerciseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewController.swift; sourceTree = "<group>"; };
 		CDF5B0761EB1041C00750A1F /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		CDF5B0781EB1058000750A1F /* WorkoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewController.swift; sourceTree = "<group>"; };
 		CDF5B07C1EB17B4F00750A1F /* WorkoutDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDetailViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				CDF5B0781EB1058000750A1F /* WorkoutTableViewController.swift */,
 				CDF5B07C1EB17B4F00750A1F /* WorkoutDetailViewController.swift */,
 				CDF5B0821EB1931500750A1F /* ExerciseDetailViewController.swift */,
+				CD4DDD521EB1AB0100ABFEA6 /* ExerciseTableViewController.swift */,
 				CDF5B0751EB1030B00750A1F /* Supporting Files */,
 				CD4BF91F1EAFC37B0054E940 /* Main.storyboard */,
 			);
@@ -177,6 +180,7 @@
 				CDF5B0771EB1041C00750A1F /* WorkoutTableViewCell.swift in Sources */,
 				CD4BF91C1EAFC37B0054E940 /* AppDelegate.swift in Sources */,
 				CDF5B0831EB1931500750A1F /* ExerciseDetailViewController.swift in Sources */,
+				CD4DDD531EB1AB0100ABFEA6 /* ExerciseTableViewController.swift in Sources */,
 				CDF5B07D1EB17B4F00750A1F /* WorkoutDetailViewController.swift in Sources */,
 				CD4BF9381EB02E660054E940 /* WorkoutCollection.swift in Sources */,
 				CD4BF9361EB02D510054E940 /* Exercise.swift in Sources */,
