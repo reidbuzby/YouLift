@@ -325,7 +325,7 @@
             </objects>
             <point key="canvasLocation" x="3133.5999999999999" y="-267.61619190404798"/>
         </scene>
-        <!--New Exercise-->
+        <!--YouLift-->
         <scene sceneID="ml3-Vh-1St">
             <objects>
                 <viewController id="dHF-HP-fQe" customClass="ExerciseDetailViewController" customModule="YouLift" customModuleProvider="target" sceneMemberID="viewController">
@@ -423,8 +423,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Exercise" id="dJf-BW-DTc">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="D8O-st-cdy"/>
+                    <navigationItem key="navigationItem" title="YouLift" id="dJf-BW-DTc">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="D8O-st-cdy">
+                            <connections>
+                                <segue destination="SQN-ll-iQc" kind="presentation" id="CTU-PC-P6X"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="Z6I-3I-Nlp"/>
                     </navigationItem>
                     <connections>
@@ -437,7 +441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54A-p9-BvU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2823" y="471"/>
+            <point key="canvasLocation" x="3009" y="471"/>
         </scene>
         <!--Stats-->
         <scene sceneID="XvS-th-wJ3">
@@ -603,6 +607,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Create" id="qGb-Ez-xRY" userLabel="Create"/>
+                    <navigationItem key="navigationItem" id="RbI-eW-Tbu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8U-q7-wNL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -650,7 +655,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="exerciseName2" destination="0UD-Lp-eOV" id="OUU-6g-Zdv"/>
-                                            <segue destination="dHF-HP-fQe" kind="show" identifier="ViewExercise" id="7sK-Ng-QWC"/>
+                                            <segue destination="dHF-HP-fQe" kind="show" identifier="ViewExercise" id="L7p-9f-092"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
