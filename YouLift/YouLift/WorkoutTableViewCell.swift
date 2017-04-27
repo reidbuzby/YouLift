@@ -1,27 +1,16 @@
 //
-//  WorkoutListingCellTableViewCell.swift
+//  WorkoutTableViewCell.swift
 //  YouLift
 //
-//  Created by rbuzby on 4/25/17.
+//  Created by rbuzby on 4/26/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
 
-/*
- 
- Data storage for individual cells within a table view
- 
-*/
-
 import UIKit
 
-class WorkoutListingCell: UITableViewCell {
+class WorkoutTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var workoutName: UILabel!
-    
-    func configureCell(workout: Workout) {
-        workoutName.text = workout.name
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +21,10 @@ class WorkoutListingCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configureCell(workout: Workout) {
+        workoutName.text = workout.name
     }
 
 }

@@ -1,25 +1,18 @@
 //
-//  WorkoutListingControllerTableViewController.swift
+//  WorkoutTableViewController.swift
 //  YouLift
 //
-//  Created by rbuzby on 4/25/17.
+//  Created by rbuzby on 4/26/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
 
-
-
-/*
-
- Controlls the table view cells
- 
-*/
-
 import UIKit
 
-class WorkoutListingController: UITableViewController {
+class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private let workouts = WorkoutCollection()
-
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var customTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,33 +21,44 @@ class WorkoutListingController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        customTableView.delegate = self
+        customTableView.dataSource = self
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
+    
+    private let workouts = WorkoutCollection()
+    
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return workouts.collection.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return workouts.defaultCollection.count
     }
-
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? WorkoutListingCell else{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
                 fatalError("Can't get cell of the right kind")
         }
-        
-        
+
         // Configure the cell...
-        let workout = workouts.collection[indexPath.row]
+        let workout = workouts.defaultCollection[indexPath.row]
         cell.configureCell(workout: workout)
         
         return cell
     }
- 
+    
 
     /*
     // Override to support conditional editing of the table view.
