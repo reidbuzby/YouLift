@@ -115,11 +115,54 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
     /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    */
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        switch(segue.identifier ?? ""){
+        
+        case "ViewDefaultWorkout":
+            
+            guard let destination = segue.destination as? WorkoutDetailViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let cell = sender as? WorkoutTableViewCell else{
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: cell) else{
+                fatalError("The selected cell can't be found")
+            }
+            
+            let workout = workouts.defaultCollection[indexPath.row]
+            
+            destination.workout = workout
+            
+        case "ViewCustomWorkout":
+            
+            guard let destination = segue.destination as? WorkoutDetailViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let cell = sender as? WorkoutTableViewCell else{
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let indexPath = customTableView.indexPath(for: cell) else{
+                fatalError("The selected cell can't be found")
+            }
+            
+            let workout = workouts.customCollection[indexPath.row]
+            
+            destination.workout = workout
+            
+            
+        default:
+            fatalError("Unexpeced segue identifier: \(segue.identifier)")
+        }
     }
-    */
 
 }

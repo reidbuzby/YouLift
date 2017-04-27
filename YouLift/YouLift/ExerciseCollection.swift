@@ -22,7 +22,7 @@ class ExerciseCollection {
         collection["Squat"] = Exercise(name: "Squat", description: "This is how to do a squat", sets: 3, setsArray: [(100, 2), (100, 2), (100, 2)])
     }
     
-    func add(name:String, description:String, sets:Int16, setsArray:[(Int16, Int16)]) {
+    func add(name:String, description:String, sets:Int, setsArray:[(Int, Int)]) {
         collection[name] = Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
     }
     

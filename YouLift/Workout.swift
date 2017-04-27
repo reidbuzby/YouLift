@@ -25,4 +25,8 @@ class Workout{
         self.exerciseArray = exercises
     }
     
+    init(){
+        self.name = ""
+        self.exerciseArray = []
+    }
 }
