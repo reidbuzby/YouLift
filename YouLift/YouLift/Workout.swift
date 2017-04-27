@@ -5,9 +5,7 @@
 //  Created by rbuzby on 4/25/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
-
 /*
-
  Class for an entire workout
  
 */
