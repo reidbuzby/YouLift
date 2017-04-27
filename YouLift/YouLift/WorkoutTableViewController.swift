@@ -48,15 +48,32 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
+        if tableView == self.tableView {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
                 fatalError("Can't get cell of the right kind")
+            }
+            
+            // Configure the cell...
+            let workout = workouts.defaultCollection[indexPath.row]
+            cell.configureCell(workout: workout)
+            
+            return cell
         }
+            
+        else{
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
+                fatalError("Can't get cell of the right kind")
+            }
+            
+            // Configure the cell...
+            let workout = workouts.customCollection[indexPath.row]
+            cell.configureCell(workout: workout)
+            
+            return cell
 
-        // Configure the cell...
-        let workout = workouts.defaultCollection[indexPath.row]
-        cell.configureCell(workout: workout)
-        
-        return cell
+        }
     }
     
 
