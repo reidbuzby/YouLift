@@ -18,13 +18,20 @@ class Exercise{
     
     var name:String
     var description:String
-    var sets:Int16
-    var setsArray:[(Int16, Int16)]//first int is weight, second is number of reps
+    var sets:Int
+    var setsArray:[(Int, Int)]//first int is weight, second is number of reps
     
-    init(name:String, description:String, sets:Int16, setsArray:[(Int16, Int16)]) {
+    init(name:String, description:String, sets:Int, setsArray:[(Int, Int)]) {
         self.name = name
         self.description = description
         self.sets = sets
         self.setsArray = setsArray
+    }
+    
+    init(){
+        self.name = ""
+        self.description = ""
+        self.sets = 0
+        self.setsArray = []
     }
 }
