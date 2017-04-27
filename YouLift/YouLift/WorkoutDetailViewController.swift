@@ -87,6 +87,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         case "ViewExercise":
             
             guard let destination = segue.destination as? ExerciseDetailViewController else{
+                
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
@@ -102,9 +103,18 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             destination.exercise = exercise
             
+        case "StartWorkout":
+            
+            guard let destination = segue.destination as? WorkoutDetailViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            destination.workout = workout
+            
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")
         }
+        
     }
 
 }
