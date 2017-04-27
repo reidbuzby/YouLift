@@ -29,6 +29,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         tableView.delegate = self
         tableView.dataSource = self
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,6 +64,12 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     
+//    @IBAction func finishButton(_ sender: UIButton) {
+//        //using a view controller
+//        let vc = FinishPrompt()
+//        vc.modalTransitionStyle = .coverVertical
+//        present(vc, animated: true, completion: nil)
+//    }
     
     
     
@@ -110,6 +117,10 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             }
             
             destination.workout = workout
+            destination.navigationItem.hidesBackButton = true
+            
+        case "FinishWorkout": break
+            
             
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")

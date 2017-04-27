@@ -974,7 +974,7 @@
         <!--Workout Detail View Controller-->
         <scene sceneID="mbn-nK-TuD">
             <objects>
-                <viewController id="zIr-qK-X9I" customClass="WorkoutDetailViewController" customModule="YouLift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="currentWorkout" id="zIr-qK-X9I" customClass="WorkoutDetailViewController" customModule="YouLift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IKg-bO-PCt"/>
                         <viewControllerLayoutGuide type="bottom" id="fm5-P5-Exe"/>
@@ -1039,6 +1039,10 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcl-n1-sEq">
                                                 <rect key="frame" x="269" y="0.0" width="74" height="30"/>
                                                 <state key="normal" title="Finish"/>
+                                                <connections>
+                                                    <action selector="finishButton:" destination="zIr-qK-X9I" eventType="touchUpInside" id="RDz-dg-bX8"/>
+                                                    <segue destination="1AI-lA-CLW" kind="presentation" identifier="exitPrompt" id="IYL-e5-hzn"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1066,9 +1070,73 @@
             </objects>
             <point key="canvasLocation" x="2270" y="1920"/>
         </scene>
+        <!--Finish Prompt-->
+        <scene sceneID="QbR-Iy-X9j">
+            <objects>
+                <viewController id="1AI-lA-CLW" customClass="FinishPrompt" customModule="YouLift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Oa0-z4-Qgt"/>
+                        <viewControllerLayoutGuide type="bottom" id="8by-uY-Wiy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hql-Ah-uzl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="SFY-N9-rvS">
+                                <rect key="frame" x="56" y="220" width="263" height="80.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finish Prompt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDw-Rw-EkZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="263" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="167" translatesAutoresizingMaskIntoConstraints="NO" id="zrD-nt-6A1">
+                                        <rect key="frame" x="0.0" y="40.5" width="263" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvH-FD-YKP">
+                                                <rect key="frame" x="0.0" y="0.0" width="55" height="40"/>
+                                                <state key="normal" title="Resume"/>
+                                                <connections>
+                                                    <action selector="resumeButton:" destination="1AI-lA-CLW" eventType="touchUpInside" id="oZW-j2-xID"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dI-wZ-GS5">
+                                                <rect key="frame" x="222" y="0.0" width="41" height="40"/>
+                                                <state key="normal" title="Finish"/>
+                                                <connections>
+                                                    <action selector="finishButton:" destination="1AI-lA-CLW" eventType="touchUpInside" id="XY3-ff-UEd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="uzq-1p-D7y"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="KDw-Rw-EkZ" firstAttribute="centerX" secondItem="SFY-N9-rvS" secondAttribute="centerX" id="4Zs-F3-zcp"/>
+                                    <constraint firstItem="zrD-nt-6A1" firstAttribute="centerX" secondItem="SFY-N9-rvS" secondAttribute="centerX" id="8lD-Dd-oFz"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SFY-N9-rvS" firstAttribute="centerX" secondItem="hql-Ah-uzl" secondAttribute="centerX" id="1eQ-W3-eQk"/>
+                            <constraint firstItem="SFY-N9-rvS" firstAttribute="top" secondItem="Oa0-z4-Qgt" secondAttribute="bottom" constant="200" id="vOG-UF-2w5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="finishLabel" destination="KDw-Rw-EkZ" id="UPN-91-XME"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S0y-GV-cKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3133.5999999999999" y="1918.2908545727139"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="a0n-cz-3s3"/>
         <segue reference="Cha-Gc-aCB"/>
+        <segue reference="a0n-cz-3s3"/>
     </inferredMetricsTieBreakers>
 </document>

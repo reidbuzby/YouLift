@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3E4E9E61EB24775005FA06C /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E4E9E51EB24775005FA06C /* PopUpViewController.swift */; };
 		CD4BF91C1EAFC37B0054E940 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF91B1EAFC37B0054E940 /* AppDelegate.swift */; };
 		CD4BF9211EAFC37B0054E940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4BF91F1EAFC37B0054E940 /* Main.storyboard */; };
 		CD4BF9231EAFC37B0054E940 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD4BF9221EAFC37B0054E940 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A3E4E9E51EB24775005FA06C /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		CD4BF9181EAFC37B0054E940 /* YouLift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouLift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD4BF91B1EAFC37B0054E940 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD4BF9201EAFC37B0054E940 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				CD4DDD521EB1AB0100ABFEA6 /* ExerciseTableViewController.swift */,
 				CDF5B0751EB1030B00750A1F /* Supporting Files */,
 				CD4BF91F1EAFC37B0054E940 /* Main.storyboard */,
+				A3E4E9E51EB24775005FA06C /* PopUpViewController.swift */,
 			);
 			path = YouLift;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				CDF5B0831EB1931500750A1F /* ExerciseDetailViewController.swift in Sources */,
 				CD4DDD531EB1AB0100ABFEA6 /* ExerciseTableViewController.swift in Sources */,
 				CDF5B07D1EB17B4F00750A1F /* WorkoutDetailViewController.swift in Sources */,
+				A3E4E9E61EB24775005FA06C /* PopUpViewController.swift in Sources */,
 				CD4BF9381EB02E660054E940 /* WorkoutCollection.swift in Sources */,
 				CD4BF9361EB02D510054E940 /* Exercise.swift in Sources */,
 				CDF5B07F1EB18B5400750A1F /* ExerciseTableViewCell.swift in Sources */,
