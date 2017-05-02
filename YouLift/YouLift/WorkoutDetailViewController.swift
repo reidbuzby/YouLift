@@ -18,6 +18,11 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var workoutName: UILabel!
     
+    @IBOutlet weak var durationTimer: UILabel!
+    var startTime:Date?
+    var timer:Timer = Timer()
+    var inProgress:Bool?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +35,11 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         
+        if inProgress != nil {
+            updateTimer()
+        } else {
+            inProgress = false
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -71,6 +81,17 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
 //        present(vc, animated: true, completion: nil)
 //    }
     
+    func updateTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.displayDuration), userInfo: nil, repeats: true)
+    }
+    
+    func displayDuration() {
+        let duration = Date().timeIntervalSince(startTime!)
+        let hours = Int(duration) / 3600
+        let minutes = Int(duration) / 60 % 60
+        let seconds = Int(duration) % 60
+        durationTimer.text = "Duration: " + String(format:"%02i:%02i:%02i", hours, minutes, seconds)
+    }
     
     
     
@@ -118,6 +139,8 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             destination.workout = workout
             destination.navigationItem.hidesBackButton = true
+            destination.startTime = Date()
+            destination.inProgress = true
             
         case "FinishWorkout": break
             
