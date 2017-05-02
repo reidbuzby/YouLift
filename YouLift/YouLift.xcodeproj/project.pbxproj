@@ -137,7 +137,7 @@
 				TargetAttributes = {
 					CD4BF9171EAFC37B0054E940 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = TSRANL5S76;
+						DevelopmentTeam = GZKAVW5JF6;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -313,7 +313,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TSRANL5S76;
+				DEVELOPMENT_TEAM = GZKAVW5JF6;
 				INFOPLIST_FILE = YouLift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rbuzby.YouLift;
@@ -326,7 +326,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TSRANL5S76;
+				DEVELOPMENT_TEAM = GZKAVW5JF6;
 				INFOPLIST_FILE = YouLift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rbuzby.YouLift;
