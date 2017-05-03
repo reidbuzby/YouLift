@@ -98,7 +98,6 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     func writeValueBack(value: Exercise) {
         // Or any other function you need to transport data
         let indexPath = self.tableView.indexPathForSelectedRow
-        print(indexPath!.row)
         exercises[indexPath!.row] = value
     }
     
