@@ -989,30 +989,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Uo1-H6-YmG">
-                                <rect key="frame" x="16" y="84" width="343" height="508"/>
+                                <rect key="frame" x="8" y="84" width="359" height="508"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EDi-Io-uJD">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="470"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="470"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1k-Zs-jvC">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="29"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="359" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o32-lm-slj">
-                                                <rect key="frame" x="0.0" y="39" width="343" height="431"/>
+                                                <rect key="frame" x="0.0" y="39" width="359" height="431"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseTableViewCell" id="o1G-4D-0Mb" customClass="ExerciseTableViewCell" customModule="YouLift" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseTableViewCell" id="o1G-4D-0Mb" customClass="ExerciseTableViewCell" customModule="YouLift" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o1G-4D-0Mb" id="0XV-bL-RwM">
-                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3a4-M2-Zmk">
-                                                                    <rect key="frame" x="8" y="11" width="246" height="21"/>
+                                                                    <rect key="frame" x="8" y="11" width="62" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -1033,21 +1033,24 @@
                                             </tableView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="225" translatesAutoresizingMaskIntoConstraints="NO" id="l2U-vL-wbq">
-                                        <rect key="frame" x="0.0" y="478" width="343" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="150" translatesAutoresizingMaskIntoConstraints="NO" id="l2U-vL-wbq">
+                                        <rect key="frame" x="0.0" y="478" width="359" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqi-xz-J0a">
-                                                <rect key="frame" x="0.0" y="0.0" width="74.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="fPP-uH-D4n"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcl-n1-sEq">
-                                                <rect key="frame" x="299.5" y="0.0" width="43.5" height="30"/>
+                                                <rect key="frame" x="300" y="0.0" width="59" height="30"/>
                                                 <state key="normal" title="Finish"/>
                                                 <connections>
-                                                    <action selector="finishButton:" destination="zIr-qK-X9I" eventType="touchUpInside" id="RDz-dg-bX8"/>
-                                                    <segue destination="1AI-lA-CLW" kind="presentation" identifier="exitPrompt" id="IYL-e5-hzn"/>
+                                                    <action selector="finishButton:" destination="zIr-qK-X9I" eventType="touchUpInside" id="cDW-to-d8c"/>
+                                                    <segue destination="1AI-lA-CLW" kind="presentation" identifier="FinishWorkout" id="IYL-e5-hzn"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1062,8 +1065,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Uo1-H6-YmG" secondAttribute="trailing" constant="8" id="5H8-Ge-EY0"/>
                             <constraint firstItem="Uo1-H6-YmG" firstAttribute="top" secondItem="IKg-bO-PCt" secondAttribute="bottom" constant="20" id="5Y7-U0-KTR"/>
                             <constraint firstItem="Uo1-H6-YmG" firstAttribute="centerX" secondItem="KpS-fJ-c9r" secondAttribute="centerX" id="NJe-QD-i2h"/>
+                            <constraint firstItem="Uo1-H6-YmG" firstAttribute="leading" secondItem="KpS-fJ-c9r" secondAttribute="leading" constant="8" id="prQ-Qs-60d"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Uo1-H6-YmG" secondAttribute="bottom" constant="75" id="wUj-n4-PgA"/>
                         </constraints>
                     </view>
@@ -1077,10 +1082,10 @@
             </objects>
             <point key="canvasLocation" x="2270" y="1920"/>
         </scene>
-        <!--Finish Prompt-->
+        <!--Pop Up View Controller-->
         <scene sceneID="QbR-Iy-X9j">
             <objects>
-                <viewController id="1AI-lA-CLW" customClass="FinishPrompt" customModule="YouLift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1AI-lA-CLW" customClass="PopUpViewController" customModule="YouLift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Oa0-z4-Qgt"/>
                         <viewControllerLayoutGuide type="bottom" id="8by-uY-Wiy"/>

@@ -13,7 +13,6 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
     
     var workout = Workout()
-    
     var exercises = [Exercise]()
     
     @IBOutlet weak var workoutName: UILabel!
@@ -21,6 +20,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var durationTimer: UILabel!
     var startTime:Date?
     var timer:Timer = Timer()
+    
     var inProgress:Bool?
     
     override func viewDidLoad() {
@@ -73,6 +73,8 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     //Table View Stuff
     
     
+    @IBAction func finishButton(_ sender: UIButton) {
+    }
     
 //    @IBAction func finishButton(_ sender: UIButton) {
 //        //using a view controller
@@ -131,6 +133,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             destination.exercise = exercise
             
+        //begin a workout
         case "StartWorkout":
             
             guard let destination = segue.destination as? WorkoutDetailViewController else{
@@ -142,7 +145,11 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             destination.startTime = Date()
             destination.inProgress = true
             
-        case "FinishWorkout": break
+        //end a workout
+        case "FinishWorkout":
+            guard let destination = segue.destination as? PopUpViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
             
             
         default:
