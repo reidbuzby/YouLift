@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A36E6CE41EB96BD5006DF92B /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E6CE31EB96BD5006DF92B /* Protocol.swift */; };
 		A3E4E9E61EB24775005FA06C /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E4E9E51EB24775005FA06C /* PopUpViewController.swift */; };
 		CD4BF91C1EAFC37B0054E940 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF91B1EAFC37B0054E940 /* AppDelegate.swift */; };
 		CD4BF9211EAFC37B0054E940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4BF91F1EAFC37B0054E940 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A36E6CE31EB96BD5006DF92B /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		A3E4E9E51EB24775005FA06C /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		CD4BF9181EAFC37B0054E940 /* YouLift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouLift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD4BF91B1EAFC37B0054E940 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				CDF5B0751EB1030B00750A1F /* Supporting Files */,
 				CD4BF91F1EAFC37B0054E940 /* Main.storyboard */,
 				A3E4E9E51EB24775005FA06C /* PopUpViewController.swift */,
+				A36E6CE31EB96BD5006DF92B /* Protocol.swift */,
 			);
 			path = YouLift;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				CDF5B0851EB197EA00750A1F /* SetTableViewCell.swift in Sources */,
 				CD4BF9341EB02B950054E940 /* Workout.swift in Sources */,
 				CDF5B0771EB1041C00750A1F /* WorkoutTableViewCell.swift in Sources */,
+				A36E6CE41EB96BD5006DF92B /* Protocol.swift in Sources */,
 				CD4BF91C1EAFC37B0054E940 /* AppDelegate.swift in Sources */,
 				CDF5B0831EB1931500750A1F /* ExerciseDetailViewController.swift in Sources */,
 				CD4DDD531EB1AB0100ABFEA6 /* ExerciseTableViewController.swift in Sources */,

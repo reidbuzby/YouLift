@@ -13,6 +13,8 @@ class SetTableViewCell: UITableViewCell {
     @IBOutlet weak var setNumber: UILabel!
     @IBOutlet weak var weight: UILabel!
     @IBOutlet weak var numberOfReps: UILabel!
+    @IBOutlet weak var weightInput: UITextField!
+    @IBOutlet weak var repsInput: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +37,33 @@ class SetTableViewCell: UITableViewCell {
         if self.numberOfReps != nil {
             self.numberOfReps.text = String(numberOfReps)
         }
+    }
+    
+    func reconfigureCell(setNumber: Int, weight: Int, numberOfReps: Int) {
+        if self.setNumber != nil {
+            self.setNumber.text = String(setNumber)
+        }
+        if self.weightInput != nil {
+            self.weightInput.text = String(weight)
+        }
+        if self.repsInput != nil {
+            self.repsInput.text = String(numberOfReps)
+        }
+    }
+    
+    func getSetData() -> (Int, Int){
+        var weightData = 0
+        var repsData = 0
+        
+        if weightInput.text != "" {
+            weightData = Int(weightInput.text!)!
+        }
+        
+        if repsInput.text != "" {
+            repsData = Int(repsInput.text!)!
+        }
+        
+        return (weightData, repsData)
     }
 
 }

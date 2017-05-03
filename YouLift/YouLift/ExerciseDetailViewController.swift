@@ -10,6 +10,9 @@ import UIKit
 
 class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var delegate: writeValueBackDelegate?
+    var inProgress:Bool?
+    
     var exercise = Exercise()
     
     var sets = 0
@@ -21,14 +24,19 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
-    //@IBOutlet weak var weightInput: UITextField!
-    //@IBOutlet weak var repsInput: UITextField!
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if inProgress! {
+            self.navigationItem.hidesBackButton = true
+            let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.back(sender:)))
+            self.navigationItem.leftBarButtonItem = newBackButton
+        } else {
+            inProgress = false
+        }
+        
         // Do any additional setup after loading the view.
         
         exerciseName.text = self.exercise.name
@@ -62,13 +70,37 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         
         // Configure the cell...
         let set = setsArray[indexPath.row]
-        cell.configureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
+        
+        if inProgress! {
+            cell.reconfigureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
+        }else{
+            cell.configureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
+        }
         
         return cell
         
     }
-
     
+    func getSetsData(_ tableView: UITableView) -> [(Int, Int)]{
+        let cells = self.tableView.visibleCells as! Array<SetTableViewCell>
+        var newSetsArray = [(Int, Int)]()
+        
+        for cell in cells {
+            newSetsArray.append(cell.getSetData())
+        }
+        
+        return newSetsArray
+    }
+    
+    func back(sender: UIBarButtonItem) {
+        // Perform your custom actions
+        let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: sets, setsArray: getSetsData(self.tableView))
+        delegate?.writeValueBack(value: newExercise)
+        
+        // Go back to the previous ViewController
+        _ = navigationController?.popViewController(animated: true)
+    }
+
 
     /*
     // MARK: - Navigation
@@ -82,18 +114,18 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let button = sender as? UIBarButtonItem, button === saveButton else{
-            print("The save button was not pressed")
-            
-            return
-        }
-        
-        let name = exerciseName.text ?? ""
-        let description = exerciseDescription.text ?? ""
-        //let weight = weightInput.text ?? ""
-        //let reps = repsInput.text ?? ""
-        
-        exercise = Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
+//        guard let button = sender as? UIBarButtonItem, button === saveButton else{
+//            print("The save button was not pressed")
+//            
+//            return
+//        }
+//        
+//        let name = exerciseName.text ?? ""
+//        let description = exerciseDescription.text ?? ""
+//        //let weight = weightInput.text ?? ""
+//        //let reps = repsInput.text ?? ""
+//        
+//        exercise = Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
         
     }
 

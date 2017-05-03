@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, writeValueBackDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -95,6 +95,13 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         durationTimer.text = "Duration: " + String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
     
+    func writeValueBack(value: Exercise) {
+        // Or any other function you need to transport data
+        let indexPath = self.tableView.indexPathForSelectedRow
+        print(indexPath!.row)
+        exercises[indexPath!.row] = value
+    }
+    
     
     
 
@@ -132,6 +139,8 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             let exercise = exercises[indexPath.row]
             
             destination.exercise = exercise
+            destination.inProgress = inProgress!
+            destination.delegate = self
             
         //begin a workout
         case "StartWorkout":
