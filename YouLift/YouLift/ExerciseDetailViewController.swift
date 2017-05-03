@@ -29,7 +29,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if inProgress! {
+        if let inProgress = inProgress {
             self.navigationItem.hidesBackButton = true
             let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.back(sender:)))
             self.navigationItem.leftBarButtonItem = newBackButton
@@ -114,18 +114,18 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-//        guard let button = sender as? UIBarButtonItem, button === saveButton else{
-//            print("The save button was not pressed")
-//            
-//            return
-//        }
-//        
-//        let name = exerciseName.text ?? ""
-//        let description = exerciseDescription.text ?? ""
-//        //let weight = weightInput.text ?? ""
-//        //let reps = repsInput.text ?? ""
-//        
-//        exercise = Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
+        guard let button = sender as? UIBarButtonItem, button === saveButton else{
+            print("The save button was not pressed")
+            
+            return
+        }
+        
+        let name = exerciseName.text ?? ""
+        let description = exerciseDescription.text ?? ""
+        //let weight = weightInput.text ?? ""
+        //let reps = repsInput.text ?? ""
+        
+        exercise = Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
         
     }
 
