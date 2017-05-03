@@ -1004,7 +1004,7 @@
                                                 <rect key="frame" x="0.0" y="39" width="359" height="431"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ExerciseTableViewCell" id="o1G-4D-0Mb" customClass="ExerciseTableViewCell" customModule="YouLift" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ExerciseTableViewCell" id="o1G-4D-0Mb" customClass="ExerciseTableViewCell" customModule="YouLift" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o1G-4D-0Mb" id="0XV-bL-RwM">
@@ -1112,14 +1112,15 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="40"/>
                                                 <state key="normal" title="Resume"/>
                                                 <connections>
-                                                    <action selector="resumeButton:" destination="1AI-lA-CLW" eventType="touchUpInside" id="oZW-j2-xID"/>
+                                                    <action selector="resumeButton:" destination="1AI-lA-CLW" eventType="touchUpInside" id="vDT-s9-8wz"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dI-wZ-GS5">
                                                 <rect key="frame" x="222" y="0.0" width="41" height="40"/>
                                                 <state key="normal" title="Finish"/>
                                                 <connections>
-                                                    <action selector="finishButton:" destination="1AI-lA-CLW" eventType="touchUpInside" id="XY3-ff-UEd"/>
+                                                    <action selector="finishButton:" destination="1AI-lA-CLW" eventType="touchUpInside" id="aDS-zl-3Q1"/>
+                                                    <segue destination="SQN-ll-iQc" kind="presentation" id="vXw-mA-mau"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1141,7 +1142,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="finishLabel" destination="KDw-Rw-EkZ" id="UPN-91-XME"/>
+                        <outlet property="finishLabel" destination="KDw-Rw-EkZ" id="7jj-da-7Xy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0y-GV-cKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1262,6 +1263,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Cha-Gc-aCB"/>
+        <segue reference="vXw-mA-mau"/>
         <segue reference="a0n-cz-3s3"/>
     </inferredMetricsTieBreakers>
 </document>

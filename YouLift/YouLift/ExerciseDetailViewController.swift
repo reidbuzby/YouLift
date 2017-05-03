@@ -11,7 +11,7 @@ import UIKit
 class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var delegate: writeValueBackDelegate?
-    var inProgress:Bool?
+    var inProgress:Bool = false
     
     var exercise = Exercise()
     
@@ -29,12 +29,10 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let inProgress = inProgress {
+        if inProgress {
             self.navigationItem.hidesBackButton = true
             let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.back(sender:)))
             self.navigationItem.leftBarButtonItem = newBackButton
-        } else {
-            inProgress = false
         }
         
         // Do any additional setup after loading the view.
@@ -71,7 +69,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         // Configure the cell...
         let set = setsArray[indexPath.row]
         
-        if inProgress! {
+        if inProgress {
             cell.reconfigureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
         }else{
             cell.configureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
