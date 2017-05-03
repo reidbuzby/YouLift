@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SQN-ll-iQc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SQN-ll-iQc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,7 +42,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JOV-kk-zWS" id="9c5-B6-Krc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workout Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJG-88-QpK">
@@ -81,7 +81,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HzD-02-rKO" id="LrV-OC-yP2">
-                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workout Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A70-1q-ACJ">
@@ -166,7 +166,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xaF-S0-kAA" id="Onk-pq-7tV">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workout Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJP-Zr-86u">
@@ -212,7 +212,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MsU-qH-mQJ" id="fT3-XU-6qH">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workout Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxK-Ct-LC7">
@@ -290,7 +290,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mqr-dN-XIf" id="riz-9A-jvf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yT-wJ-upr">
@@ -362,7 +362,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Fn-kX-RN6" id="wdy-zl-Eq0">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="685-R3-pBN">
@@ -472,7 +472,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qef-lt-RMa" id="GsR-af-AWH">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk2-c9-Qid">
@@ -553,7 +553,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54A-p9-BvU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3009" y="471"/>
+            <point key="canvasLocation" x="5879" y="461"/>
         </scene>
         <!--Stats-->
         <scene sceneID="XvS-th-wJ3">
@@ -670,10 +670,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="fom-lT-Zqz" kind="relationship" relationship="viewControllers" id="YT7-9c-wkF"/>
                         <segue destination="CSB-dP-6It" kind="relationship" relationship="viewControllers" id="uib-SM-nY9"/>
                         <segue destination="eAI-pT-Xfv" kind="relationship" relationship="viewControllers" id="yeh-XL-PGV"/>
                         <segue destination="tRv-pW-Ih3" kind="relationship" relationship="viewControllers" id="8Sp-ck-goX"/>
+                        <segue destination="fom-lT-Zqz" kind="relationship" relationship="viewControllers" id="rSI-sF-Ckn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCk-Ai-Fv0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -683,7 +683,7 @@
         <!--Create-->
         <scene sceneID="zu3-SC-0qm">
             <objects>
-                <viewController title="Create" id="fom-lT-Zqz" userLabel="Create" sceneMemberID="viewController">
+                <viewController title="Create" id="fom-lT-Zqz" userLabel="Create" customClass="WorkoutTableViewController" customModule="YouLift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Gh-C7-ZMz"/>
                         <viewControllerLayoutGuide type="bottom" id="FzA-EF-aMD"/>
@@ -708,15 +708,6 @@
                                     </tableView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yDE-WJ-r9m">
-                                <rect key="frame" x="53" y="568" width="268" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Add Exercise      +"/>
-                                <connections>
-                                    <segue destination="CXS-qX-PTo" kind="show" identifier="AddExercise" id="klm-p4-YG2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -725,7 +716,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8U-q7-wNL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1085.5999999999999" y="470.91454272863569"/>
+            <point key="canvasLocation" x="4090" y="461"/>
         </scene>
         <!--Exercise Table View Controller-->
         <scene sceneID="izu-Pz-x66">
@@ -755,7 +746,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QuF-yT-ZAa" id="Xbo-Fl-dcd">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exercise Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UD-Lp-eOV">
@@ -783,7 +774,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NnP-tR-faH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1973.5999999999999" y="470.91454272863569"/>
+            <point key="canvasLocation" x="4985" y="460"/>
         </scene>
         <!--Workout Detail View Controller-->
         <scene sceneID="5zo-VP-cqR">
@@ -814,7 +805,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sEV-cg-YJR" id="yu5-Rc-f9R">
-                                                    <rect key="frame" x="0.0" y="0.0" width="310" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="310" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXm-A1-W7i">
@@ -901,7 +892,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p0F-pM-Hbd" id="MOT-g9-4no">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDk-TS-1m1">
@@ -1004,11 +995,11 @@
                                                 <rect key="frame" x="0.0" y="39" width="359" height="431"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ExerciseTableViewCell" id="o1G-4D-0Mb" customClass="ExerciseTableViewCell" customModule="YouLift" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ExerciseTableViewCell" id="o1G-4D-0Mb" customClass="ExerciseTableViewCell" customModule="YouLift" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o1G-4D-0Mb" id="0XV-bL-RwM">
-                                                            <rect key="frame" x="0.0" y="0.0" width="326" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="326" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3a4-M2-Zmk">
@@ -1183,7 +1174,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HoJ-Nd-Uz7" id="RHF-9g-Gvr">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljy-Pj-0nG">
@@ -1261,7 +1252,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Cha-Gc-aCB"/>
         <segue reference="a0n-cz-3s3"/>
+        <segue reference="Cha-Gc-aCB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -29,26 +29,37 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if inProgress! {
-            self.navigationItem.hidesBackButton = true
-            let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.back(sender:)))
+        if inProgress != nil {
+            if inProgress! {
+                self.navigationItem.hidesBackButton = true
+                let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.back(sender:)))
             self.navigationItem.leftBarButtonItem = newBackButton
+            } else {
+                inProgress = false
+            }
+        
+            // Do any additional setup after loading the view.
+        
+            exerciseName.text = self.exercise.name
+            exerciseDescription.text = self.exercise.description
+        
+            self.sets = exercise.sets
+            self.setsArray = exercise.setsArray
+        
+            tableView.delegate = self
+            tableView.dataSource = self
         } else {
-            inProgress = false
+            exerciseName.text = self.exercise.name
+            exerciseDescription.text = self.exercise.description
+            
+            self.sets = exercise.sets
+            self.setsArray = exercise.setsArray
+            
+            tableView.delegate = self
+            tableView.dataSource = self
         }
         
-        // Do any additional setup after loading the view.
-        
-        exerciseName.text = self.exercise.name
-        exerciseDescription.text = self.exercise.description
-        
-        self.sets = exercise.sets
-        self.setsArray = exercise.setsArray
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-    }
+    } 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -71,9 +82,14 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         // Configure the cell...
         let set = setsArray[indexPath.row]
         
-        if inProgress! {
-            cell.reconfigureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
-        }else{
+        if inProgress != nil {
+            if inProgress! {
+                cell.reconfigureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
+            }else{
+                cell.configureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
+            }
+        }
+        else {
             cell.configureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
         }
         
@@ -114,6 +130,26 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        switch(segue.identifier ?? ""){
+            
+            case "SaveExercise":
+            
+                guard let destination = segue.destination as? ExerciseTableViewController else{
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                
+                if (self.exerciseName.text == nil || self.exerciseDescription.text == nil) {
+                    fatalError("Full data not entered for exercise")
+                }
+            
+                destination.appendExercise(exercise: Exercise(name: self.exerciseName.text!, description: self.exerciseDescription.text!, sets: self.sets, setsArray: self.setsArray))
+            
+            
+            default:
+                fatalError("Unexpeced segue identifier: \(segue.identifier)")
+        }
+    }
+        
 //        guard let button = sender as? UIBarButtonItem, button === saveButton else{
 //            print("The save button was not pressed")
 //            
@@ -127,6 +163,6 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
 //        
 //        exercise = Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
         
-    }
-
 }
+
+
