@@ -109,6 +109,8 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 stack.remove(at: stack.count-2)
                 nav.setViewControllers(stack, animated: false)
             }
+        } else{
+            tableView.reloadData()
         }
     }
     
@@ -186,6 +188,14 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
+        case "AddExercise":
+            guard let destination = segue.destination as? ExerciseTableViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            destination.inProgress = inProgress!
+            destination.currWorkout = exercises
+            destination.delegate = self
             
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")

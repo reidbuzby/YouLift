@@ -11,6 +11,10 @@ import UIKit
 class ExerciseTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let exercises = ExerciseCollection()
+    var delegate: writeValueBackDelegate?
+    var inProgress:Bool = false
+    var currWorkout = [Exercise]()
+
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,6 +26,12 @@ class ExerciseTableViewController: UIViewController, UITableViewDelegate, UITabl
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        if inProgress {
+            self.navigationItem.hidesBackButton = true
+            let newBackButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseTableViewController.back(sender:)))
+            self.navigationItem.leftBarButtonItem = newBackButton
+        }
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -55,6 +65,20 @@ class ExerciseTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let exercise = exercises.collection[indexPath.row]
+        let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: 1, setsArray: [(0,0)])
+        currWorkout.append(newExercise)
+        
+        delegate?.writeValueBack(value: currWorkout, next: -1)
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    func back(sender: UIBarButtonItem) {
+        // Go back to the previous ViewController
+        _ = navigationController?.popViewController(animated: true)
     }
  
 
@@ -144,6 +168,7 @@ class ExerciseTableViewController: UIViewController, UITableViewDelegate, UITabl
             let exercise = exercises.collection[indexPath.row]
             
             destination.exercise = exercise
+                        
             
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")
