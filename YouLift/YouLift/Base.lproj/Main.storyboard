@@ -1176,7 +1176,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y4K-Db-Bqw">
-                                <rect key="frame" x="16" y="213" width="343" height="397"/>
+                                <rect key="frame" x="16" y="213" width="343" height="343"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1236,6 +1236,14 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gn-T2-w1X">
+                                                    <rect key="frame" x="328" y="8" width="15" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="x"/>
+                                                    <connections>
+                                                        <action selector="deleteSetButton:" destination="38R-VS-w0Y" eventType="touchUpInside" id="0cb-bj-3B7"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1246,8 +1254,38 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="3gN-Im-jhS">
+                                <rect key="frame" x="8" y="563" width="359" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kC-hn-AFi">
+                                        <rect key="frame" x="0.0" y="0.0" width="129.5" height="30"/>
+                                        <state key="normal" title="Previous"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzI-xj-dF7">
+                                        <rect key="frame" x="229.5" y="0.0" width="129.5" height="30"/>
+                                        <state key="normal" title="Next"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="OzI-xj-dF7" firstAttribute="width" secondItem="5kC-hn-AFi" secondAttribute="width" id="Z6D-3G-tK6"/>
+                                    <constraint firstItem="OzI-xj-dF7" firstAttribute="height" secondItem="5kC-hn-AFi" secondAttribute="height" id="kRl-WY-Vke"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNo-Bi-rfq">
+                                <rect key="frame" x="137" y="175" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Set"/>
+                                <connections>
+                                    <action selector="addSetButton:" destination="38R-VS-w0Y" eventType="touchUpInside" id="5JZ-D8-G6F"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IEk-bG-3gO" firstAttribute="top" secondItem="3gN-Im-jhS" secondAttribute="bottom" constant="25" id="AAg-Vh-cG1"/>
+                            <constraint firstItem="3gN-Im-jhS" firstAttribute="leading" secondItem="7dm-TY-HEM" secondAttribute="leading" constant="8" id="nKA-JC-emk"/>
+                            <constraint firstAttribute="trailing" secondItem="3gN-Im-jhS" secondAttribute="trailing" constant="8" id="plU-tz-Rgr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="YouLift" id="n7v-1d-mWe"/>
                     <connections>
@@ -1258,7 +1296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgS-Je-KgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3134" y="1919"/>
+            <point key="canvasLocation" x="3133.5999999999999" y="1918.2908545727139"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -26,6 +26,31 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func addSetButton(_ sender: Any) {
+        sets += 1
+        setsArray.append((0, 0))
+        
+        tableView.reloadData()
+    }
+    @IBAction func deleteSetButton(_ sender: Any) {
+        
+        if let button = sender as? UIButton {
+            if let superview = button.superview {
+                if let cell = superview.superview as? SetTableViewCell {
+                    let indexPath = tableView.indexPath(for: cell)
+                    
+                    print(indexPath!.row)
+                    
+                    setsArray.remove(at: indexPath!.row)
+                    sets -= 1
+                    
+                    tableView.reloadData()
+                }
+            }
+        }
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

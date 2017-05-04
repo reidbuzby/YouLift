@@ -15,6 +15,7 @@ class SetTableViewCell: UITableViewCell {
     @IBOutlet weak var numberOfReps: UILabel!
     @IBOutlet weak var weightInput: UITextField!
     @IBOutlet weak var repsInput: UITextField!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
