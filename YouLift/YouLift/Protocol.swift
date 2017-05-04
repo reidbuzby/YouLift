@@ -9,5 +9,5 @@
 import Foundation
 
 protocol writeValueBackDelegate {
-    func writeValueBack(value: Exercise)
+    func writeValueBack(value: [Exercise], next: Int)
 }

@@ -95,10 +95,21 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         durationTimer.text = "Duration: " + String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
     
-    func writeValueBack(value: Exercise) {
+    func writeValueBack(value: [Exercise], next: Int) {
         // Or any other function you need to transport data
         let indexPath = self.tableView.indexPathForSelectedRow
-        exercises[indexPath!.row] = value
+        exercises = value
+        
+        if next != -1 {
+            //_ = navigationController?.popViewController(animated: false)
+            performSegue(withIdentifier: "ViewExercise", sender: next)
+            if let nav = self.navigationController {
+                var stack = nav.viewControllers
+                // index starts at 0 so page three index is 2
+                stack.remove(at: stack.count-2)
+                nav.setViewControllers(stack, animated: false)
+            }
+        }
     }
     
     
@@ -128,7 +139,21 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             }
             
             guard let cell = sender as? ExerciseTableViewCell else{
-                fatalError("Unexpected sender: \(sender)")
+                
+                guard let transition = sender as? Int else{
+                    fatalError("Unexpected sender: \(sender)")
+                }
+                
+                let exercise = exercises[transition]
+                
+                destination.exercise = exercise
+                destination.exercises = exercises
+                destination.currIndex = transition
+                destination.inProgress = inProgress!
+                destination.delegate = self
+                
+                return
+                
             }
             
             guard let indexPath = tableView.indexPath(for: cell) else{
@@ -138,6 +163,8 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             let exercise = exercises[indexPath.row]
             
             destination.exercise = exercise
+            destination.exercises = exercises
+            destination.currIndex = indexPath.row
             destination.inProgress = inProgress!
             destination.delegate = self
             

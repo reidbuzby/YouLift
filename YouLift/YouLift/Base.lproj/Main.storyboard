@@ -1260,10 +1260,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kC-hn-AFi">
                                         <rect key="frame" x="0.0" y="0.0" width="129.5" height="30"/>
                                         <state key="normal" title="Previous"/>
+                                        <connections>
+                                            <action selector="prevButton:" destination="38R-VS-w0Y" eventType="touchUpInside" id="Hfy-yK-wko"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzI-xj-dF7">
                                         <rect key="frame" x="229.5" y="0.0" width="129.5" height="30"/>
                                         <state key="normal" title="Next"/>
+                                        <connections>
+                                            <action selector="nextButton:" destination="38R-VS-w0Y" eventType="touchUpInside" id="Pii-Tz-vnn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1291,17 +1297,19 @@
                     <connections>
                         <outlet property="exerciseDescription" destination="x0h-Al-OLj" id="Av1-0N-osU"/>
                         <outlet property="exerciseName" destination="WeV-1c-MqB" id="Lrf-JY-Mrf"/>
+                        <outlet property="nextButton" destination="OzI-xj-dF7" id="Knh-f4-pSS"/>
+                        <outlet property="prevButton" destination="5kC-hn-AFi" id="oJL-ub-ReI"/>
                         <outlet property="tableView" destination="y4K-Db-Bqw" id="ZFs-1N-dpl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgS-Je-KgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3133.5999999999999" y="1918.2908545727139"/>
+            <point key="canvasLocation" x="3134" y="1919"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Cha-Gc-aCB"/>
-        <segue reference="vXw-mA-mau"/>
         <segue reference="a0n-cz-3s3"/>
+        <segue reference="vXw-mA-mau"/>
+        <segue reference="Cha-Gc-aCB"/>
     </inferredMetricsTieBreakers>
 </document>

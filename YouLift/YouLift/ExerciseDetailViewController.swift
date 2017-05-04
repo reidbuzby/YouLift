@@ -14,6 +14,9 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     var inProgress:Bool = false
     
     var exercise = Exercise()
+    var exercises = [Exercise]()
+    var currIndex = 0
+    var transitionIndex = 0
     
     var sets = 0
     var setsArray = [(Int, Int)]()
@@ -32,24 +35,49 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         
         tableView.reloadData()
     }
-    @IBAction func deleteSetButton(_ sender: Any) {
+    
+    @IBAction func deleteSetButton(_ sender: UIButton) {
         
-        if let button = sender as? UIButton {
-            if let superview = button.superview {
-                if let cell = superview.superview as? SetTableViewCell {
-                    let indexPath = tableView.indexPath(for: cell)
+        if let superview = sender.superview {
+            if let cell = superview.superview as? SetTableViewCell {
+                let indexPath = tableView.indexPath(for: cell)
                     
-                    print(indexPath!.row)
+                setsArray.remove(at: indexPath!.row)
+                sets -= 1
                     
-                    setsArray.remove(at: indexPath!.row)
-                    sets -= 1
-                    
-                    tableView.reloadData()
-                }
+                tableView.reloadData()
             }
         }
 
     }
+    
+    @IBAction func prevButton(_ sender: UIButton) {
+        transitionIndex = currIndex - 1
+        let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: sets, setsArray: getSetsData(self.tableView))
+        
+        exercises[currIndex] = newExercise
+        
+        delegate?.writeValueBack(value: exercises, next: transitionIndex)
+        
+        // Go back to the previous ViewController
+        //_ = navigationController?.popViewController(animated: false)
+    }
+    
+    @IBAction func nextButton(_ sender: UIButton) {
+        transitionIndex = currIndex + 1
+        let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: sets, setsArray: getSetsData(self.tableView))
+        
+        exercises[currIndex] = newExercise
+        
+        delegate?.writeValueBack(value: exercises, next: transitionIndex)
+        
+        // Go back to the previous ViewController
+        //_ = navigationController?.popViewController(animated: false)
+    }
+    
+    @IBOutlet weak var prevButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +86,14 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
             self.navigationItem.hidesBackButton = true
             let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.back(sender:)))
             self.navigationItem.leftBarButtonItem = newBackButton
+            
+            if currIndex == 0 {
+                self.prevButton.isHidden = true
+            }else if currIndex == exercises.count - 1 {
+                self.nextButton.isHidden = true
+            }
         }
+        
         
         // Do any additional setup after loading the view.
         
@@ -118,7 +153,10 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     func back(sender: UIBarButtonItem) {
         // Perform your custom actions
         let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: sets, setsArray: getSetsData(self.tableView))
-        delegate?.writeValueBack(value: newExercise)
+        
+        exercises[currIndex] = newExercise
+        
+        delegate?.writeValueBack(value: exercises, next: -1)
         
         // Go back to the previous ViewController
         _ = navigationController?.popViewController(animated: true)
@@ -137,18 +175,20 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let button = sender as? UIBarButtonItem, button === saveButton else{
-            print("The save button was not pressed")
-            
-            return
-        }
-        
-        let name = exerciseName.text ?? ""
-        let description = exerciseDescription.text ?? ""
-        //let weight = weightInput.text ?? ""
-        //let reps = repsInput.text ?? ""
-        
-        exercise = Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
+        //code that was previously here (unused?)
+//        guard let button = sender as? UIBarButtonItem, button === saveButton else{
+//            print("The save button was not pressed")
+//            
+//            return
+//        }
+//        
+//        let name = exerciseName.text ?? ""
+//        let description = exerciseDescription.text ?? ""
+//        //let weight = weightInput.text ?? ""
+//        //let reps = repsInput.text ?? ""
+//        
+//        exercise = Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
+    
         
     }
 
