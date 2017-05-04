@@ -1143,6 +1143,8 @@
                             <constraint firstAttribute="bottomMargin" secondItem="Uo1-H6-YmG" secondAttribute="bottom" constant="75" id="wUj-n4-PgA"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="durationTimer" destination="Fqi-xz-J0a" id="Jh3-Is-OhB"/>
                         <outlet property="tableView" destination="o32-lm-slj" id="2hG-eS-OyW"/>

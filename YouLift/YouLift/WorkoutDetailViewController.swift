@@ -14,6 +14,8 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     var workout = Workout()
     var exercises = [Exercise]()
+    var editButton:UIBarButtonItem?
+    var doneButton:UIBarButtonItem?
     
     @IBOutlet weak var workoutName: UILabel!
     
@@ -37,9 +39,26 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         if inProgress != nil {
             updateTimer()
+            
+            editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.edit(sender:)))
+            self.navigationItem.rightBarButtonItem = editButton
+            
+            doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.doneEditing(sender:)))
+            
         } else {
             inProgress = false
         }
+    }
+    
+    func edit(sender: UIBarButtonItem){
+        self.tableView.setEditing(true, animated: true)
+        self.navigationItem.rightBarButtonItem = doneButton
+    }
+    
+    func doneEditing(sender: UIBarButtonItem){
+        self.tableView.setEditing(false, animated: true)
+        self.navigationItem.rightBarButtonItem = editButton
+        tableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -63,25 +82,41 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
+        
+        var exerciseToMove = exercises[fromIndexPath.row]
+        exercises.remove(at: fromIndexPath.row)
+        exercises.insert(exerciseToMove, at: toIndexPath.row)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            exercises.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
     
     //Table View Stuff
     
     
     @IBAction func finishButton(_ sender: UIButton) {
     }
-    
-//    @IBAction func finishButton(_ sender: UIButton) {
-//        //using a view controller
-//        let vc = FinishPrompt()
-//        vc.modalTransitionStyle = .coverVertical
-//        present(vc, animated: true, completion: nil)
-//    }
     
     func updateTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.displayDuration), userInfo: nil, repeats: true)
