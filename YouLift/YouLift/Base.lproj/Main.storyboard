@@ -543,7 +543,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exd-yJ-CqK">
                                 <rect key="frame" x="192" y="205" width="82" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Remove Set"/>
+                                <state key="normal" title="Remove Set">
+                                    <color key="titleColor" red="1" green="0.055998109790613371" blue="0.054482717775313882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="removeSet:" destination="dHF-HP-fQe" eventType="touchUpInside" id="MDW-9K-cZR"/>
                                 </connections>
@@ -779,7 +781,9 @@
                                 <rect key="frame" x="16" y="556" width="130" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Save Workout"/>
+                                <state key="normal" title="Save Workout">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.41923777633667081" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="saveWorkout:" destination="fom-lT-Zqz" eventType="touchUpInside" id="h30-6j-6Pp"/>
                                 </connections>
