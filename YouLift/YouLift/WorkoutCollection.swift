@@ -16,8 +16,8 @@ import Foundation
 
 class WorkoutCollection {
     
-    var defaultCollection = [Workout]()
-    var customCollection = [Workout]()
+    public var defaultCollection = [Workout]()
+    public var customCollection = [Workout]()
     
     
     //Add in dummy workouts

@@ -693,6 +693,7 @@
                         <segue destination="CSB-dP-6It" kind="relationship" relationship="viewControllers" id="uib-SM-nY9"/>
                         <segue destination="eAI-pT-Xfv" kind="relationship" relationship="viewControllers" id="yeh-XL-PGV"/>
                         <segue destination="tRv-pW-Ih3" kind="relationship" relationship="viewControllers" id="8Sp-ck-goX"/>
+                        <segue destination="fom-lT-Zqz" kind="relationship" relationship="viewControllers" id="5uB-lo-I8M"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCk-Ai-Fv0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -704,17 +705,15 @@
             <objects>
                 <navigationController id="FIy-Af-At0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="hmq-Tl-CiM"/>
+                    <navigationItem key="navigationItem" id="DCE-cB-236"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QHD-97-3nd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="fom-lT-Zqz" kind="relationship" relationship="rootViewController" id="Xbn-85-K6P"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Njf-jI-amA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3690" y="458"/>
+            <point key="canvasLocation" x="3969" y="-115"/>
         </scene>
         <!--Create-->
         <scene sceneID="zu3-SC-0qm">
@@ -729,23 +728,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ssc-Fw-RTa">
-                                <rect key="frame" x="129" y="72" width="117" height="30"/>
+                                <rect key="frame" x="129" y="72" width="117" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Workout Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uiO-8l-jfA">
-                                        <rect key="frame" x="0.0" y="0.0" width="117" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Workout Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="uiO-8l-jfA">
+                                        <rect key="frame" x="0.0" y="0.0" width="117" height="22"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vrR-RF-RNX">
-                                <rect key="frame" x="16" y="110" width="343" height="537"/>
+                                <rect key="frame" x="16" y="110" width="343" height="409"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExerciseTableViewCell" id="VdZ-g4-uVt" customClass="ExerciseTableViewCell" customModule="YouLift" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ExerciseTableViewCell" id="VdZ-g4-uVt" customClass="ExerciseTableViewCell" customModule="YouLift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VdZ-g4-uVt" id="MxO-lN-9cE">
@@ -767,10 +766,29 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbp-0n-m1U">
+                                <rect key="frame" x="218" y="556" width="141" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add Exercise +"/>
+                                <connections>
+                                    <segue destination="j8N-29-j0T" kind="presentation" identifier="AddExercise" id="qYo-pI-xoQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqN-jY-IxG">
+                                <rect key="frame" x="16" y="556" width="130" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Save Workout"/>
+                                <connections>
+                                    <action selector="saveWorkout:" destination="fom-lT-Zqz" eventType="touchUpInside" id="h30-6j-6Pp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Create" id="qGb-Ez-xRY" userLabel="Create"/>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="RbI-eW-Tbu">
                         <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="xNc-Hr-Ch0">
@@ -779,8 +797,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="vrR-RF-RNX" id="NrM-8o-ACq"/>
+                        <outlet property="workoutNameField" destination="uiO-8l-jfA" id="xa5-Os-vEM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8U-q7-wNL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1148,7 +1168,7 @@
                                                 <rect key="frame" x="0.0" y="48.5" width="359" height="431"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ExerciseTableViewCell" id="o1G-4D-0Mb" customClass="ExerciseTableViewCell" customModule="YouLift" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ExerciseTableViewCell" id="o1G-4D-0Mb" customClass="ExerciseTableViewCell" customModule="YouLift" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o1G-4D-0Mb" id="0XV-bL-RwM">

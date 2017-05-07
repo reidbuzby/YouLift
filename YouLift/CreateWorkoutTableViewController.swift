@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     var exercises = [Exercise]()
     
@@ -25,6 +25,13 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         
         tableView.dataSource = self
         tableView.delegate = self
+        workoutNameField.delegate = self
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateWorkoutTableViewController.hideKeyboard)))
+    }
+    
+    func hideKeyboard() {
+        workoutNameField.resignFirstResponder()
     }
     
     
@@ -150,6 +157,32 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         tableView.reloadData()
         
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        workoutNameField.resignFirstResponder()
+        return true
+    }
+    
+    @IBOutlet weak var workoutNameField: UITextField!
+    
+    @IBAction func saveWorkout(_ sender: Any) {
+        if exercises.count > 0 {
+            
+            var workoutName: String?
+            
+            if workoutNameField.text == nil {
+                workoutName = "New Workout"
+            }
+            else {
+                workoutName = workoutNameField.text
+            }
+            
+            let collection = WorkoutCollection()
+            
+            let newWorkout = Workout(name: workoutName!, exercises: exercises)
+            collection.add(workout: newWorkout)
+        }
     }
     
     
