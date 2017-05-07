@@ -173,16 +173,26 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         
         // Do any additional setup after loading the view.
         
-        exerciseName.text = self.exercise.name
-        exerciseDescription.text = self.exercise.description
+            exerciseName.text = self.exercise.name
+            exerciseDescription.text = self.exercise.description
         
-        self.sets = exercise.sets
-        self.setsArray = exercise.setsArray
+            self.sets = exercise.sets
+            self.setsArray = exercise.setsArray
         
-        tableView.delegate = self
-        tableView.dataSource = self
+            tableView.delegate = self
+            tableView.dataSource = self
+        } else {
+            exerciseName.text = self.exercise.name
+            exerciseDescription.text = self.exercise.description
+            
+            self.sets = exercise.sets
+            self.setsArray = exercise.setsArray
+            
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
         
-    }
+    } 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -318,6 +328,6 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
 //        exercise = Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
     
         
-    }
-
 }
+
+

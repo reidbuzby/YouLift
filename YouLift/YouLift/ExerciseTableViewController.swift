@@ -16,6 +16,10 @@ class ExerciseTableViewController: UIViewController, UITableViewDelegate, UITabl
     var currWorkout = [Exercise]()
 
     
+    func appendExercise(exercise: Exercise) {
+        exercises.add(exercise: exercise)
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -135,7 +139,7 @@ class ExerciseTableViewController: UIViewController, UITableViewDelegate, UITabl
             
         case "ViewExercise":
             
-            guard let destination = segue.destination as? ExerciseDetailViewController else{
+            guard let destination = segue.destination as? ExerciseDetailViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
