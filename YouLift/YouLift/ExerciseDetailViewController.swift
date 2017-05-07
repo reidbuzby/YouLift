@@ -271,17 +271,6 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-//    {
-//        
-//        if component == 0 {
-//            currentMin = row
-//        }else if component == 2{
-//            currentSec = row
-//        }
-//        
-//    }
-    
     func updateCountdown() {
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.displayCountdown), userInfo: nil, repeats: true)
     }
