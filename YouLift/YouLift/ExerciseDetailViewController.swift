@@ -173,26 +173,16 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         
         // Do any additional setup after loading the view.
         
-            exerciseName.text = self.exercise.name
-            exerciseDescription.text = self.exercise.description
+        exerciseName.text = self.exercise.name
+        exerciseDescription.text = self.exercise.description
         
-            self.sets = exercise.sets
-            self.setsArray = exercise.setsArray
+        self.sets = exercise.sets
+        self.setsArray = exercise.setsArray
         
-            tableView.delegate = self
-            tableView.dataSource = self
-        } else {
-            exerciseName.text = self.exercise.name
-            exerciseDescription.text = self.exercise.description
-            
-            self.sets = exercise.sets
-            self.setsArray = exercise.setsArray
-            
-            tableView.delegate = self
-            tableView.dataSource = self
-        }
+        tableView.delegate = self
+        tableView.dataSource = self
         
-    } 
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -313,7 +303,26 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        //code that was previously here (unused?)
+        switch(segue.identifier ?? ""){
+            
+            case "SaveExercise":
+            
+                guard let destination = segue.destination as? ExerciseTableViewController else{
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                
+                if (self.exerciseName.text == nil || self.exerciseDescription.text == nil) {
+                    fatalError("Full data not entered for exercise")
+                }
+            
+                destination.appendExercise(exercise: Exercise(name: self.exerciseName.text!, description: self.exerciseDescription.text!, sets: self.sets, setsArray: self.setsArray))
+            
+            
+            default:
+                fatalError("Unexpeced segue identifier: \(segue.identifier)")
+        }
+    }
+        
 //        guard let button = sender as? UIBarButtonItem, button === saveButton else{
 //            print("The save button was not pressed")
 //            
