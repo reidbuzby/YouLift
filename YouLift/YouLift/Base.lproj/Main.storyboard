@@ -1247,7 +1247,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y4K-Db-Bqw">
-                                <rect key="frame" x="16" y="213" width="343" height="343"/>
+                                <rect key="frame" x="16" y="213" width="343" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1325,29 +1325,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="3gN-Im-jhS">
-                                <rect key="frame" x="8" y="563" width="359" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kC-hn-AFi">
-                                        <rect key="frame" x="0.0" y="0.0" width="129.5" height="30"/>
-                                        <state key="normal" title="Previous"/>
-                                        <connections>
-                                            <action selector="prevButton:" destination="38R-VS-w0Y" eventType="touchUpInside" id="Hfy-yK-wko"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzI-xj-dF7">
-                                        <rect key="frame" x="229.5" y="0.0" width="129.5" height="30"/>
-                                        <state key="normal" title="Next"/>
-                                        <connections>
-                                            <action selector="nextButton:" destination="38R-VS-w0Y" eventType="touchUpInside" id="Pii-Tz-vnn"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kC-hn-AFi">
+                                <rect key="frame" x="24" y="548" width="129.5" height="50"/>
                                 <constraints>
-                                    <constraint firstItem="OzI-xj-dF7" firstAttribute="width" secondItem="5kC-hn-AFi" secondAttribute="width" id="Z6D-3G-tK6"/>
-                                    <constraint firstItem="OzI-xj-dF7" firstAttribute="height" secondItem="5kC-hn-AFi" secondAttribute="height" id="kRl-WY-Vke"/>
+                                    <constraint firstAttribute="height" constant="50" id="9M5-sB-hF4"/>
+                                    <constraint firstAttribute="width" constant="129.5" id="cAP-me-mun"/>
                                 </constraints>
-                            </stackView>
+                                <state key="normal" title="Previous"/>
+                                <connections>
+                                    <action selector="prevButton:" destination="38R-VS-w0Y" eventType="touchUpInside" id="Hfy-yK-wko"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzI-xj-dF7">
+                                <rect key="frame" x="221.5" y="548" width="129.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Lm5-yn-tRs"/>
+                                    <constraint firstAttribute="width" constant="129.5" id="ogk-cB-okM"/>
+                                </constraints>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButton:" destination="38R-VS-w0Y" eventType="touchUpInside" id="Pii-Tz-vnn"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FNo-Bi-rfq">
                                 <rect key="frame" x="137" y="175" width="100" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1356,26 +1355,65 @@
                                     <action selector="addSetButton:" destination="38R-VS-w0Y" eventType="touchUpInside" id="5JZ-D8-G6F"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rest Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkO-hM-NaW">
+                                <rect key="frame" x="16" y="421" width="343" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mir-DP-90s">
+                                <rect key="frame" x="137" y="527" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="pauseButton:" destination="38R-VS-w0Y" eventType="touchUpInside" id="hYq-0m-Fft"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0z-FZ-fMH">
+                                <rect key="frame" x="191" y="527" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startStopButton:" destination="38R-VS-w0Y" eventType="touchUpInside" id="2Rj-VW-9IS"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2iV-fd-sh8">
+                                <rect key="frame" x="137" y="473" width="100" height="46"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Countdown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iqx-Pa-dZf">
+                                <rect key="frame" x="37" y="473" width="92" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="IEk-bG-3gO" firstAttribute="top" secondItem="3gN-Im-jhS" secondAttribute="bottom" constant="25" id="AAg-Vh-cG1"/>
-                            <constraint firstItem="3gN-Im-jhS" firstAttribute="leading" secondItem="7dm-TY-HEM" secondAttribute="leading" constant="8" id="nKA-JC-emk"/>
-                            <constraint firstAttribute="trailing" secondItem="3gN-Im-jhS" secondAttribute="trailing" constant="8" id="plU-tz-Rgr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OzI-xj-dF7" secondAttribute="trailing" constant="8" id="ZDo-EH-cpv"/>
+                            <constraint firstItem="5kC-hn-AFi" firstAttribute="leading" secondItem="7dm-TY-HEM" secondAttribute="leadingMargin" constant="8" id="qNa-q9-SRC"/>
+                            <constraint firstItem="IEk-bG-3gO" firstAttribute="top" secondItem="5kC-hn-AFi" secondAttribute="bottom" constant="25" id="tLM-ou-0mz"/>
+                            <constraint firstItem="IEk-bG-3gO" firstAttribute="top" secondItem="OzI-xj-dF7" secondAttribute="bottom" constant="25" id="u3y-bd-KK8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="YouLift" id="n7v-1d-mWe"/>
                     <connections>
+                        <outlet property="countdownLabel" destination="Iqx-Pa-dZf" id="gZ6-X3-ZHe"/>
                         <outlet property="exerciseDescription" destination="x0h-Al-OLj" id="Av1-0N-osU"/>
                         <outlet property="exerciseName" destination="WeV-1c-MqB" id="Lrf-JY-Mrf"/>
                         <outlet property="nextButton" destination="OzI-xj-dF7" id="Knh-f4-pSS"/>
+                        <outlet property="pauseButton" destination="Mir-DP-90s" id="Wdw-SA-jit"/>
                         <outlet property="prevButton" destination="5kC-hn-AFi" id="oJL-ub-ReI"/>
+                        <outlet property="restTimerPicker" destination="2iV-fd-sh8" id="G0V-Ub-pMs"/>
+                        <outlet property="startButton" destination="Y0z-FZ-fMH" id="Olp-Gi-L4d"/>
                         <outlet property="tableView" destination="y4K-Db-Bqw" id="ZFs-1N-dpl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgS-Je-KgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3134" y="1919"/>
+            <point key="canvasLocation" x="3133.5999999999999" y="1918.2908545727139"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
