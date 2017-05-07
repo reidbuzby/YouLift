@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SQN-ll-iQc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FIy-Af-At0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -773,7 +773,11 @@
                     <tabBarItem key="tabBarItem" title="Create" id="qGb-Ez-xRY" userLabel="Create"/>
                     <navigationItem key="navigationItem" id="RbI-eW-Tbu">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="xNc-Hr-Ch0"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="xNc-Hr-Ch0">
+                            <connections>
+                                <segue destination="j8N-29-j0T" kind="show" identifier="AddExercise" id="YFf-ng-8ob"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="vrR-RF-RNX" id="NrM-8o-ACq"/>
@@ -782,6 +786,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8U-q7-wNL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4748" y="458.32083958020991"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vqD-bR-DiJ">
+            <objects>
+                <navigationController id="j8N-29-j0T" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1QK-Qn-mD3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dHF-HP-fQe" kind="relationship" relationship="rootViewController" id="I8F-PZ-SgE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRM-oF-SLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5625" y="1184"/>
         </scene>
         <!--Exercise Table View Controller-->
         <scene sceneID="izu-Pz-x66">
