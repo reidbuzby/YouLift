@@ -59,6 +59,10 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
             pauseButton.isEnabled = false
             paused = false
             pauseButton.setTitle("Pause", for: UIControlState.normal)
+            countdownLabel.isHidden = true
+            restTimerPicker.isHidden = false
+            currentMin = restTimerPicker.selectedRow(inComponent: 0)
+            currentSec = restTimerPicker.selectedRow(inComponent: 2)
             
             //reseteverything
             
@@ -67,8 +71,11 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
             startButton.setTitle("Cancel", for: UIControlState.normal)
             currentMin = restTimerPicker.selectedRow(inComponent: 0)
             currentSec = restTimerPicker.selectedRow(inComponent: 2)
+            countdownLabel.text = String(format: "%02d", currentMin) + " : " + String(format: "%02d", currentSec)
             updateCountdown()
             pauseButton.isEnabled = true
+            restTimerPicker.isHidden = true
+            countdownLabel.isHidden = false
         }
     }
     
@@ -150,6 +157,12 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
             
             if !countingDown {
                 pauseButton.isEnabled = false
+                countdownLabel.isHidden = true
+                restTimerPicker.isHidden = false
+
+            }else{
+                restTimerPicker.isHidden = true
+                countdownLabel.isHidden = false
             }
             
             if countingDown && !paused{
@@ -274,8 +287,6 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func displayCountdown() {
-        countdownLabel.text = String(format: "%02d", currentMin) + " : " + String(format: "%02d", currentSec)
-        
         if currentSec == 0{
             if currentMin == 0{
                 startButton.sendActions(for: .touchUpInside)
@@ -286,6 +297,8 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         }else{
             currentSec -= 1
         }
+        
+        countdownLabel.text = String(format: "%02d", currentMin) + " : " + String(format: "%02d", currentSec)
     }
 
 
