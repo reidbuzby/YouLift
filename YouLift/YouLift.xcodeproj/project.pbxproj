@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		A36E6CE41EB96BD5006DF92B /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E6CE31EB96BD5006DF92B /* Protocol.swift */; };
+		A3DF38FB1EC0EA1C00CC528E /* YouLift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38F91EC0EA1C00CC528E /* YouLift.xcdatamodeld */; };
+		A3DF39021EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38FC1EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift */; };
+		A3DF39031EC0EAE200CC528E /* ExerciseEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38FD1EC0EAE200CC528E /* ExerciseEntity+CoreDataProperties.swift */; };
+		A3DF39041EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38FE1EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataClass.swift */; };
+		A3DF39051EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38FF1EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataProperties.swift */; };
+		A3DF39061EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF39001EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataClass.swift */; };
+		A3DF39071EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF39011EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataProperties.swift */; };
+		A3DF39091EC0EAF100CC528E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF39081EC0EAF100CC528E /* CoreDataManager.swift */; };
 		A3E4E9E61EB24775005FA06C /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E4E9E51EB24775005FA06C /* PopUpViewController.swift */; };
 		CD4BF91C1EAFC37B0054E940 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF91B1EAFC37B0054E940 /* AppDelegate.swift */; };
 		CD4BF9211EAFC37B0054E940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4BF91F1EAFC37B0054E940 /* Main.storyboard */; };
@@ -30,6 +38,14 @@
 
 /* Begin PBXFileReference section */
 		A36E6CE31EB96BD5006DF92B /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		A3DF38FA1EC0EA1C00CC528E /* YouLift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YouLift.xcdatamodel; sourceTree = "<group>"; };
+		A3DF38FC1EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExerciseEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A3DF38FD1EC0EAE200CC528E /* ExerciseEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExerciseEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A3DF38FE1EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CompletedWorkoutEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A3DF38FF1EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CompletedWorkoutEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A3DF39001EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutTemplateEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A3DF39011EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WorkoutTemplateEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A3DF39081EC0EAF100CC528E /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		A3E4E9E51EB24775005FA06C /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		CD4BF9181EAFC37B0054E940 /* YouLift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouLift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD4BF91B1EAFC37B0054E940 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +98,14 @@
 		CD4BF91A1EAFC37B0054E940 /* YouLift */ = {
 			isa = PBXGroup;
 			children = (
+				A3DF38FC1EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift */,
+				A3DF38FD1EC0EAE200CC528E /* ExerciseEntity+CoreDataProperties.swift */,
+				A3DF38FE1EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataClass.swift */,
+				A3DF38FF1EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataProperties.swift */,
+				A3DF39001EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataClass.swift */,
+				A3DF39011EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataProperties.swift */,
+				A3DF39081EC0EAF100CC528E /* CoreDataManager.swift */,
+				A3DF38F91EC0EA1C00CC528E /* YouLift.xcdatamodeld */,
 				CD4BF9331EB02B950054E940 /* Workout.swift */,
 				CD4BF9351EB02D510054E940 /* Exercise.swift */,
 				CD4BF9371EB02E660054E940 /* WorkoutCollection.swift */,
@@ -188,20 +212,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3DF39021EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift in Sources */,
 				CDF5B0851EB197EA00750A1F /* SetTableViewCell.swift in Sources */,
+				A3DF39041EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataClass.swift in Sources */,
+				A3DF38FB1EC0EA1C00CC528E /* YouLift.xcdatamodeld in Sources */,
+				A3DF39071EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataProperties.swift in Sources */,
 				CD4BF9341EB02B950054E940 /* Workout.swift in Sources */,
+				A3DF39091EC0EAF100CC528E /* CoreDataManager.swift in Sources */,
 				CDF5B0771EB1041C00750A1F /* WorkoutTableViewCell.swift in Sources */,
 				CD6C05921EBA653900FA9538 /* CreateWorkoutDetailViewController.swift in Sources */,
 				A36E6CE41EB96BD5006DF92B /* Protocol.swift in Sources */,
 				CD4BF91C1EAFC37B0054E940 /* AppDelegate.swift in Sources */,
+				A3DF39031EC0EAE200CC528E /* ExerciseEntity+CoreDataProperties.swift in Sources */,
 				CDF5B0831EB1931500750A1F /* ExerciseDetailViewController.swift in Sources */,
 				CD4DDD531EB1AB0100ABFEA6 /* ExerciseTableViewController.swift in Sources */,
 				CDF5B07D1EB17B4F00750A1F /* WorkoutDetailViewController.swift in Sources */,
 				CD6C05901EBA64C800FA9538 /* CreateWorkoutTableViewController.swift in Sources */,
+				A3DF39061EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataClass.swift in Sources */,
 				A3E4E9E61EB24775005FA06C /* PopUpViewController.swift in Sources */,
 				CD4BF9381EB02E660054E940 /* WorkoutCollection.swift in Sources */,
 				CD4BF9361EB02D510054E940 /* Exercise.swift in Sources */,
 				CDF5B07F1EB18B5400750A1F /* ExerciseTableViewCell.swift in Sources */,
+				A3DF39051EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataProperties.swift in Sources */,
 				CD4BF93A1EB030910054E940 /* ExerciseCollection.swift in Sources */,
 				CDF5B0791EB1058000750A1F /* WorkoutTableViewController.swift in Sources */,
 			);
@@ -373,6 +405,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A3DF38F91EC0EA1C00CC528E /* YouLift.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A3DF38FA1EC0EA1C00CC528E /* YouLift.xcdatamodel */,
+			);
+			currentVersion = A3DF38FA1EC0EA1C00CC528E /* YouLift.xcdatamodel */;
+			path = YouLift.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CD4BF9101EAFC37B0054E940 /* Project object */;
 }

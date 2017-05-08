@@ -27,6 +27,9 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
         
         customTableView.delegate = self
         customTableView.dataSource = self
+        
+        print(CoreDataManager.fetchCompletedWorkouts())
+        CoreDataManager.cleanCoreData()
     }
 
     override func didReceiveMemoryWarning() {
