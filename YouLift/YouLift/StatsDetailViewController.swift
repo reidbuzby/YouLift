@@ -43,7 +43,7 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
         dateLabel.text = dateFormatter.string(from: date)
         
         workoutNameLabel.text = workout.name
-        durationLabel.text = String(duration)
+        durationLabel.text = "Duration: " + timeFromDouble(time: duration)
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,6 +79,17 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         return CGFloat(22.0 * Double(workout.exerciseArray[indexPath.row].sets) + 22)
         
+    }
+    
+    func timeFromDouble(time: Double) -> String {
+        
+        let ti = NSInteger(time)
+        
+        let seconds = ti % 60
+        let minutes = (ti / 60) % 60
+        let hours = (ti / 3600)
+        
+        return String(format: "%0.2d:%0.2d:%0.2d",hours,minutes,seconds)
     }
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

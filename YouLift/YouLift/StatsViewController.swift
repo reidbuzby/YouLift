@@ -12,7 +12,7 @@ import CoreData
 class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var workoutTableView: UITableView!
-    @IBOutlet weak var exerciseTableView: UITableView!
+    //@IBOutlet weak var exerciseTableView: UITableView!
     
     var completedWorkouts = [(Workout, Date, Double)]()
     
@@ -30,8 +30,8 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         workoutTableView.delegate = self
         workoutTableView.dataSource = self
         
-        exerciseTableView.delegate = self
-        exerciseTableView.dataSource = self
+        //exerciseTableView.delegate = self
+        //exerciseTableView.dataSource = self
         
         getTableData()
         
@@ -55,36 +55,39 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if tableView == self.workoutTableView {
-            return completedWorkouts.count
-        }else{
-            //return defaultWorkouts.count
-            return 1
-        }
+        return completedWorkouts.count
+
+        
+//        if tableView == self.workoutTableView {
+//            return completedWorkouts.count
+//        }else{
+//            //return defaultWorkouts.count
+//            return 1
+//        }
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == self.workoutTableView {
+        //if tableView == self.workoutTableView {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
-                fatalError("Can't get cell of the right kind")
-            }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
+            fatalError("Can't get cell of the right kind")
+        }
                         
-            // Configure the cell...
-            let workout = completedWorkouts[indexPath.row].0
-            let date = completedWorkouts[indexPath.row].1
-            cell.configureDateCell(workout: workout, date: date)
+        // Configure the cell...
+        let workout = completedWorkouts[indexPath.row].0
+        let date = completedWorkouts[indexPath.row].1
+        cell.configureDateCell(workout: workout, date: date)
             
-            return cell
-        }
+        return cell
+        //}
             
-        else{
-            
-            print("w/e")
-            return UITableViewCell()
-            
-        }
+//        else{
+//            
+//            print("w/e")
+//            return UITableViewCell()
+//            
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

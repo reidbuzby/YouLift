@@ -132,8 +132,13 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.hidesBackButton = true
+        let defaultBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.defaultBack(sender:)))
+        self.navigationItem.leftBarButtonItem = defaultBackButton
+        
+        
         if inProgress {
-            self.navigationItem.hidesBackButton = true
+            //self.navigationItem.hidesBackButton = true
             let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.back(sender:)))
             self.navigationItem.leftBarButtonItem = newBackButton
             
@@ -224,6 +229,10 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         return newSetsArray
+    }
+    
+    func defaultBack(sender:UIBarButtonItem) {
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func back(sender: UIBarButtonItem) {

@@ -38,6 +38,9 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         
         if inProgress != nil {
+            
+            //if let arrayOfTabBarItems = tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = arrayOfTabBarItems[0] as? UITabBarItem { tabBarItem.isEnabled = false }
+            
             updateTimer()
             
             editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.edit(sender:)))
