@@ -12,6 +12,8 @@ class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, 
     
     var exercises: [Exercise] = []
 
+    @IBOutlet weak var addCustomButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +26,21 @@ class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, 
         exercises = CoreDataManager.fetchExercises()
         
 //        exercises.append(Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]))
+        
+        self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
+        
+        self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.tableView!.layer.shadowColor = UIColor.black.cgColor
+        self.tableView!.layer.shadowRadius = 5
+        self.tableView!.layer.shadowOpacity = 0.3
+        self.tableView!.layer.masksToBounds = false;
+        self.tableView!.clipsToBounds = false;
+        
+        addCustomButton.layer.cornerRadius = 4
+        addCustomButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+        addCustomButton.layer.borderWidth = 1
+        
+        tableView.tableFooterView = UIView()
         
         tableView.reloadData()
     }

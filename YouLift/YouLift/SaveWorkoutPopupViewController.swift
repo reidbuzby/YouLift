@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SaveWorkoutPopupViewController: UIViewController {
 
@@ -29,6 +30,10 @@ class SaveWorkoutPopupViewController: UIViewController {
     
     @IBAction func saveWorkout(_ sender: Any) {
         CoreDataManager.storeWorkoutTemplate(workout: workout)
+        
+        for exercise in workout.exerciseArray {
+            CoreDataManager.storeExercise(exercise: exercise)
+        }
     }
     
 

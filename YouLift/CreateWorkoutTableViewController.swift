@@ -14,6 +14,10 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var addButton: UIButton!
+    
+    @IBOutlet weak var saveButton: UIButton!
+    
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
@@ -31,6 +35,14 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         self.tableView!.clipsToBounds = false;
         
         
+        addButton.layer.cornerRadius = 4
+        addButton.layer.borderWidth = 1
+        addButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+        
+        saveButton.layer.cornerRadius = 4
+        saveButton.layer.borderWidth = 1
+        saveButton.backgroundColor = UIColor(red: 0.0666, green: 0.478431, blue: 0.035, alpha: 1)
+        
 
         
         // Uncomment the following line to preserve selection between presentations
@@ -46,6 +58,8 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateWorkoutTableViewController.hideKeyboard)))
         
         tableView.reloadData()
+        
+        tableView.tableFooterView = UIView()
         
 //        CoreDataManager.storeExercise(exercise: Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]))
         
