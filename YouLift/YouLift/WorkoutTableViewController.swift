@@ -52,13 +52,13 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
         CoreDataManager.cleanCoreData(entity: "WorkoutTemplateEntity")
         //CoreDataManager.cleanCoreData(entity: "CompletedWorkoutEntity")
         
-        var workoutOne = Workout(name: "Leg Day", exercises: [Exercise(name:"Squat", description:"This is how to do a squat", sets:3, setsArray:[(100, 2), (100, 2), (100, 2)]),
-                                                              Exercise(name: "Leg Press", description: "This is how to do a leg press", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
+        var workoutOne = Workout(name: "Leg Day", exercises: [Exercise(name:"Squat", description:"Stand up straight with feet shoulders width apart holding desired weight, and slowly bend knees down to a 90 degree angle while keeping your back straight, and then slowly stand up back to the starting position.", sets:3, setsArray:[(100, 2), (100, 2), (100, 2)]),
+                                                              Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
                                                               Exercise(name: "Deadlift", description: "This is how to do a deadlift", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
                                                               Exercise(name: "Leg Curl", description: "This is how to do a leg curl", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
                                                               Exercise(name: "Calf Raises", description: "This is how to do a calf raise", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])])
         
-        var workoutTwo = Workout(name: "A Leg Day", exercises: [Exercise(name:"Squat", description:"This is how to do a squat", sets:3, setsArray:[(100, 2), (100, 2), (100, 2)]),
+        var workoutTwo = Workout(name: "A Leg Day", exercises: [Exercise(name:"Squat", description:"Stand up straight with feet shoulders width apart holding desired weight, and slowly bend knees down to a 90 degree angle while keeping your back straight, and then slowly stand up back to the starting position.", sets:3, setsArray:[(100, 2), (100, 2), (100, 2)]),
                                                               Exercise(name: "Leg Press", description: "This is how to do a leg press", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
                                                               Exercise(name: "Deadlift", description: "This is how to do a deadlift", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
                                                               Exercise(name: "Leg Curl", description: "This is how to do a leg curl", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
