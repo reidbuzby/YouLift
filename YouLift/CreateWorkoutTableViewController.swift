@@ -1,9 +1,9 @@
 //
-//  BookListingController.swift
-//  CardCatalog
+//  CreateWorkoutTableViewController.swift
+//  YouLift
 //
-//  Created by Christopher Andrews on 4/4/17.
-//  Copyright © 2017 Christopher Andrews. All rights reserved.
+//  Created by rbuzby on 5/1/17.
+//  Copyright © 2017 rbuzby. All rights reserved.
 //
 
 import UIKit
@@ -13,6 +13,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     var exercises = [Exercise]()
     
     @IBOutlet weak var tableView: UITableView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,6 +140,25 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
                 exercise.setsArray = setsArray
             }
             
+        case "SaveWorkout":
+            if exercises.count > 0 {
+                guard let destination = segue.destination as? SaveWorkoutPopupViewController else{
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+            
+                var workoutName: String?
+                
+                if workoutNameField.text == nil {
+                    workoutName = "New Workout"
+                }
+                else {
+                    workoutName = workoutNameField.text
+                }
+                
+                let newWorkout = Workout(name: workoutName!, exercises: exercises)
+                
+                destination.workout = newWorkout
+            }
             
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")
@@ -152,7 +172,6 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
             let exercise = sourceViewController.exercise
             
             exercises.append(exercise)
-            print("here")
         }
         tableView.reloadData()
         
@@ -178,11 +197,18 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
                 workoutName = workoutNameField.text
             }
             
-            let collection = WorkoutCollection()
-            
             let newWorkout = Workout(name: workoutName!, exercises: exercises)
-            collection.add(workout: newWorkout)
+            
+            CoreDataManager.storeWorkoutTemplate(workout: newWorkout)
+            
+            exercises.removeAll()
         }
+    }
+    
+    
+    @IBAction func deleteExercise(_ sender: Any) {
+        exercises.remove(at: exercises.count-1)
+        tableView.reloadData()
     }
     
     

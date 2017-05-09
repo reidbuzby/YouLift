@@ -31,7 +31,7 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
         customTableView.delegate = self
         customTableView.dataSource = self
         
-        CoreDataManager.cleanCoreData(entity: "WorkoutTemplateEntity")
+        //CoreDataManager.cleanCoreData(entity: "WorkoutTemplateEntity")
         //CoreDataManager.cleanCoreData(entity: "CompletedWorkoutEntity")
         
         var workoutOne = Workout(name: "Leg Day", exercises: [Exercise(name:"Squat", description:"This is how to do a squat", sets:3, setsArray:[(100, 2), (100, 2), (100, 2)]),
