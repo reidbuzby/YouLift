@@ -1,10 +1,11 @@
 //
-//  BookDetailViewController.swift
-//  CardCatalog
+//  CreateWorkoutDetailViewController.swift
+//  YouLift
 //
-//  Created by Christopher Andrews on 4/6/17.
-//  Copyright © 2017 Christopher Andrews. All rights reserved.
+//  Created by rbuzby on 5/1/17.
+//  Copyright © 2017 rbuzby. All rights reserved.
 //
+
 
 import UIKit
 
