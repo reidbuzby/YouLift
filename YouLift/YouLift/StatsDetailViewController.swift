@@ -52,14 +52,14 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
 //        guard let cell = statsTableView.dequeueReusableCell(withIdentifier: "StatsTableViewCell", for: indexPath) as? StatsTableViewCell else{
 //            fatalError("Can't get cell of the right kind")
 //        }
-//        
-//    
-//        return cell
-//    }
+        
+    
+        return UITableViewCell()
+    }
     
 }
