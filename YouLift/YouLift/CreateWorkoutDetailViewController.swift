@@ -1,25 +1,27 @@
 //
-//  BookDetailViewController.swift
-//  CardCatalog
+//  CreateWorkoutDetailViewController.swift
+//  YouLift
 //
-//  Created by Christopher Andrews on 4/6/17.
-//  Copyright © 2017 Christopher Andrews. All rights reserved.
+//  Created by rbuzby on 5/1/17.
+//  Copyright © 2017 rbuzby. All rights reserved.
 //
+
 
 import UIKit
 
-class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     var type: DetailType = .new
     var callback: ((String, String, Int, [(Int, Int)])->Void)?
     
     @IBOutlet weak var exerciseNameField: UITextField!
+    @IBOutlet weak var exerciseNameLabel: UILabel!
     
     @IBOutlet weak var exerciseDescriptionField: UITextField!
+    @IBOutlet weak var exerciseDescriptionLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var exercise = Exercise()
     
@@ -28,6 +30,8 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     var sets: Int = 0
     
     var edit = false
+    
+    var changeIndex: Int = -1
     
     @IBAction func addSet(_ sender: Any) {
         
@@ -72,22 +76,31 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
             sets = 1
             tableView.reloadData()
             break
-        case let .update(name, description, sets, setsArray):
+        case let .deflt(name, description, sets, setsArray):
+            if exerciseNameLabel != nil {
+                edit = true
+                exerciseNameLabel.text = name
+                exerciseDescriptionLabel.text = description
+                self.sets = sets
+                self.overallSetsArray = setsArray
+                tableView.reloadData()
+            }
+        case let .update(name, description, sets, setsArray, index):
             edit = true
             exerciseNameField.text = name
             exerciseDescriptionField.text = description
             self.overallSetsArray = setsArray
             self.sets = sets
+            self.changeIndex = index
             tableView.reloadData()
         }
         
         tableView.dataSource = self
         tableView.delegate = self
         
-        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
     }
-    
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -104,13 +117,12 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         // Configure the cell...
         
         let set = overallSetsArray[indexPath.row]
-        print("set:", set, "\n")
         
-        if !edit {
-            cell.configureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
+        if edit {
+            cell.reconfigureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
         }
         else {
-            cell.reconfigureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
+            cell.configureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
         }
         
         
@@ -119,15 +131,15 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     }
     
     
-    @IBAction func cancel(_ sender: UIBarButtonItem) {
-        if presentingViewController is UINavigationController{
-            dismiss(animated: true, completion: nil)
-        }else if let owningNavController = navigationController{
-            owningNavController.popViewController(animated: true)
-        }else{
-            fatalError("View is not contained by a navigation controller")
-        }
-    }
+//    @IBAction func cancel(_ sender: UIBarButtonItem) {
+//        if presentingViewController is UINavigationController{
+//            dismiss(animated: true, completion: nil)
+//        }else if let owningNavController = navigationController{
+//            owningNavController.popViewController(animated: true)
+//        }else{
+//            fatalError("View is not contained by a navigation controller")
+//        }
+//    }
     
     func getSetsData(_ tableView: UITableView) -> [(Int, Int)]{
         let cells = self.tableView.visibleCells as! Array<SetTableViewCell>
@@ -142,17 +154,39 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         return newSetsArray
     }
     
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let button = sender as? UIBarButtonItem, button === saveButton else{
-            print("The save button was not pressed")
-            return
-        }
+    @IBAction func cancelEdit(_ sender: Any) {
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
         
-        tableView.reloadData()
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true)
+    }
+    
+    @IBAction func cancelDefault(_ sender: Any) {
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+        
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true)
+    }
+    
+    @IBAction func saveDefaultExercise(_ sender: Any) {
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+        
+        let tableController = viewControllers[0] as! CreateWorkoutTableViewController
+        
+        let setsArray = getSetsData(tableView)
+        
+        exercise.name = exerciseNameLabel.text ?? ""
+        exercise.description = exerciseDescriptionLabel.text ?? ""
+        exercise.sets = setsArray.count
+        exercise.setsArray = setsArray
+        
+        tableController.exercises.append(exercise)
+        
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+    }
+    
+    @IBAction func saveCustomExercise(_ sender: Any) {
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+        
+        let tableController = viewControllers[0] as! CreateWorkoutTableViewController
         
         let setsArray = getSetsData(tableView)
         
@@ -160,6 +194,67 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         exercise.description = exerciseDescriptionField.text ?? ""
         exercise.sets = setsArray.count
         exercise.setsArray = setsArray
+        
+        
+        
+        if edit {
+            tableController.exercises[changeIndex] = exercise
+            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true)
+        }
+        else {
+            tableController.exercises.append(exercise)
+            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+        }
+    }
+    
+    
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch(segue.identifier ?? ""){
+            
+        case "SaveDefaultExercise":
+        
+            tableView.reloadData()
+        
+            let setsArray = getSetsData(tableView)
+        
+            exercise.name = exerciseNameLabel.text ?? ""
+            exercise.description = exerciseDescriptionLabel.text ?? ""
+            exercise.sets = setsArray.count
+            exercise.setsArray = setsArray
+            
+            guard let destination = segue.destination as? CreateWorkoutTableViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            destination.exercises.append(exercise)
+            
+        case "SaveCustomExercise":
+            
+            let setsArray = getSetsData(tableView)
+            
+            exercise.name = exerciseNameField.text ?? ""
+            exercise.description = exerciseDescriptionField.text ?? ""
+            exercise.sets = setsArray.count
+            exercise.setsArray = setsArray
+            
+            guard let destination = segue.destination.childViewControllers[0] as? CreateWorkoutTableViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            destination.exercises.append(exercise)
+            
+            
+        case "Exit":
+            //do nothing
+            break
+            
+        default:
+            fatalError("Unexpeced segue identifier: \(segue.identifier)")
+        }
     }
     
     
@@ -168,5 +263,6 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
 
 enum DetailType{
     case new
-    case update(String, String, Int, [(Int, Int)])
+    case update(String, String, Int, [(Int, Int)], Int)
+    case deflt(String, String, Int, [(Int, Int)])
 }
