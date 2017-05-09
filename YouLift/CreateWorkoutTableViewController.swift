@@ -13,7 +13,10 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     var exercises = [Exercise]()
     
     @IBOutlet weak var tableView: UITableView!
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,8 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         self.tableView!.layer.shadowOpacity = 0.3
         self.tableView!.layer.masksToBounds = false;
         self.tableView!.clipsToBounds = false;
+        
+        
 
         
         // Uncomment the following line to preserve selection between presentations
@@ -39,6 +44,11 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         workoutNameField.delegate = self
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateWorkoutTableViewController.hideKeyboard)))
+        
+        tableView.reloadData()
+        
+//        CoreDataManager.storeExercise(exercise: Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]))
+        
     }
     
     func hideKeyboard() {
@@ -116,16 +126,18 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         
         switch(segue.identifier ?? ""){
         case "AddExercise":
-            guard let navController = segue.destination as? UINavigationController else{
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            guard let destination = navController.topViewController as? CreateWorkoutDetailViewController else{
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            destination.type = .new
-            destination.callback = { (exerciseName, exerciseDescription, sets, setsArray) in
-                self.exercises.append(Exercise(name: exerciseName, description: exerciseDescription, sets: sets, setsArray: setsArray))
-            }
+//            guard let navController = segue.destination as? UINavigationController else{
+//                fatalError("Unexpected destination: \(segue.destination)")
+//            }
+//            guard let destination = navController.topViewController as? CreateWorkoutDetailViewController else{
+//                fatalError("Unexpected destination: \(segue.destination)")
+//            }
+//            destination.type = .new
+//            destination.callback = { (exerciseName, exerciseDescription, sets, setsArray) in
+//                self.exercises.append(Exercise(name: exerciseName, description: exerciseDescription, sets: sets, setsArray: setsArray))
+//            }
+            print("blah")
+            
         case "EditExercise":
             guard let destination = segue.destination as? CreateWorkoutDetailViewController else{
                 fatalError("Unexpected destination: \(segue.destination)")
@@ -141,7 +153,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
             
             let exercise = exercises[indexPath.row]
             
-            destination.type = .update(exercise.name, exercise.description, exercise.sets, exercise.setsArray)
+            destination.type = .update(exercise.name, exercise.description, exercise.sets, exercise.setsArray, indexPath.row)
             
             destination.callback = { (exerciseName, exerciseDescription, sets, setsArray) in
                 exercise.name = exerciseName
