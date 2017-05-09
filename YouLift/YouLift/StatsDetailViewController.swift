@@ -70,6 +70,7 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
         //cell.sizeToFit()
         //cell.textLabel?.numberOfLines = 0
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.configureCell(exercise: workout.exerciseArray[indexPath.row])
         
         return cell
