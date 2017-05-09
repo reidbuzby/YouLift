@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var customTableView: UITableView!
+    
+    //var fetchedResultsController:NSFetchedResultsController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +47,43 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
         
         customTableView.delegate = self
         customTableView.dataSource = self
+        
+        CoreDataManager.cleanCoreData(entity: "WorkoutTemplateEntity")
+        //CoreDataManager.cleanCoreData(entity: "CompletedWorkoutEntity")
+        
+        var workoutOne = Workout(name: "Leg Day", exercises: [Exercise(name:"Squat", description:"This is how to do a squat", sets:3, setsArray:[(100, 2), (100, 2), (100, 2)]),
+                                                              Exercise(name: "Leg Press", description: "This is how to do a leg press", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
+                                                              Exercise(name: "Deadlift", description: "This is how to do a deadlift", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
+                                                              Exercise(name: "Leg Curl", description: "This is how to do a leg curl", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
+                                                              Exercise(name: "Calf Raises", description: "This is how to do a calf raise", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])])
+        
+        var workoutTwo = Workout(name: "A Leg Day", exercises: [Exercise(name:"Squat", description:"This is how to do a squat", sets:3, setsArray:[(100, 2), (100, 2), (100, 2)]),
+                                                              Exercise(name: "Leg Press", description: "This is how to do a leg press", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
+                                                              Exercise(name: "Deadlift", description: "This is how to do a deadlift", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
+                                                              Exercise(name: "Leg Curl", description: "This is how to do a leg curl", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]),
+                                                              Exercise(name: "Calf Raises", description: "This is how to do a calf raise", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])])
+        
+        CoreDataManager.storeWorkoutTemplate(workout: workoutOne)
+        CoreDataManager.storeWorkoutTemplate(workout: workoutTwo)
+        
+        getTableData()
+        
+        print(CoreDataManager.fetchCompletedWorkouts())
+    }
+    
+    func getTableData(){
+        workouts = CoreDataManager.fetchWorkoutTemplates()
+        
+        for workout in workouts {
+            if workout.1 {
+                customWorkouts.append(workout.0)
+            }else{
+                defaultWorkouts.append(workout.0)
+            }
+            
+            customWorkouts = customWorkouts.sorted(by: {$0.name < $1.name})
+            defaultWorkouts = defaultWorkouts.sorted(by: {$0.name < $1.name})
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,17 +93,28 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
 
     // MARK: - Table view data source
     
-    private let workouts = WorkoutCollection()
+
     
     let tableColor = UIColor(red: 147/255, green: 234/255, blue: 215/255, alpha: 0.5)
     
+
+    private var workouts = [(Workout, Bool)]()
+    private var defaultWorkouts = [Workout]()
+    private var customWorkouts = [Workout]()
+
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workouts.defaultCollection.count
+        
+        if tableView == self.customTableView {
+            return customWorkouts.count
+        }else{
+            return defaultWorkouts.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,7 +128,7 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
             }
             
             // Configure the cell...
-            let workout = workouts.defaultCollection[indexPath.row]
+            let workout = defaultWorkouts[indexPath.row]
             cell.configureCell(workout: workout)
             
             return cell
@@ -90,7 +141,7 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
             }
             
             // Configure the cell...
-            let workout = workouts.customCollection[indexPath.row]
+            let workout = customWorkouts[indexPath.row]
             cell.configureCell(workout: workout)
             
             return cell
@@ -159,7 +210,7 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
                 fatalError("The selected cell can't be found")
             }
             
-            let workout = workouts.defaultCollection[indexPath.row]
+            let workout = defaultWorkouts[indexPath.row]
             
             destination.workout = workout
             
@@ -177,7 +228,7 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
                 fatalError("The selected cell can't be found")
             }
             
-            let workout = workouts.customCollection[indexPath.row]
+            let workout = customWorkouts[indexPath.row]
             
             destination.workout = workout
             

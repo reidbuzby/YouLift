@@ -126,7 +126,6 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
                 self.exercises.append(Exercise(name: exerciseName, description: exerciseDescription, sets: sets, setsArray: setsArray))
             }
         case "EditExercise":
-            
             guard let destination = segue.destination as? CreateWorkoutDetailViewController else{
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -142,6 +141,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
             let exercise = exercises[indexPath.row]
             
             destination.type = .update(exercise.name, exercise.description, exercise.sets, exercise.setsArray)
+            
             destination.callback = { (exerciseName, exerciseDescription, sets, setsArray) in
                 exercise.name = exerciseName
                 exercise.description = exerciseDescription
