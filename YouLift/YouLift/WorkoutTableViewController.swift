@@ -14,10 +14,28 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var customTableView: UITableView!
     
+     let tableColor = UIColor(red: 147/255, green: 234/255, blue: 215/255, alpha: 0.5)
+    
     //var fetchedResultsController:NSFetchedResultsController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
+        
+        self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.tableView!.layer.shadowColor = UIColor.black.cgColor
+        self.tableView!.layer.shadowRadius = 5
+        self.tableView!.layer.shadowOpacity = 0.3
+        self.tableView!.layer.masksToBounds = false;
+        self.tableView!.clipsToBounds = false;
+        
+        self.customTableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.customTableView!.layer.shadowColor = UIColor.black.cgColor
+        self.customTableView!.layer.shadowRadius = 5
+        self.customTableView!.layer.shadowOpacity = 0.3
+        self.customTableView!.layer.masksToBounds = false;
+        self.customTableView!.clipsToBounds = false;
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -95,6 +113,9 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        UITableViewCell.appearance().backgroundColor = tableColor
+        
         if tableView == self.tableView {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
