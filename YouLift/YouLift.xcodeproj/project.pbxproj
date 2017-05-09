@@ -37,6 +37,8 @@
 		CDF5B07F1EB18B5400750A1F /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5B07E1EB18B5400750A1F /* ExerciseTableViewCell.swift */; };
 		CDF5B0831EB1931500750A1F /* ExerciseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5B0821EB1931500750A1F /* ExerciseDetailViewController.swift */; };
 		CDF5B0851EB197EA00750A1F /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5B0841EB197EA00750A1F /* SetTableViewCell.swift */; };
+		CDFD6C6B1EC1594C000EFF3B /* SaveWorkoutPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD6C6A1EC1594C000EFF3B /* SaveWorkoutPopupViewController.swift */; };
+		CDFD6C6D1EC16625000EFF3B /* SelectExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFD6C6C1EC16625000EFF3B /* SelectExerciseTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,8 @@
 		CDF5B07E1EB18B5400750A1F /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		CDF5B0821EB1931500750A1F /* ExerciseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDetailViewController.swift; sourceTree = "<group>"; };
 		CDF5B0841EB197EA00750A1F /* SetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
+		CDFD6C6A1EC1594C000EFF3B /* SaveWorkoutPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveWorkoutPopupViewController.swift; sourceTree = "<group>"; };
+		CDFD6C6C1EC16625000EFF3B /* SelectExerciseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +131,9 @@
 				CDF5B0821EB1931500750A1F /* ExerciseDetailViewController.swift */,
 				CD4DDD521EB1AB0100ABFEA6 /* ExerciseTableViewController.swift */,
 				CD6C058F1EBA64C800FA9538 /* CreateWorkoutTableViewController.swift */,
+				CDFD6C6C1EC16625000EFF3B /* SelectExerciseTableViewController.swift */,
 				CD6C05911EBA653900FA9538 /* CreateWorkoutDetailViewController.swift */,
+				CDFD6C6A1EC1594C000EFF3B /* SaveWorkoutPopupViewController.swift */,
 				CDF5B0751EB1030B00750A1F /* Supporting Files */,
 				CD4BF91F1EAFC37B0054E940 /* Main.storyboard */,
 				A3E4E9E51EB24775005FA06C /* PopUpViewController.swift */,
@@ -223,6 +229,7 @@
 			files = (
 				A3DF39021EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift in Sources */,
 				CDF5B0851EB197EA00750A1F /* SetTableViewCell.swift in Sources */,
+				CDFD6C6B1EC1594C000EFF3B /* SaveWorkoutPopupViewController.swift in Sources */,
 				A3DF39041EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataClass.swift in Sources */,
 				A3DF38FB1EC0EA1C00CC528E /* YouLift.xcdatamodeld in Sources */,
 				A3DF39071EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataProperties.swift in Sources */,
@@ -238,6 +245,7 @@
 				CDF5B07D1EB17B4F00750A1F /* WorkoutDetailViewController.swift in Sources */,
 				CD6C05901EBA64C800FA9538 /* CreateWorkoutTableViewController.swift in Sources */,
 				A3DF390F1EC149AF00CC528E /* StatsTableViewCell.swift in Sources */,
+				CDFD6C6D1EC16625000EFF3B /* SelectExerciseTableViewController.swift in Sources */,
 				A3DF39061EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataClass.swift in Sources */,
 				A3DF390D1EC1429400CC528E /* StatsDetailViewController.swift in Sources */,
 				A3E4E9E61EB24775005FA06C /* PopUpViewController.swift in Sources */,

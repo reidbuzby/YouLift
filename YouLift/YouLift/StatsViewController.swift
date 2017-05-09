@@ -19,6 +19,23 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
+        
+        self.workoutTableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.workoutTableView!.layer.shadowColor = UIColor.black.cgColor
+        self.workoutTableView!.layer.shadowRadius = 5
+        self.workoutTableView!.layer.shadowOpacity = 0.3
+        self.workoutTableView!.layer.masksToBounds = false;
+        self.workoutTableView!.clipsToBounds = false;
+        
+        self.exerciseTableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.exerciseTableView!.layer.shadowColor = UIColor.black.cgColor
+        self.exerciseTableView!.layer.shadowRadius = 5
+        self.exerciseTableView!.layer.shadowOpacity = 0.3
+        self.exerciseTableView!.layer.masksToBounds = false;
+        self.exerciseTableView!.clipsToBounds = false;
+
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         

@@ -62,6 +62,7 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "StatCell", for: indexPath) as? StatsTableViewCell else{
             fatalError("Can't get cell of the right kind")
