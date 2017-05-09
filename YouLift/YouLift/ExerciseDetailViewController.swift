@@ -132,15 +132,6 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
-        
-        self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.tableView!.layer.shadowColor = UIColor.black.cgColor
-        self.tableView!.layer.shadowRadius = 5
-        self.tableView!.layer.shadowOpacity = 0.3
-        self.tableView!.layer.masksToBounds = false;
-        self.tableView!.clipsToBounds = false;
-        
         if inProgress {
             self.navigationItem.hidesBackButton = true
             let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.back(sender:)))
