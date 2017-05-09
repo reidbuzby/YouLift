@@ -28,12 +28,15 @@ class CoreDataManager: NSObject {
         managedObj.setValue(exercise.sets, forKey: "sets")
         
         var weights = [Int]()
+        var reps = [Int]()
         //convert setsArray to weights array
         for set in exercise.setsArray {
-            weights.append(set.1)
+            weights.append(set.0)
+            reps.append(set.1)
         }
         
         managedObj.setValue(weights, forKey: "weights")
+        managedObj.setValue(reps, forKey: "reps")
         
         do {
             try context.save()
@@ -55,6 +58,7 @@ class CoreDataManager: NSObject {
         var descriptions = [String]()
         var sets = [Int]()
         var weights = [Int]()
+        var reps = [Int]()
         
         for exercise in workout.exerciseArray {
             names.append(exercise.name)
@@ -62,7 +66,8 @@ class CoreDataManager: NSObject {
             sets.append(exercise.sets)
             
             for set in exercise.setsArray {
-                weights.append(set.1)
+                weights.append(set.0)
+                reps.append(set.1)
             }
         }
         
@@ -70,6 +75,8 @@ class CoreDataManager: NSObject {
         managedObj.setValue(sets, forKey: "allSets")
         managedObj.setValue(descriptions, forKey: "allDescriptions")
         managedObj.setValue(weights, forKey: "allWeights")
+        managedObj.setValue(reps, forKey: "allReps")
+        managedObj.setValue(true, forKey: "custom")
         
         do {
             try context.save()
@@ -96,6 +103,7 @@ class CoreDataManager: NSObject {
         var descriptions = [String]()
         var sets = [Int]()
         var weights = [Int]()
+        var reps = [Int]()
         
         for exercise in workout.exerciseArray {
             names.append(exercise.name)
@@ -103,7 +111,8 @@ class CoreDataManager: NSObject {
             sets.append(Int(exercise.sets))
             
             for set in exercise.setsArray {
-                weights.append(set.1)
+                weights.append(set.0)
+                reps.append(set.1)
             }
         }
         
@@ -111,6 +120,7 @@ class CoreDataManager: NSObject {
         managedObj.setValue(sets, forKey: "allSets")
         managedObj.setValue(descriptions, forKey: "allDescriptions")
         managedObj.setValue(weights, forKey: "allWeights")
+        managedObj.setValue(reps, forKey: "allReps")
         
         do {
             try context.save()
@@ -120,51 +130,28 @@ class CoreDataManager: NSObject {
         }
     }
     
-//    class func convertExercise(exercise: Exercise) -> ExerciseEntity{
-//        print("here")
-//        //let managedExercise = ExerciseEntity()
-//        let context = getContext()
-//        
-//        let managedExercise = NSEntityDescription.insertNewObject(forEntityName: "ExerciseEntity", into: context) as! ExerciseEntity
-//        
-//        print("here again")
-//        
-//        managedExercise.name = exercise.name
-//        managedExercise.desc = exercise.description
-//        managedExercise.sets = Int32(exercise.sets)
-//        
-//        var setsArray = [Int: Int]()
-//        
-//        for i in 0 ..< exercise.setsArray.count {
-//            setsArray[i] = exercise.setsArray[i].1
-//        }
-//        
-//        managedExercise.setsArray = setsArray
-//        
-//        return managedExercise
-//    }
-    
-    class func convertToExercise(name: String, description: String, sets: Int, weights: [Int]) -> Exercise {
+    class func convertToExercise(name: String, description: String, sets: Int, weights: [Int], reps: [Int]) -> Exercise {
         
         var setsArray = [(Int, Int)]()
         
         for i in 0..<sets {
-            setsArray.append((i, weights[i]))
+            setsArray.append((weights[i], reps[i]))
         }
         
         return Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
     }
     
-    class func convertToWorkout(name: String, allNames: [String], allDescriptions: [String], allSets: [Int], allWeights: [Int]) -> Workout{
+    class func convertToWorkout(name: String, allNames: [String], allDescriptions: [String], allSets: [Int], allWeights: [Int], allReps: [Int]) -> Workout{
         
         var exerciseArray = [Exercise]()
         
         var weightCount:Int = 0
         
         for i in 0..<allNames.count {
-            let slice:[Int] = Array(allWeights[weightCount...weightCount+allSets[i]-1])
+            let weightSlice:[Int] = Array(allWeights[weightCount...weightCount+allSets[i]-1])
+            let repSlice:[Int] = Array(allReps[weightCount...weightCount+allSets[i]-1])
             
-            exerciseArray.append(convertToExercise(name: allNames[i], description: allDescriptions[i], sets: allSets[i], weights: slice))
+            exerciseArray.append(convertToExercise(name: allNames[i], description: allDescriptions[i], sets: allSets[i], weights: weightSlice, reps: repSlice))
             
                 weightCount += allSets[i]
         }
@@ -175,15 +162,13 @@ class CoreDataManager: NSObject {
     class func fetchCompletedWorkouts() -> [(Workout, Date, Double)]{
         var workouts = [(Workout, Date, Double)]()
         
-        //storeCompletedWorkout(workout: Workout(name: "Workout1", exercises: []), date: Date(), duration: 0.0)
-        
         let fetchRequest:NSFetchRequest<CompletedWorkoutEntity> = CompletedWorkoutEntity.fetchRequest()
         
         do {
             let fetchResult = try getContext().fetch(fetchRequest)
             
             for result in fetchResult {
-                let newWorkout = convertToWorkout(name: result.name, allNames: result.allNames, allDescriptions: result.allDescriptions, allSets: result.allSets, allWeights: result.allWeights)
+                let newWorkout = convertToWorkout(name: result.name, allNames: result.allNames, allDescriptions: result.allDescriptions, allSets: result.allSets, allWeights: result.allWeights, allReps: result.allReps)
                 
                 print("HERE!")
                 print(newWorkout)
@@ -197,8 +182,8 @@ class CoreDataManager: NSObject {
         return workouts
     }
     
-    class func fetchWorkoutTemplates() -> [Workout] {
-        var workouts = [Workout]()
+    class func fetchWorkoutTemplates() -> [(Workout, Bool)] {
+        var workouts = [(Workout, Bool)]()
         
         let fetchRequest:NSFetchRequest<WorkoutTemplateEntity> = WorkoutTemplateEntity.fetchRequest()
         
@@ -206,9 +191,9 @@ class CoreDataManager: NSObject {
             let fetchResult = try getContext().fetch(fetchRequest)
             
             for result in fetchResult {
-                let newWorkout = convertToWorkout(name: result.name, allNames: result.allNames, allDescriptions: result.allDescriptions, allSets: result.allSets, allWeights: result.allWeights)
+                let newWorkout = convertToWorkout(name: result.name, allNames: result.allNames, allDescriptions: result.allDescriptions, allSets: result.allSets, allWeights: result.allWeights, allReps: result.allReps)
                 
-                workouts.append(newWorkout)
+                workouts.append((newWorkout, result.custom))
             }
             
         } catch {
@@ -227,7 +212,7 @@ class CoreDataManager: NSObject {
             let fetchResult = try getContext().fetch(fetchRequest)
             
             for result in fetchResult {
-                let newExercise = convertToExercise(name: result.name, description: result.desc, sets: Int(result.sets), weights: result.weights)
+                let newExercise = convertToExercise(name: result.name, description: result.desc, sets: Int(result.sets), weights: result.weights, reps: result.reps)
                 exercises.append(newExercise)
             }
             
@@ -267,21 +252,53 @@ class CoreDataManager: NSObject {
     //    }
     
     //delete all the data in core data
-    class func cleanCoreData() {
-    
-        let fetchRequest:NSFetchRequest<CompletedWorkoutEntity> = CompletedWorkoutEntity.fetchRequest()
-    
-        var predicate = NSPredicate(format: "name contains[c] %@", "1")
-        fetchRequest.predicate = predicate
-    
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
-    
-        do {
-            print("deleting all contents")
-            try getContext().execute(deleteRequest)
-        }catch {
-            print(error.localizedDescription)
+    class func cleanCoreData(entity: String) {
+        
+        if entity == "CompletedWorkoutEntity" {
+            
+            let fetchRequest:NSFetchRequest<CompletedWorkoutEntity> = CompletedWorkoutEntity.fetchRequest()
+            
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+            
+            do {
+                print("deleting all contents")
+                try getContext().execute(deleteRequest)
+            }catch {
+                print(error.localizedDescription)
+            }
+
+        }else if entity == "WorkoutTemplateEntity" {
+            
+            let fetchRequest:NSFetchRequest<WorkoutTemplateEntity> = WorkoutTemplateEntity.fetchRequest()
+            
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+            
+            do {
+                print("deleting all contents")
+                try getContext().execute(deleteRequest)
+            }catch {
+                print(error.localizedDescription)
+            }
+            
+        }else if entity == "ExerciseEntity" {
+            
+            let fetchRequest:NSFetchRequest<ExerciseEntity> = ExerciseEntity.fetchRequest()
+            
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+            
+            do {
+                print("deleting all contents")
+                try getContext().execute(deleteRequest)
+            }catch {
+                print(error.localizedDescription)
+            }
+            
+        }else{
+            print("ERROR!")
         }
+    
+        //var predicate = NSPredicate(format: "name contains[c] %@", "1")
+        //fetchRequest.predicate = predicate
     
     }
 }

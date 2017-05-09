@@ -12,4 +12,5 @@ import CoreData
 @objc(ExerciseEntity)
 public class ExerciseEntity: NSManagedObject {
     @NSManaged var weights: [Int]
+    @NSManaged var reps: [Int]
 }

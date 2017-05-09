@@ -3,6 +3,7 @@
     <entity name="CompletedWorkoutEntity" representedClassName="CompletedWorkoutEntity" syncable="YES">
         <attribute name="allDescriptions" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="allNames" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="allReps" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="allSets" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="allWeights" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -12,19 +13,22 @@
     <entity name="ExerciseEntity" representedClassName="ExerciseEntity" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reps" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="sets" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="weights" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <entity name="WorkoutTemplateEntity" representedClassName="WorkoutTemplateEntity" syncable="YES">
         <attribute name="allDescriptions" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="allNames" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="allReps" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="allSets" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="allWeights" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="custom" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ExerciseEntity" positionX="-54" positionY="-9" width="128" height="105"/>
-        <element name="CompletedWorkoutEntity" positionX="-36" positionY="36" width="128" height="150"/>
-        <element name="WorkoutTemplateEntity" positionX="-18" positionY="72" width="128" height="120"/>
+        <element name="CompletedWorkoutEntity" positionX="-36" positionY="36" width="128" height="165"/>
+        <element name="ExerciseEntity" positionX="-54" positionY="-9" width="128" height="120"/>
+        <element name="WorkoutTemplateEntity" positionX="-18" positionY="72" width="128" height="150"/>
     </elements>
 </model>

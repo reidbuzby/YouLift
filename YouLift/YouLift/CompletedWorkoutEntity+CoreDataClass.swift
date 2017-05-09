@@ -15,4 +15,5 @@ public class CompletedWorkoutEntity: NSManagedObject {
     @NSManaged var allDescriptions: [String]
     @NSManaged var allSets: [Int]
     @NSManaged var allWeights: [Int]
+    @NSManaged var allReps: [Int]
 }
