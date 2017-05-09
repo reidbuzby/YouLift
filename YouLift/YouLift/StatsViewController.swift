@@ -25,6 +25,8 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        //CoreDataManager.cleanCoreData(entity: "CompletedWorkoutEntity")
+        
         workoutTableView.delegate = self
         workoutTableView.dataSource = self
         
@@ -33,7 +35,6 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         getTableData()
         
-        //CoreDataManager.cleanCoreData(entity: "CompletedWorkoutEntity")
     }
     
     func getTableData(){
@@ -69,7 +70,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
                 fatalError("Can't get cell of the right kind")
             }
-            
+                        
             // Configure the cell...
             let workout = completedWorkouts[indexPath.row].0
             let date = completedWorkouts[indexPath.row].1

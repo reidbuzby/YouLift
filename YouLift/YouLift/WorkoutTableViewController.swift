@@ -51,7 +51,6 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
         
         getTableData()
         
-        print(CoreDataManager.fetchCompletedWorkouts())
     }
     
     func getTableData(){

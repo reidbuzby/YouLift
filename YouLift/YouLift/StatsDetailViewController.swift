@@ -34,7 +34,16 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         statsTableView.delegate = self
         statsTableView.dataSource = self
+        
+        //statsTableView.estimatedRowHeight = 44.0*4
+        //statsTableView.rowHeight = 44.0*4//UITableViewAutomaticDimension
 
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateLabel.text = dateFormatter.string(from: date)
+        
+        workoutNameLabel.text = workout.name
+        durationLabel.text = String(duration)
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,12 +63,34 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        guard let cell = statsTableView.dequeueReusableCell(withIdentifier: "StatsTableViewCell", for: indexPath) as? StatsTableViewCell else{
-//            fatalError("Can't get cell of the right kind")
-//        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "StatCell", for: indexPath) as? StatsTableViewCell else{
+            fatalError("Can't get cell of the right kind")
+        }
         
-    
-        return UITableViewCell()
+        //cell.sizeToFit()
+        //cell.textLabel?.numberOfLines = 0
+        
+        cell.configureCell(exercise: workout.exerciseArray[indexPath.row])
+        
+        return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return CGFloat(22.0 * Double(workout.exerciseArray[indexPath.row].sets) + 22)
+        
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        
+//        tableView.estimatedRowHeight = 44.0 * 3 // standard tableViewCell height
+//        tableView.rowHeight = UITableViewAutomaticDimension
+//        
+//        return UITableViewAutomaticDimension
+//    }
+//    
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     
 }
