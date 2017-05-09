@@ -631,6 +631,7 @@
                                                                 <connections>
                                                                     <outlet property="WorkoutName" destination="6Tp-Z7-ore" id="SlL-40-iuw"/>
                                                                     <outlet property="workoutName" destination="6Tp-Z7-ore" id="evM-kW-p8s"/>
+                                                                    <segue destination="4Jf-4M-JYo" kind="show" identifier="ViewPastWorkout" id="Sex-hQ-Sur"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                         </prototypes>
@@ -906,6 +907,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NnP-tR-faH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4748" y="1183"/>
+        </scene>
+        <!--Stats Detail View Controller-->
+        <scene sceneID="Eba-UK-5YZ">
+            <objects>
+                <viewController id="4Jf-4M-JYo" customClass="StatsDetailViewController" customModule="YouLift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VxN-AX-jJ9"/>
+                        <viewControllerLayoutGuide type="bottom" id="kaS-GO-b93"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vx2-bE-WBK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Workout Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OH-yv-wgq">
+                                <rect key="frame" x="24" y="72" width="327" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMK-DP-jHx">
+                                <rect key="frame" x="142" y="136" width="91" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Duration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXD-uL-C7i">
+                                <rect key="frame" x="142" y="185" width="91" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EtQ-oN-aHP">
+                                <rect key="frame" x="24" y="234" width="327" height="332"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PEs-r8-G4J">
+                                        <rect key="frame" x="0.0" y="28" width="327" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PEs-r8-G4J" id="v2V-4a-2qj">
+                                            <rect key="frame" x="0.0" y="0.0" width="327" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="cMK-DP-jHx" id="NeC-Ee-YtV"/>
+                        <outlet property="durationLabel" destination="ZXD-uL-C7i" id="WV8-tq-MqO"/>
+                        <outlet property="statsTableView" destination="EtQ-oN-aHP" id="e22-Vl-Fkv"/>
+                        <outlet property="workoutNameLabel" destination="3OH-yv-wgq" id="hDB-Ij-vR6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S5e-Zt-nH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085.5999999999999" y="2872.7136431784111"/>
         </scene>
         <!--Exercise Table View Controller-->
         <scene sceneID="Dhr-Lg-bgR">
@@ -1594,7 +1657,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Cha-Gc-aCB"/>
+        <segue reference="5GZ-t5-u4g"/>
         <segue reference="qYo-pI-xoQ"/>
         <segue reference="a0n-cz-3s3"/>
     </inferredMetricsTieBreakers>

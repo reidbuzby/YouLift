@@ -85,4 +85,35 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        switch(segue.identifier ?? ""){
+            
+        case "ViewPastWorkout":
+            
+            guard let destination = segue.destination as? StatsDetailViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let cell = sender as? WorkoutTableViewCell else{
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let indexPath = workoutTableView.indexPath(for: cell) else{
+                fatalError("The selected cell can't be found")
+            }
+            
+            destination.workout = completedWorkouts[indexPath.row].0
+            destination.date = completedWorkouts[indexPath.row].1
+            destination.duration = completedWorkouts[indexPath.row].2
+            
+            
+            
+        default:
+            fatalError("Unexpeced segue identifier: \(segue.identifier)")
+        }
+    }
 }

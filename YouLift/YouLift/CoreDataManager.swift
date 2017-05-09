@@ -170,8 +170,6 @@ class CoreDataManager: NSObject {
             for result in fetchResult {
                 let newWorkout = convertToWorkout(name: result.name, allNames: result.allNames, allDescriptions: result.allDescriptions, allSets: result.allSets, allWeights: result.allWeights, allReps: result.allReps)
                 
-                print("HERE!")
-                print(newWorkout)
                 workouts.append((newWorkout, result.date, result.duration))
             }
             
