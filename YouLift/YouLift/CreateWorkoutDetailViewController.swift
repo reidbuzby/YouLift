@@ -25,8 +25,13 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     
     var overallSetsArray = [(Int, Int)]()
     
+    var sets: Int = 0
+    
+    var edit = false
+    
     @IBAction func addSet(_ sender: Any) {
         
+        sets += 1
         overallSetsArray.append((0,0))
         
         tableView.reloadData()
@@ -36,8 +41,10 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     @IBAction func removeSet(_ sender: Any) {
         if (overallSetsArray.count > 1) {
             overallSetsArray.remove(at: (overallSetsArray.count - 1))
-        
+            
+            sets -= 1
             tableView.reloadData()
+            
         }
         else {
             //do nothing
@@ -51,18 +58,23 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         // Do any additional setup after loading the view.
         switch(type){
         case .new:
+            overallSetsArray.append((0,0))
+            sets = 1
+            tableView.reloadData()
             break
-        case let .update(exerciseName, exerciseDescription, sets, setsArray):
-            navigationItem.title = exerciseName
-            exerciseNameField.text = exerciseName
-            exerciseDescriptionField.text = exerciseDescription
+        case let .update(name, description, sets, setsArray):
+            edit = true
+            exerciseNameField.text = name
+            exerciseDescriptionField.text = description
+            self.overallSetsArray = setsArray
+            self.sets = sets
+            tableView.reloadData()
         }
-        
         
         tableView.dataSource = self
         tableView.delegate = self
         
-        overallSetsArray.append(contentsOf: [(100, 3)])
+        
     }
     
     
@@ -71,7 +83,7 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return overallSetsArray.count
+        return sets
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,8 +94,16 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         // Configure the cell...
         
         let set = overallSetsArray[indexPath.row]
+        print("set:", set, "\n")
         
-        cell.configureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
+        if !edit {
+            cell.configureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
+        }
+        else {
+            cell.reconfigureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
+        }
+        
+        
         
         return cell
     }
@@ -99,6 +119,19 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         }
     }
     
+    func getSetsData(_ tableView: UITableView) -> [(Int, Int)]{
+        let cells = self.tableView.visibleCells as! Array<SetTableViewCell>
+        
+        print(cells)
+        var newSetsArray = [(Int, Int)]()
+        
+        for cell in cells {
+            newSetsArray.append(cell.getSetData())
+        }
+        
+        return newSetsArray
+    }
+    
     
     // MARK: - Navigation
     
@@ -109,18 +142,14 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
             return
         }
         
+        tableView.reloadData()
+        
+        let setsArray = getSetsData(tableView)
+        
         exercise.name = exerciseNameField.text ?? ""
         exercise.description = exerciseDescriptionField.text ?? ""
-        exercise.sets = overallSetsArray.count
-        exercise.setsArray = overallSetsArray
-        
-//        let exerciseName = exerciseNameField.text ?? ""
-//        let exerciseDescription = exerciseDescriptionField.text ?? ""
-//        let sets = overallSetsArray.count
-//        
-//        if callback != nil{
-//            callback!(exerciseName, exerciseDescription, sets, overallSetsArray)
-//        }
+        exercise.sets = setsArray.count
+        exercise.setsArray = setsArray
     }
     
     
