@@ -34,13 +34,6 @@ class PopUpViewController: UIViewController {
             //additional prompt
             
         }else{
-            //save all the data
-            //...
-            
-            //transition to initial start tab
-            for exercise in workout!.exerciseArray {
-                print(exercise.name)
-            }
             
             CoreDataManager.storeCompletedWorkout(workout: workout!, date: Date(), duration: duration!)
             

@@ -19,6 +19,7 @@
 		A3DF390B1EC135EA00CC528E /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF390A1EC135EA00CC528E /* StatsViewController.swift */; };
 		A3DF390D1EC1429400CC528E /* StatsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF390C1EC1429400CC528E /* StatsDetailViewController.swift */; };
 		A3DF390F1EC149AF00CC528E /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF390E1EC149AF00CC528E /* StatsTableViewCell.swift */; };
+		A3DF39111EC27AE200CC528E /* DeletePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF39101EC27AE200CC528E /* DeletePopUpViewController.swift */; };
 		A3E4E9E61EB24775005FA06C /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E4E9E51EB24775005FA06C /* PopUpViewController.swift */; };
 		CD4BF91C1EAFC37B0054E940 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF91B1EAFC37B0054E940 /* AppDelegate.swift */; };
 		CD4BF9211EAFC37B0054E940 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4BF91F1EAFC37B0054E940 /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 		A3DF390A1EC135EA00CC528E /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		A3DF390C1EC1429400CC528E /* StatsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsDetailViewController.swift; sourceTree = "<group>"; };
 		A3DF390E1EC149AF00CC528E /* StatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
+		A3DF39101EC27AE200CC528E /* DeletePopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletePopUpViewController.swift; sourceTree = "<group>"; };
 		A3E4E9E51EB24775005FA06C /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		CD4BF9181EAFC37B0054E940 /* YouLift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouLift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD4BF91B1EAFC37B0054E940 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				CDF5B0751EB1030B00750A1F /* Supporting Files */,
 				CD4BF91F1EAFC37B0054E940 /* Main.storyboard */,
 				A3E4E9E51EB24775005FA06C /* PopUpViewController.swift */,
+				A3DF39101EC27AE200CC528E /* DeletePopUpViewController.swift */,
 				A36E6CE31EB96BD5006DF92B /* Protocol.swift */,
 			);
 			path = YouLift;
@@ -247,6 +250,7 @@
 				A3DF390F1EC149AF00CC528E /* StatsTableViewCell.swift in Sources */,
 				CDFD6C6D1EC16625000EFF3B /* SelectExerciseTableViewController.swift in Sources */,
 				A3DF39061EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataClass.swift in Sources */,
+				A3DF39111EC27AE200CC528E /* DeletePopUpViewController.swift in Sources */,
 				A3DF390D1EC1429400CC528E /* StatsDetailViewController.swift in Sources */,
 				A3E4E9E61EB24775005FA06C /* PopUpViewController.swift in Sources */,
 				A3DF390B1EC135EA00CC528E /* StatsViewController.swift in Sources */,

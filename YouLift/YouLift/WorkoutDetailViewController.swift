@@ -48,6 +48,11 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         
+        editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.edit(sender:)))
+        self.navigationItem.rightBarButtonItem = editButton
+        
+        doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.doneEditing(sender:)))
+        
         if inProgress != nil {
             
             if firstCall {
@@ -58,25 +63,31 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             updateTimer()
             
-            editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.edit(sender:)))
-            self.navigationItem.rightBarButtonItem = editButton
-            
-            doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.doneEditing(sender:)))
-            
         } else {
             inProgress = false
+            deleteButton.isHidden = true
         }
     }
     
     func edit(sender: UIBarButtonItem){
         self.tableView.setEditing(true, animated: true)
         self.navigationItem.rightBarButtonItem = doneButton
+        
+        if !inProgress! {
+            startButton.isHidden = true
+            deleteButton.isHidden = false
+        }
     }
     
     func doneEditing(sender: UIBarButtonItem){
         self.tableView.setEditing(false, animated: true)
         self.navigationItem.rightBarButtonItem = editButton
         tableView.reloadData()
+        
+        if !inProgress! {
+            deleteButton.isHidden = true
+            startButton.isHidden = false
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -135,6 +146,10 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func finishButton(_ sender: UIButton) {
     }
+    
+    
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
     
     func updateTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.displayDuration), userInfo: nil, repeats: true)
@@ -244,6 +259,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
+            updateWorkout()
             destination.workout = workout
             destination.navigationItem.hidesBackButton = true
             destination.startTime = Date()
@@ -269,6 +285,16 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             destination.inProgress = inProgress!
             destination.currWorkout = exercises
             destination.delegate = self
+            
+        //delete a workout
+        case "DeleteWorkout":
+            guard let destination = segue.destination as? DeletePopUpViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            destination.workout = workout
+            //going to delete based on name. Means names must be primary key/can't have duplicates
+        
             
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")
