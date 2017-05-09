@@ -28,7 +28,7 @@ class StatsTableViewCell: UITableViewCell {
         var cellText:String = exercise.name + ":\n"
     
         for i in 0..<exercise.sets {
-            cellText += "\tSet " + String(i+1) + ":\t" + String(exercise.setsArray[i].0) + " lbs x " + String(exercise.setsArray[i].1) + "\n"
+            cellText += "\tSet " + String(i+1) + ":\t" + String(exercise.setsArray[i].0) + " lbs x " + String(exercise.setsArray[i].1) + " reps\n"
         }
         
         statsDataLabel.numberOfLines = 0

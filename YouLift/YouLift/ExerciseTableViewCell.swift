@@ -37,4 +37,5 @@ class ExerciseTableViewCell: UITableViewCell {
         }
         
     }
+    
 }
