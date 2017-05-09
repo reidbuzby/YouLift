@@ -24,6 +24,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     var timer:Timer = Timer()
     
     var inProgress:Bool?
+    var firstCall:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,13 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         
         if inProgress != nil {
+            
+            if firstCall {
+                performSegue(withIdentifier: "ViewExercise", sender: 0)
+            }
+            
+            //if let arrayOfTabBarItems = tabBarController?.tabBar.items as AnyObject as? NSArray,let tabBarItem = arrayOfTabBarItems[0] as? UITabBarItem { tabBarItem.isEnabled = false }
+            
             updateTimer()
             
             editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.edit(sender:)))
@@ -141,19 +149,31 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func writeValueBack(value: [Exercise], next: Int) {
+        
         // Or any other function you need to transport data
-        let indexPath = self.tableView.indexPathForSelectedRow
+        let indexPath = self.tableView.indexPathForSelectedRow?.row ?? 0
         exercises = value
         
         if next != -1 {
             //_ = navigationController?.popViewController(animated: false)
+            
+//            if next < indexPath {
+//                
+//            }else{
+//                
+//            }
+
+            //UIView.setAnimationsEnabled(false)
             performSegue(withIdentifier: "ViewExercise", sender: next)
+            //UIView.setAnimationsEnabled(true)
             if let nav = self.navigationController {
                 var stack = nav.viewControllers
                 // index starts at 0 so page three index is 2
                 stack.remove(at: stack.count-2)
                 nav.setViewControllers(stack, animated: false)
             }
+            //UIView.setAnimationsEnabled(true)
+            
         } else{
             tableView.reloadData()
         }
@@ -228,6 +248,8 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             destination.navigationItem.hidesBackButton = true
             destination.startTime = Date()
             destination.inProgress = true
+            destination.firstCall = true
+            
             
         //end a workout
         case "FinishWorkout":

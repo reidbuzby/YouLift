@@ -80,6 +80,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     @IBAction func addSetButton(_ sender: Any) {
+        UIView.setAnimationsEnabled(true)
         sets += 1
         setsArray.append((0, 0))
         
@@ -102,24 +103,30 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     @IBAction func prevButton(_ sender: UIButton) {
+        UIView.setAnimationsEnabled(false)
         transitionIndex = currIndex - 1
         let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: sets, setsArray: getSetsData(self.tableView))
         
         exercises[currIndex] = newExercise
         
+        UIView.setAnimationsEnabled(false)
         delegate?.writeValueBack(value: exercises, next: transitionIndex)
+        //UIView.setAnimationsEnabled(true)
         
         // Go back to the previous ViewController
         //_ = navigationController?.popViewController(animated: false)
     }
     
     @IBAction func nextButton(_ sender: UIButton) {
+        UIView.setAnimationsEnabled(false)
         transitionIndex = currIndex + 1
         let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: sets, setsArray: getSetsData(self.tableView))
         
         exercises[currIndex] = newExercise
         
+        UIView.setAnimationsEnabled(false)
         delegate?.writeValueBack(value: exercises, next: transitionIndex)
+        //UIView.setAnimationsEnabled(true)
         
         // Go back to the previous ViewController
         //_ = navigationController?.popViewController(animated: false)
@@ -132,6 +139,14 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
+        
+        self.navigationItem.hidesBackButton = true
+        let defaultBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.defaultBack(sender:)))
+        self.navigationItem.leftBarButtonItem = defaultBackButton
+        
+
         self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
         
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -140,9 +155,11 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         self.tableView!.layer.shadowOpacity = 0.3
         self.tableView!.layer.masksToBounds = false;
         self.tableView!.clipsToBounds = false;
+
         
         if inProgress {
-            self.navigationItem.hidesBackButton = true
+                        
+            //self.navigationItem.hidesBackButton = true
             let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.back(sender:)))
             self.navigationItem.leftBarButtonItem = newBackButton
             
@@ -177,6 +194,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
             if countingDown && !paused{
                 updateCountdown()
             }
+            
         }
         
         
@@ -214,6 +232,8 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         // Configure the cell...
         let set = setsArray[indexPath.row]
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
         if inProgress {
             cell.reconfigureCell(setNumber: indexPath.row + 1, weight: set.0, numberOfReps: set.1)
         }else{
@@ -235,7 +255,13 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         return newSetsArray
     }
     
+    func defaultBack(sender:UIBarButtonItem) {
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
     func back(sender: UIBarButtonItem) {
+        UIView.setAnimationsEnabled(true)
+        
         // Perform your custom actions
         let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: sets, setsArray: getSetsData(self.tableView))
         
@@ -298,8 +324,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         
         countdownLabel.text = String(format: "%02d", currentMin) + " : " + String(format: "%02d", currentSec)
     }
-
-
+    
     /*
     // MARK: - Navigation
 

@@ -1,0 +1,38 @@
+//
+//  StatsTableViewCell.swift
+//  YouLift
+//
+//  Created by Andrew Garland on 5/8/17.
+//  Copyright © 2017 rbuzby. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+class StatsTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var statsDataLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
+    func configureCell(exercise: Exercise){
+        var cellText:String = exercise.name + ":\n"
+    
+        for i in 0..<exercise.sets {
+            cellText += "\tSet " + String(i+1) + ":\t" + String(exercise.setsArray[i].0) + " lbs x " + String(exercise.setsArray[i].1) + " reps\n"
+        }
+        
+        statsDataLabel.numberOfLines = 0
+        statsDataLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        statsDataLabel.text = cellText
+    }
+}
