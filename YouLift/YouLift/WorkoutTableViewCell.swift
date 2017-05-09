@@ -26,5 +26,11 @@ class WorkoutTableViewCell: UITableViewCell {
     func configureCell(workout: Workout) {
         workoutName.text = workout.name
     }
+    
+    func configureDateCell(workout: Workout, date:Date){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        workoutName.text = String(workout.name + " - " + dateFormatter.string(from: date))
+    }
 
 }

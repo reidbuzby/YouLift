@@ -149,7 +149,9 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    
+    func updateWorkout(){
+        workout = Workout(name: workout.name, exercises: exercises)
+    }
     
 
     /*
@@ -222,6 +224,10 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             guard let destination = segue.destination as? PopUpViewController else{
                 fatalError("Unexpected destination: \(segue.destination)")
             }
+            
+            updateWorkout()
+            destination.workout = workout
+            destination.duration = Date().timeIntervalSince(startTime!)
             
         case "AddExercise":
             guard let destination = segue.destination as? ExerciseTableViewController else{
