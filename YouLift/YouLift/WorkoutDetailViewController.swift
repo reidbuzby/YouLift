@@ -76,7 +76,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         } else {
             inProgress = false
             deleteButton.isHidden = true
-            
+            addExerciseButton.isHidden = true
         }
     }
     
@@ -95,6 +95,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         if !inProgress! {
             startButton.isHidden = true
             deleteButton.isHidden = false
+            addExerciseButton.isHidden = false
         }
     }
     
@@ -105,6 +106,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         if !inProgress! {
             deleteButton.isHidden = true
+            addExerciseButton.isHidden = true
             startButton.isHidden = false
             updateWorkout()
             CoreDataManager.updateWorkoutTemplate(workout: workout)
@@ -175,6 +177,9 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func deleteButton(_ sender: UIButton) {
         AlertManager.deleteAlert(sender: self, workout: workout)
     }
+    
+    @IBOutlet weak var addExerciseButton: UIButton!
+    
     
     @IBOutlet weak var startButton: UIButton!
     
