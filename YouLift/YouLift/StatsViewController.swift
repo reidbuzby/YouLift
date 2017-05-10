@@ -54,6 +54,11 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getTableData()
+        workoutTableView.reloadData()
+    }
+    
     func getTableData(){
         completedWorkouts = CoreDataManager.fetchCompletedWorkouts()
         completedWorkouts = completedWorkouts.sorted(by: {$0.1 > $1.1})
