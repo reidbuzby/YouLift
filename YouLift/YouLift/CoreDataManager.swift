@@ -23,6 +23,7 @@ class CoreDataManager: NSObject {
         //perform validation
         
         if exercise.name == "" {
+            print("no name given")
             return false
         }
         
@@ -35,6 +36,7 @@ class CoreDataManager: NSObject {
             
             if fetchResult.count > 0 {
                 //if already exercise with the specified name
+                print("exercise name already in use")
                 return false
             }
             
@@ -79,6 +81,7 @@ class CoreDataManager: NSObject {
         
         //validate workout Template name
         if workout.name == ""{
+            print("no name given for the workout")
             return false
         }
         
@@ -91,6 +94,7 @@ class CoreDataManager: NSObject {
             
             if fetchResult.count > 0 {
                 //if already template with the specified name
+                print("already a workout with this name")
                 return false
             }
         

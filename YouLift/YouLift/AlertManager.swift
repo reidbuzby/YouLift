@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 class AlertManager: UIAlertController{
-    
 
-    
     class func finishAlert(sender: WorkoutDetailViewController, workout: Workout, date: Date, duration: Double){
         
         let alert = UIAlertController(title: "Finish", message: "Would you like to end the workout?", preferredStyle: .alert)
@@ -76,8 +74,44 @@ class AlertManager: UIAlertController{
         
     }
     
-    class func nameValidationError(){
+    class func saveAlert(sender: CreateWorkoutTableViewController, workout: Workout){
         
+        let alert = UIAlertController(title: "Save Workout", message: "Are you sure that you would like to save this workout?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+            // perhaps use action.title here
+        })
+        
+        alert.addAction(UIAlertAction(title: "Save", style: .default) { action in
+            // perhaps use action.title here
+            
+            if CoreDataManager.storeWorkoutTemplate(workout: workout) {
+                //navigate away
+            } else {
+                nameValidationError(sender: sender, name: workout.name)
+            }
+        })
+        
+        sender.present(alert, animated: true)
+    }
+    
+    class func nameValidationError(sender: UIViewController, name: String){
+        
+        var alert = UIAlertController()
+        
+        if name == "" {
+            alert = UIAlertController(title: "Error", message: "Please enter a valid name.", preferredStyle: .alert)
+        }else{
+            alert = UIAlertController(title: "Error", message: "This name is already in use. Please enter another.", preferredStyle: .alert)
+        }
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel) { action in
+            // perhaps use action.title here
+        })
+        
+        //may or may not have to add actions to dismiss. Haven't tested yet.
+        
+        sender.present(alert, animated: true)
     }
     
 //    class func restTimerAlert(){

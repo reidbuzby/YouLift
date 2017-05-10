@@ -28,7 +28,12 @@ class SaveWorkoutPopupViewController: UIViewController {
     }
     
     @IBAction func saveWorkout(_ sender: Any) {
-        CoreDataManager.storeWorkoutTemplate(workout: workout)
+        //my temp edits?
+        if CoreDataManager.storeWorkoutTemplate(workout: workout) {
+            
+        }else{
+            AlertManager.nameValidationError(sender: self, name: workout.name)
+        }
     }
     
 

@@ -221,9 +221,11 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
             
             let newWorkout = Workout(name: workoutName!, exercises: exercises)
             
-            CoreDataManager.storeWorkoutTemplate(workout: newWorkout)
+            //CoreDataManager.storeWorkoutTemplate(workout: newWorkout)
             
             exercises.removeAll()
+            
+            AlertManager.saveAlert(sender: self, workout: newWorkout)
         }
     }
     

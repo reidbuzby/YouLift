@@ -460,7 +460,7 @@
                                     <color key="titleColor" red="0.0" green="1" blue="0.41923777629999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="P7p-Y8-6ij" kind="presentation" identifier="SaveWorkout" id="U68-sq-BCc"/>
+                                    <action selector="saveWorkout:" destination="fom-lT-Zqz" eventType="touchUpInside" id="Z8z-Tb-6FH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1545,8 +1545,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fDx-fu-bxG"/>
         <segue reference="5GZ-t5-u4g"/>
-        <segue reference="yGy-0B-pWV"/>
+        <segue reference="fDx-fu-bxG"/>
+        <segue reference="GWj-uf-YJn"/>
     </inferredMetricsTieBreakers>
 </document>
