@@ -17,8 +17,33 @@ class CoreDataManager: NSObject {
         return appDelegate.persistentContainer.viewContext
     }
     
-    class func storeExercise(exercise: Exercise) {
+    class func storeExercise(exercise: Exercise) -> Bool{
         let context = getContext()
+        
+        //perform validation
+        
+        if exercise.name == "" {
+            return false
+        }
+        
+        let fetchRequest:NSFetchRequest<ExerciseEntity> = ExerciseEntity.fetchRequest()
+        let predicate = NSPredicate(format: "name == %@", exercise.name)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let fetchResult = try getContext().fetch(fetchRequest)
+            
+            if fetchResult.count > 0 {
+                //if already exercise with the specified name
+                return false
+            }
+            
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+        
+        //resume storing
         let entity = NSEntityDescription.entity(forEntityName: "ExerciseEntity", in: context)
         
         let managedObj = NSManagedObject(entity: entity!, insertInto: context)
@@ -43,13 +68,39 @@ class CoreDataManager: NSObject {
             print("saved!")
         } catch {
             print(error.localizedDescription)
+            return false
         }
+        
+        return true
     }
     
-    class func storeWorkoutTemplate(workout: Workout) {
+    class func storeWorkoutTemplate(workout: Workout) -> Bool{
         let context = getContext()
-        let entity = NSEntityDescription.entity(forEntityName: "WorkoutTemplateEntity", in: context)
         
+        //validate workout Template name
+        if workout.name == ""{
+            return false
+        }
+        
+        let fetchRequest:NSFetchRequest<WorkoutTemplateEntity> = WorkoutTemplateEntity.fetchRequest()
+        let predicate = NSPredicate(format: "name == %@", workout.name)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let fetchResult = try getContext().fetch(fetchRequest)
+            
+            if fetchResult.count > 0 {
+                //if already template with the specified name
+                return false
+            }
+        
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+        
+        //resume storing
+        let entity = NSEntityDescription.entity(forEntityName: "WorkoutTemplateEntity", in: context)
         let managedObj = NSManagedObject(entity: entity!, insertInto: context)
         
         managedObj.setValue(workout.name, forKey: "name")
@@ -83,10 +134,13 @@ class CoreDataManager: NSObject {
             print("saved!")
         } catch {
             print(error.localizedDescription)
+            return false
         }
+        
+        return true
     }
     
-    class func storeCompletedWorkout(workout: Workout, date: Date, duration: Double) {
+    class func storeCompletedWorkout(workout: Workout, date: Date, duration: Double) -> Bool{
         let context = getContext()
         
         let entity = NSEntityDescription.entity(forEntityName: "CompletedWorkoutEntity", in: context)
@@ -127,7 +181,10 @@ class CoreDataManager: NSObject {
             print("saved!")
         } catch {
             print(error.localizedDescription)
+            return false
         }
+        
+        return true
     }
     
     class func convertToExercise(name: String, description: String, sets: Int, weights: [Int], reps: [Int]) -> Exercise {
@@ -220,6 +277,41 @@ class CoreDataManager: NSObject {
         
         return exercises
     }
+    
+    class func updateWorkoutTemplate(workout: Workout) {
+        
+        deleteWorkoutTemplate(workout: workout)
+        
+        do {
+
+            storeWorkoutTemplate(workout: workout)
+            try getContext().save()
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+    }
+    
+    class func deleteWorkoutTemplate(workout: Workout){
+        let fetchRequest:NSFetchRequest<WorkoutTemplateEntity> = WorkoutTemplateEntity.fetchRequest()
+        let predicate = NSPredicate(format: "name == %@", workout.name)
+        fetchRequest.predicate = predicate
+        
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+        
+        do {
+            
+            try getContext().execute(deleteRequest)
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    //fetch and delete and make new with changes and save
+    
     
     
     ///fetch all the objects from core data

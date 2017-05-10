@@ -1,5 +1,5 @@
 //
-//  DeletePopUpViewController.swift
+//  CancelPopUpViewController.swift
 //  YouLift
 //
 //  Created by Andrew Garland on 5/9/17.
@@ -9,16 +9,14 @@
 import UIKit
 import Foundation
 
-class DeletePopUpViewController: UIViewController {
-    
-    var workout:Workout?
+class CancelPopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         finishLabel.numberOfLines = 0
         finishLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-        finishLabel.text = "Are you sure you would like to delete the workout? This cannot be undone.";
+        finishLabel.text = "Are you sure you would like to cancel your workout? None of your data will be recorded.";
         
     }
     
@@ -28,14 +26,12 @@ class DeletePopUpViewController: UIViewController {
     @IBAction func resumeButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+
     
-    func deleteWorkout(){
-        
-    }
-    
+    //don't think that I need this function
     @IBAction func deleteButton(_ sender: Any) {
         //delete the workout
-        CoreDataManager.deleteWorkoutTemplate(workout: workout!)
+        
     }
     
 }

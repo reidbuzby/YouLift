@@ -63,10 +63,19 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             updateTimer()
             
+            self.navigationItem.hidesBackButton = true
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.cancelButton(sender:)))
+            self.navigationItem.leftBarButtonItem = cancelButton
+            
         } else {
             inProgress = false
             deleteButton.isHidden = true
+            
         }
+    }
+    
+    func cancelButton(sender: UIBarButtonItem){
+        performSegue(withIdentifier: "CancelWorkout", sender: self)
     }
     
     func edit(sender: UIBarButtonItem){
@@ -87,6 +96,8 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         if !inProgress! {
             deleteButton.isHidden = true
             startButton.isHidden = false
+            updateWorkout()
+            CoreDataManager.updateWorkoutTemplate(workout: workout)
         }
     }
     
@@ -295,6 +306,10 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             destination.workout = workout
             //going to delete based on name. Means names must be primary key/can't have duplicates
         
+        case "CancelWorkout":
+            guard let destination = segue.destination as? CancelPopUpViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
             
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")
