@@ -55,6 +55,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = "YouLift"
         getTableData()
         workoutTableView.reloadData()
     }
@@ -135,6 +136,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             destination.workout = completedWorkouts[indexPath.row].0
             destination.date = completedWorkouts[indexPath.row].1
             destination.duration = completedWorkouts[indexPath.row].2
+            navigationItem.title = "Back"
             
             
             

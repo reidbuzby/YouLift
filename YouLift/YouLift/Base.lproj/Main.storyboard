@@ -362,7 +362,7 @@
         <!--YouLift-->
         <scene sceneID="oGJ-DI-9dY">
             <objects>
-                <tabBarController id="268-Gx-OdZ" sceneMemberID="viewController">
+                <tabBarController title="YouLift" id="268-Gx-OdZ" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="YouLift" id="PWy-nx-oFP">
                         <barButtonItem key="backBarButtonItem" title="Back" id="VRo-bF-sgw"/>
                     </navigationItem>
@@ -1487,7 +1487,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xKa-MT-CDS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Workout" id="CNO-Jc-Hx5" userLabel="Start"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="n5I-Ik-3be">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="n5I-Ik-3be" customClass="CustomNavigationBar" customModule="YouLift" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

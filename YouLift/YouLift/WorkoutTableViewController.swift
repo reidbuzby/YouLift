@@ -21,6 +21,10 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //self.tabBarController?.navigationItem.title = "YouLift"
+        
+        navigationItem.title = "YouLift"
+        
         self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
         
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)

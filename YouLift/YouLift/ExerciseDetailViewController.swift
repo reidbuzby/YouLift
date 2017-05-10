@@ -139,7 +139,8 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        navigationItem.title = "YouLift"
+        
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
         
         self.navigationItem.hidesBackButton = true

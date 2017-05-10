@@ -29,6 +29,8 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "YouLift"
+        
         self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
         
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -53,6 +55,10 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.doneEditing(sender:)))
         
+        self.navigationItem.hidesBackButton = true
+        let defaultBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.defaultBack(sender:)))
+        self.navigationItem.leftBarButtonItem = defaultBackButton
+        
         if inProgress != nil {
             
             if firstCall {
@@ -72,6 +78,10 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             deleteButton.isHidden = true
             
         }
+    }
+    
+    func defaultBack(sender:UIBarButtonItem) {
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func cancelButton(sender: UIBarButtonItem){
