@@ -75,7 +75,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func cancelButton(sender: UIBarButtonItem){
-        performSegue(withIdentifier: "CancelWorkout", sender: self)
+        AlertManager.cancelAlert(sender: self)
     }
     
     func edit(sender: UIBarButtonItem){
@@ -156,10 +156,16 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     @IBAction func finishButton(_ sender: UIButton) {
+        updateWorkout()
+        AlertManager.finishAlert(sender: self, workout: workout, date: Date(), duration: Date().timeIntervalSince(startTime!))
     }
     
     
     @IBOutlet weak var deleteButton: UIButton!
+    @IBAction func deleteButton(_ sender: UIButton) {
+        AlertManager.deleteAlert(sender: self, workout: workout)
+    }
+    
     @IBOutlet weak var startButton: UIButton!
     
     func updateTimer() {
@@ -278,16 +284,6 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             destination.firstCall = true
             
             
-        //end a workout
-        case "FinishWorkout":
-            guard let destination = segue.destination as? PopUpViewController else{
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            
-            updateWorkout()
-            destination.workout = workout
-            destination.duration = Date().timeIntervalSince(startTime!)
-            
         case "AddExercise":
             guard let destination = segue.destination as? ExerciseTableViewController else{
                 fatalError("Unexpected destination: \(segue.destination)")
@@ -297,19 +293,6 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             destination.currWorkout = exercises
             destination.delegate = self
             
-        //delete a workout
-        case "DeleteWorkout":
-            guard let destination = segue.destination as? DeletePopUpViewController else{
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            
-            destination.workout = workout
-            //going to delete based on name. Means names must be primary key/can't have duplicates
-        
-        case "CancelWorkout":
-            guard let destination = segue.destination as? CancelPopUpViewController else{
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
             
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")
