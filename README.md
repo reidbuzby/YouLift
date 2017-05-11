@@ -1,7 +1,6 @@
 # YouLift
 
-# Made by
-Reid Buzby, Andrew Garland, and Connor O'Day
+# Made by Reid Buzby, Andrew Garland, and Connor O'Day
 
 YouLift is a workout application that lets the user create a customized workout routine and log their results to compare and track progress over time. It supplies a list of pre-made workouts to use and edit, and the ability to create a new workout, either using existing exercises or making new ones.
 
