@@ -46,7 +46,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         self.tableView!.layer.shadowRadius = 5
         self.tableView!.layer.shadowOpacity = 0.3
         self.tableView!.layer.masksToBounds = false;
-        self.tableView!.clipsToBounds = false;
+        self.tableView!.clipsToBounds = true;
         self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
         
         

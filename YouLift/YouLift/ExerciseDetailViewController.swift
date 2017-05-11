@@ -158,7 +158,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         self.tableView!.layer.shadowRadius = 5
         self.tableView!.layer.shadowOpacity = 0.3
         self.tableView!.layer.masksToBounds = false;
-        self.tableView!.clipsToBounds = false;
+        self.tableView!.clipsToBounds = true;
         
         if addSetButton != nil {
             addSetButton.layer.cornerRadius = 4

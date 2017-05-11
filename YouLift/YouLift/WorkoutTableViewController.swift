@@ -32,14 +32,14 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView!.layer.shadowRadius = 5
         self.tableView!.layer.shadowOpacity = 0.3
         self.tableView!.layer.masksToBounds = false;
-        self.tableView!.clipsToBounds = false;
+        self.tableView!.clipsToBounds = true;
         
         self.customTableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.customTableView!.layer.shadowColor = UIColor.black.cgColor
         self.customTableView!.layer.shadowRadius = 5
         self.customTableView!.layer.shadowOpacity = 0.3
         self.customTableView!.layer.masksToBounds = false;
-        self.customTableView!.clipsToBounds = false;
+        self.customTableView!.clipsToBounds = true;
         
         self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
         self.customTableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)

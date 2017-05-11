@@ -42,7 +42,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView!.layer.shadowRadius = 5
         self.tableView!.layer.shadowOpacity = 0.3
         self.tableView!.layer.masksToBounds = false;
-        self.tableView!.clipsToBounds = false;
+        self.tableView!.clipsToBounds = true;
         
         if addExerciseButton != nil {
             addExerciseButton.layer.cornerRadius = 4

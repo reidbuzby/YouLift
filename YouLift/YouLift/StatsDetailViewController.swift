@@ -33,7 +33,7 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.statsTableView!.layer.shadowRadius = 5
         self.statsTableView!.layer.shadowOpacity = 0.3
         self.statsTableView!.layer.masksToBounds = false;
-        self.statsTableView!.clipsToBounds = false;
+        self.statsTableView!.clipsToBounds = true;
         self.statsTableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
         
         navigationItem.title = "YouLift"
