@@ -80,6 +80,10 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = "YouLift"
+    }
+    
     func defaultBack(sender:UIBarButtonItem) {
         _ = navigationController?.popViewController(animated: true)
     }
@@ -300,12 +304,12 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             
         case "AddExercise":
-            guard let destination = segue.destination as? ExerciseTableViewController else{
+            guard let destination = segue.destination as? SelectExerciseTableViewController else{
                 fatalError("Unexpected destination: \(segue.destination)")
             }
-            
-            destination.inProgress = inProgress!
-            destination.currWorkout = exercises
+            navigationItem.title = "Back"
+            destination.existing = true
+            destination.workout = exercises
             destination.delegate = self
             
             

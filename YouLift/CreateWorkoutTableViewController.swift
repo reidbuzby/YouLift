@@ -18,12 +18,22 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     
     @IBOutlet weak var saveButton: UIButton!
     
+    var editButton:UIBarButtonItem?
+    var doneButton:UIBarButtonItem?
+    
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        if exercises.count > 0 {
+            self.navigationItem.rightBarButtonItem = editButton
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.edit(sender:)))
+        
+        doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.doneEditing(sender:)))
         
         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
@@ -209,33 +219,35 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     
     @IBAction func saveWorkout(_ sender: Any) {
     
-        if exercises.count > 0 {
-            
-            let alert = UIAlertController(title: "Are you sure you would like to save this Workout?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
-                var workoutName: String?
-                
-                if self.workoutNameField.text == nil {
-                workoutName = "New Workout"
-                }
-                else {
-                workoutName = self.workoutNameField.text
-                }
-                
-                let newWorkout = Workout(name: workoutName!, exercises: self.exercises)
-                
-                CoreDataManager.storeWorkoutTemplate(workout: newWorkout)
-                
-                self.exercises.removeAll()
-                
-                self.performSegue(withIdentifier: "Done", sender: self)
-                
-                }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
-            
-            self.present(alert, animated: true, completion: nil)
-        }
+//        if exercises.count > 0 {
+//            
+//            let alert = UIAlertController(title: "Are you sure you would like to save this Workout?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+//            
+//            alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
+//                var workoutName: String?
+//                
+//                if self.workoutNameField.text == nil {
+//                workoutName = "New Workout"
+//                }
+//                else {
+//                workoutName = self.workoutNameField.text
+//                }
+//                
+//                let newWorkout = Workout(name: workoutName!, exercises: self.exercises)
+//                
+//                CoreDataManager.storeWorkoutTemplate(workout: newWorkout)
+//                
+//                self.exercises.removeAll()
+//                
+//                self.performSegue(withIdentifier: "Done", sender: self)
+//                
+//                }))
+//            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+//            
+//            self.present(alert, animated: true, completion: nil)
+//        }
+        let workout = Workout(name: workoutNameField.text!, exercises: exercises)
+        AlertManager.saveAlert(sender: self, workout: workout)
     }
     
     
@@ -244,5 +256,44 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         tableView.reloadData()
     }
     
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            exercises.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            if exercises.count < 1 {
+                self.navigationItem.rightBarButtonItem = nil
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
+        
+        var exerciseToMove = exercises[fromIndexPath.row]
+        exercises.remove(at: fromIndexPath.row)
+        exercises.insert(exerciseToMove, at: toIndexPath.row)
+    }
+    
+    func edit(sender: UIBarButtonItem){
+        self.tableView.setEditing(true, animated: true)
+        self.navigationItem.rightBarButtonItem = doneButton
+    }
+    
+    func doneEditing(sender: UIBarButtonItem){
+        self.tableView.setEditing(false, animated: true)
+        self.navigationItem.rightBarButtonItem = editButton
+        tableView.reloadData()
+    }
     
 }
