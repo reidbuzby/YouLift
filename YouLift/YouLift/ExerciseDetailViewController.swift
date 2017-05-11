@@ -23,6 +23,8 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
 
     @IBOutlet weak var exerciseName: UILabel!
     
+    @IBOutlet weak var addSetButton: UIButton!
+    
     @IBOutlet weak var exerciseDescription: UITextView!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -157,6 +159,38 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         self.tableView!.layer.shadowOpacity = 0.3
         self.tableView!.layer.masksToBounds = false;
         self.tableView!.clipsToBounds = false;
+        
+        if addSetButton != nil {
+            addSetButton.layer.cornerRadius = 4
+            addSetButton.layer.borderWidth = 1
+            addSetButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+            addSetButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+            addSetButton.layer.shadowColor = UIColor.black.cgColor
+            addSetButton.layer.shadowRadius = 5
+            addSetButton.layer.shadowOpacity = 0.3
+        }
+        
+        if startButton != nil {
+            startButton.layer.cornerRadius = 4
+            startButton.layer.borderWidth = 1
+            startButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+            startButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+            startButton.layer.shadowColor = UIColor.black.cgColor
+            startButton.layer.shadowRadius = 5
+            startButton.layer.shadowOpacity = 0.3
+        }
+        
+        if pauseButton != nil {
+            pauseButton.layer.cornerRadius = 4
+            pauseButton.layer.borderWidth = 1
+            pauseButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+            pauseButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+            pauseButton.layer.shadowColor = UIColor.black.cgColor
+            pauseButton.layer.shadowRadius = 5
+            pauseButton.layer.shadowOpacity = 0.3
+        }
+        
+        
         self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
 
         
