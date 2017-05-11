@@ -23,6 +23,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     var doneButton:UIBarButtonItem?
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = "YouLift"
         tableView.reloadData()
         if exercises.count > 0 {
             self.navigationItem.rightBarButtonItem = editButton
@@ -183,6 +184,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         
         switch(segue.identifier ?? ""){
         case "AddExercise":
+            navigationItem.title = "Back"
             //do nothing
             break
             
