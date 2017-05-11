@@ -40,6 +40,9 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView!.layer.masksToBounds = false;
         self.tableView!.clipsToBounds = false;
         
+        self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
+
+        
         if startButton != nil {
             startButton.layer.cornerRadius = 4
             startButton.layer.borderWidth = 1

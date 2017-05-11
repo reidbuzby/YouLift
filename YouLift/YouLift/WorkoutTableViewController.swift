@@ -14,7 +14,7 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var customTableView: UITableView!
     
-     let tableColor = UIColor(red: 147/255, green: 234/255, blue: 215/255, alpha: 0.5)
+    let tableColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
     
     //var fetchedResultsController:NSFetchedResultsController!
     
@@ -40,6 +40,10 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
         self.customTableView!.layer.shadowOpacity = 0.3
         self.customTableView!.layer.masksToBounds = false;
         self.customTableView!.clipsToBounds = false;
+        
+        self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
+        self.customTableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
