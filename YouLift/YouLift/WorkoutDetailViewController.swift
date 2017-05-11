@@ -12,6 +12,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     
+    var custom:Bool?
     var workout = Workout()
     var exercises = [Exercise]()
     var editButton:UIBarButtonItem?
@@ -165,7 +166,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             addExerciseButton.isHidden = true
             startButton.isHidden = false
             updateWorkout()
-            CoreDataManager.updateWorkoutTemplate(workout: workout)
+            CoreDataManager.updateWorkoutTemplate(workout: workout, custom: custom!)
         }
     }
     

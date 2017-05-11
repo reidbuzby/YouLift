@@ -275,7 +275,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
 //            self.present(alert, animated: true, completion: nil)
 //        }
         let workout = Workout(name: workoutNameField.text!, exercises: exercises)
-        AlertManager.saveAlert(sender: self, workout: workout)
+        AlertManager.saveAlert(sender: self, workout: workout, custom: true)
     }
     
     

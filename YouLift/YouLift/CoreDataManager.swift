@@ -76,7 +76,7 @@ class CoreDataManager: NSObject {
         return true
     }
     
-    class func storeWorkoutTemplate(workout: Workout) -> Bool{
+    class func storeWorkoutTemplate(workout: Workout, custom: Bool) -> Bool{
         let context = getContext()
         
         //validate workout Template name
@@ -136,7 +136,7 @@ class CoreDataManager: NSObject {
         managedObj.setValue(descriptions, forKey: "allDescriptions")
         managedObj.setValue(weights, forKey: "allWeights")
         managedObj.setValue(reps, forKey: "allReps")
-        managedObj.setValue(true, forKey: "custom")
+        managedObj.setValue(custom, forKey: "custom")
         
         do {
             try context.save()
@@ -287,13 +287,13 @@ class CoreDataManager: NSObject {
         return exercises
     }
     
-    class func updateWorkoutTemplate(workout: Workout) {
+    class func updateWorkoutTemplate(workout: Workout, custom: Bool) {
         
         deleteWorkoutTemplate(workout: workout)
         
         do {
 
-            storeWorkoutTemplate(workout: workout)
+            storeWorkoutTemplate(workout: workout, custom: custom)
             try getContext().save()
             
         } catch {

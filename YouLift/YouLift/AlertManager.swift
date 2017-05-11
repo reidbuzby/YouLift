@@ -74,7 +74,7 @@ class AlertManager: UIAlertController{
         
     }
     
-    class func saveAlert(sender: CreateWorkoutTableViewController, workout: Workout){
+    class func saveAlert(sender: CreateWorkoutTableViewController, workout: Workout, custom: Bool){
         
         let alert = UIAlertController(title: "Save Workout", message: "Are you sure that you would like to save this workout?", preferredStyle: .alert)
         
@@ -85,7 +85,7 @@ class AlertManager: UIAlertController{
         alert.addAction(UIAlertAction(title: "Save", style: .default) { action in
             // perhaps use action.title here
             
-            if CoreDataManager.storeWorkoutTemplate(workout: workout) {
+            if CoreDataManager.storeWorkoutTemplate(workout: workout, custom: custom) {
                 //navigate away
                 
                 sender.exercises.removeAll()

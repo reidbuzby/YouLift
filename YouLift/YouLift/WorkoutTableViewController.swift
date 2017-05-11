@@ -240,6 +240,7 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
             
             let workout = defaultWorkouts[indexPath.row]
             
+            destination.custom = false
             destination.workout = workout
             
         case "ViewCustomWorkout":
@@ -258,6 +259,7 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
             
             let workout = customWorkouts[indexPath.row]
             
+            destination.custom = true
             destination.workout = workout
             
             
