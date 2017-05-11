@@ -9,7 +9,7 @@
 
 import UIKit
 
-class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate {
     
     var existing:Bool = false
     var delegate: writeValueBackDelegate?
@@ -21,8 +21,9 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet weak var exerciseNameField: UITextField!
     @IBOutlet weak var exerciseNameLabel: UILabel!
     
-    @IBOutlet weak var exerciseDescriptionField: UITextField!
-    @IBOutlet weak var exerciseDescriptionLabel: UILabel!
+    @IBOutlet weak var exerciseDescriptionField: UITextView!
+    
+    @IBOutlet weak var exerciseDescriptionLabel: UITextView!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -64,10 +65,17 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         }
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        exerciseDescriptionField.text = ""
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if exerciseDescriptionField != nil {
+            exerciseDescriptionField.delegate = self
+        }
         navigationItem.title = "YouLift"
         
         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
