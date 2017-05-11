@@ -73,6 +73,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             finish.layer.shadowRadius = 5
             finish.layer.shadowOpacity = 0.3
         }
+        self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
 
         
         if startButton != nil {

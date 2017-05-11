@@ -27,6 +27,8 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.workoutTableView!.layer.shadowOpacity = 0.3
         self.workoutTableView!.layer.masksToBounds = false;
         self.workoutTableView!.clipsToBounds = false;
+        self.workoutTableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
+        
         
 //        self.exerciseTableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
 //        self.exerciseTableView!.layer.shadowColor = UIColor.black.cgColor

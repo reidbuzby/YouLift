@@ -191,6 +191,8 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
         
         
+        self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
+
         
         if inProgress {
                         

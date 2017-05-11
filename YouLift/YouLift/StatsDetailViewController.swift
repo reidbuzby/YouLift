@@ -28,6 +28,14 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
          self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
+        self.statsTableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.statsTableView!.layer.shadowColor = UIColor.black.cgColor
+        self.statsTableView!.layer.shadowRadius = 5
+        self.statsTableView!.layer.shadowOpacity = 0.3
+        self.statsTableView!.layer.masksToBounds = false;
+        self.statsTableView!.clipsToBounds = false;
+        self.statsTableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
+        
         navigationItem.title = "YouLift"
         
         // Uncomment the following line to preserve selection between presentations
