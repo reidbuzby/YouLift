@@ -17,6 +17,10 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     var editButton:UIBarButtonItem?
     var doneButton:UIBarButtonItem?
     
+    @IBOutlet weak var finish: UIButton!
+    
+    @IBOutlet weak var add: UIButton!
+    
     @IBOutlet weak var workoutName: UILabel!
     
     @IBOutlet weak var durationTimer: UILabel!
@@ -39,6 +43,37 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView!.layer.shadowOpacity = 0.3
         self.tableView!.layer.masksToBounds = false;
         self.tableView!.clipsToBounds = false;
+        
+        if addExerciseButton != nil {
+            addExerciseButton.layer.cornerRadius = 4
+            addExerciseButton.layer.borderWidth = 1
+            addExerciseButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+            addExerciseButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+            addExerciseButton.layer.shadowColor = UIColor.black.cgColor
+            addExerciseButton.layer.shadowRadius = 5
+            addExerciseButton.layer.shadowOpacity = 0.3
+        }
+        
+        if add != nil {
+            add.layer.cornerRadius = 4
+            add.layer.borderWidth = 1
+            add.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+            add.layer.shadowOffset = CGSize(width: 0, height: 0)
+            add.layer.shadowColor = UIColor.black.cgColor
+            add.layer.shadowRadius = 5
+            add.layer.shadowOpacity = 0.3
+        }
+        
+        if finish != nil {
+            finish.layer.cornerRadius = 4
+            finish.layer.borderWidth = 1
+            finish.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+            finish.layer.shadowOffset = CGSize(width: 0, height: 0)
+            finish.layer.shadowColor = UIColor.black.cgColor
+            finish.layer.shadowRadius = 5
+            finish.layer.shadowOpacity = 0.3
+        }
+
         
         if startButton != nil {
             startButton.layer.cornerRadius = 4
