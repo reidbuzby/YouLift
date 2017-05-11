@@ -387,7 +387,9 @@
                     <navigationItem key="navigationItem" title="YouLift" id="PWy-nx-oFP">
                         <barButtonItem key="backBarButtonItem" title="Back" id="VRo-bF-sgw"/>
                     </navigationItem>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="Im3-VB-Y3X">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="Im3-VB-Y3X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -417,7 +419,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a New Workout:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSS-SM-Ddv">
                                 <rect key="frame" x="48" y="72" width="279" height="34"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.94709020853042603" green="0.93166729424862416" blue="0.8447313302632683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vrR-RF-RNX">
@@ -431,7 +433,7 @@
                                         <rect key="frame" x="0.0" y="28" width="345" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VdZ-g4-uVt" id="MxO-lN-9cE">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="312" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl2-dw-IHY">
@@ -485,7 +487,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="P7p-Y8-6ij" kind="presentation" identifier="SaveWorkout" id="U68-sq-BCc"/>
+                                    <action selector="saveWorkout:" destination="fom-lT-Zqz" eventType="touchUpInside" id="Gmo-qf-u1U"/>
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OaJ-F3-gC3">
@@ -533,55 +535,12 @@
                         <outlet property="saveButton" destination="aqN-jY-IxG" id="2oK-HE-JwK"/>
                         <outlet property="tableView" destination="vrR-RF-RNX" id="NrM-8o-ACq"/>
                         <outlet property="workoutNameField" destination="uiO-8l-jfA" id="xa5-Os-vEM"/>
+                        <segue destination="268-Gx-OdZ" kind="presentation" identifier="Done" id="zCD-G5-mh4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8U-q7-wNL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5687.1999999999998" y="458.32083958020991"/>
-        </scene>
-        <!--Save Workout Popup View Controller-->
-        <scene sceneID="N5o-Pr-hAB">
-            <objects>
-                <viewController id="P7p-Y8-6ij" customClass="SaveWorkoutPopupViewController" customModule="YouLift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5Vt-el-ivE"/>
-                        <viewControllerLayoutGuide type="bottom" id="7wq-FS-9NJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Dvo-Rb-Ewg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Would you like to save this Workout?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyB-3B-oux">
-                                <rect key="frame" x="48" y="195" width="279" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jos-wO-blL">
-                                <rect key="frame" x="242" y="282" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveWorkout:" destination="P7p-Y8-6ij" eventType="touchUpInside" id="uTA-fD-nrb"/>
-                                    <segue destination="268-Gx-OdZ" kind="presentation" id="GOr-um-a8o"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kft-Os-fNi">
-                                <rect key="frame" x="68" y="282" width="86" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Keep Editing"/>
-                                <connections>
-                                    <action selector="keepEditing:" destination="P7p-Y8-6ij" eventType="touchUpInside" id="K8q-iE-d1D"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iRJ-kq-OYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5687" y="1261"/>
+            <point key="canvasLocation" x="5607" y="457"/>
         </scene>
         <!--Select Exercise Table View Controller-->
         <scene sceneID="hB6-KS-d75">
@@ -646,7 +605,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Choose an Existing Exercise:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Emc-gc-PWB">
                                 <rect key="frame" x="43" y="72" width="289" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.94709020850000003" green="0.93166729420000005" blue="0.84473133030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -777,7 +736,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sb-Rv-93e">
                                 <rect key="frame" x="109" y="132.5" width="156" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.94709020850000003" green="0.93166729420000005" blue="0.84473133030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMz-ub-Ya6">
@@ -804,7 +763,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dU-JG-uFa">
                                 <rect key="frame" x="97" y="72" width="180" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.94709020850000003" green="0.93166729420000005" blue="0.84473133030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1652,9 +1611,10 @@
         <scene sceneID="gSl-0E-TnN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xKa-MT-CDS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Workout" id="CNO-Jc-Hx5" userLabel="Start"/>
+                    <tabBarItem key="tabBarItem" title="Workout" image="workout_icon" selectedImage="workout_icon" id="CNO-Jc-Hx5" userLabel="Start"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="n5I-Ik-3be">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="n5I-Ik-3be">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1671,9 +1631,10 @@
         <scene sceneID="7lM-LH-NvG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gMq-8b-aAZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="KmX-qZ-cnv" userLabel="History"/>
+                    <tabBarItem key="tabBarItem" title="History" image="history_icon" selectedImage="history_icon" id="KmX-qZ-cnv" userLabel="History"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oeN-Y0-wBz">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="oeN-Y0-wBz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1690,9 +1651,10 @@
         <scene sceneID="oy1-Nb-BSh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="z2Q-4S-sFc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Create" id="qGb-Ez-xRY" userLabel="Create"/>
+                    <tabBarItem key="tabBarItem" title="Create" image="create_icon" selectedImage="create_icon" id="qGb-Ez-xRY" userLabel="Create"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E77-MA-cwS">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="E77-MA-cwS" userLabel="YouLift">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1706,8 +1668,13 @@
             <point key="canvasLocation" x="4748" y="458.32083958020991"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="create_icon" width="30" height="30"/>
+        <image name="history_icon" width="30" height="30"/>
+        <image name="workout_icon" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GOr-um-a8o"/>
+        <segue reference="zCD-G5-mh4"/>
         <segue reference="5GZ-t5-u4g"/>
         <segue reference="yGy-0B-pWV"/>
     </inferredMetricsTieBreakers>

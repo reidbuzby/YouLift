@@ -64,7 +64,7 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
+        self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.tableView!.layer.shadowColor = UIColor.black.cgColor
@@ -86,7 +86,7 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         cancelButton.layer.borderWidth = 1
         
         saveButton.layer.cornerRadius = 4
-        saveButton.backgroundColor = UIColor(red: 0.0666, green: 0.478431, blue: 0.035, alpha: 1)
+        saveButton.backgroundColor = UIColor(red: 0.117, green: 0.843, blue: 0.376, alpha: 1)
         saveButton.layer.borderWidth = 1
         
         tableView.tableHeaderView = UIView()
