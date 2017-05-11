@@ -48,6 +48,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         workoutTableView.delegate = self
         workoutTableView.dataSource = self
+        workoutTableView.alwaysBounceVertical = false;
         
         //exerciseTableView.delegate = self
         //exerciseTableView.dataSource = self

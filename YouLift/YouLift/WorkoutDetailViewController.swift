@@ -100,6 +100,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.alwaysBounceVertical = false;
         
         editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.edit(sender:)))
         self.navigationItem.rightBarButtonItem = editButton

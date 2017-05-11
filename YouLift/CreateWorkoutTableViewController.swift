@@ -99,6 +99,8 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         tableView.delegate = self
         workoutNameField.delegate = self
         
+        tableView.alwaysBounceVertical = false;
+        
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateWorkoutTableViewController.hideKeyboard)))
         
         tableView.reloadData()

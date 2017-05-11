@@ -56,8 +56,11 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
         
         customTableView.delegate = self
         customTableView.dataSource = self
+        
+        tableView.alwaysBounceVertical = false;
+        customTableView.alwaysBounceVertical = false;
                 
-        //CoreDataManager.cleanCoreData(entity: "WorkoutTemplateEntity")
+        CoreDataManager.cleanCoreData(entity: "WorkoutTemplateEntity")
         CoreDataManager.cleanCoreData(entity: "CompletedWorkoutEntity")
         
         var workoutOne = Workout(name: "Leg Day", exercises: [

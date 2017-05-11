@@ -46,6 +46,7 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         statsTableView.delegate = self
         statsTableView.dataSource = self
+        statsTableView.alwaysBounceVertical = false;
         
         //statsTableView.estimatedRowHeight = 44.0*4
         //statsTableView.rowHeight = 44.0*4//UITableViewAutomaticDimension

@@ -106,6 +106,7 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         
         tableView.tableHeaderView = UIView()
         tableView.tableFooterView = UIView()
+        tableView.alwaysBounceVertical = false;
 
         
         // Do any additional setup after loading the view.

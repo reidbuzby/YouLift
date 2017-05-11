@@ -48,6 +48,7 @@ class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, 
         addCustomButton.layer.borderWidth = 1
         
         tableView.tableFooterView = UIView()
+        tableView.alwaysBounceVertical = false;
         
         tableView.reloadData()
     }
