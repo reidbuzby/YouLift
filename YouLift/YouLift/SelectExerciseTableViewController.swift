@@ -29,6 +29,7 @@ class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, 
         
         //Uncomment following line when fetchExercises() is working
         exercises = CoreDataManager.fetchExercises()
+        exercises = exercises.sorted(by: {$0.name.uppercased() < $1.name.uppercased()})
         
         exercises.append(Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]))
         
