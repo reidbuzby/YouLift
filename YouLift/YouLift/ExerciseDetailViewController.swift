@@ -22,7 +22,8 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     var setsArray = [(Int, Int)]()
 
     @IBOutlet weak var exerciseName: UILabel!
-    @IBOutlet weak var exerciseDescription: UILabel!
+    
+    @IBOutlet weak var exerciseDescription: UITextView!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
