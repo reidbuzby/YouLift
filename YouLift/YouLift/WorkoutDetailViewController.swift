@@ -29,6 +29,8 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "YouLift"
+        
         self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
         
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -48,6 +50,15 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         
+        editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.edit(sender:)))
+        self.navigationItem.rightBarButtonItem = editButton
+        
+        doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.doneEditing(sender:)))
+        
+        self.navigationItem.hidesBackButton = true
+        let defaultBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.defaultBack(sender:)))
+        self.navigationItem.leftBarButtonItem = defaultBackButton
+        
         if inProgress != nil {
             
             if firstCall {
@@ -58,25 +69,48 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             updateTimer()
             
-            editButton = UIBarButtonItem(title: "Edit", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.edit(sender:)))
-            self.navigationItem.rightBarButtonItem = editButton
-            
-            doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.doneEditing(sender:)))
+            self.navigationItem.hidesBackButton = true
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(WorkoutDetailViewController.cancelButton(sender:)))
+            self.navigationItem.leftBarButtonItem = cancelButton
             
         } else {
             inProgress = false
+            deleteButton.isHidden = true
+            addExerciseButton.isHidden = true
         }
+    }
+    
+    func defaultBack(sender:UIBarButtonItem) {
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    func cancelButton(sender: UIBarButtonItem){
+        AlertManager.cancelAlert(sender: self)
     }
     
     func edit(sender: UIBarButtonItem){
         self.tableView.setEditing(true, animated: true)
         self.navigationItem.rightBarButtonItem = doneButton
+        
+        if !inProgress! {
+            startButton.isHidden = true
+            deleteButton.isHidden = false
+            addExerciseButton.isHidden = false
+        }
     }
     
     func doneEditing(sender: UIBarButtonItem){
         self.tableView.setEditing(false, animated: true)
         self.navigationItem.rightBarButtonItem = editButton
         tableView.reloadData()
+        
+        if !inProgress! {
+            deleteButton.isHidden = true
+            addExerciseButton.isHidden = true
+            startButton.isHidden = false
+            updateWorkout()
+            CoreDataManager.updateWorkoutTemplate(workout: workout)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -134,7 +168,20 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     @IBAction func finishButton(_ sender: UIButton) {
+        updateWorkout()
+        AlertManager.finishAlert(sender: self, workout: workout, date: Date(), duration: Date().timeIntervalSince(startTime!))
     }
+    
+    
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBAction func deleteButton(_ sender: UIButton) {
+        AlertManager.deleteAlert(sender: self, workout: workout)
+    }
+    
+    @IBOutlet weak var addExerciseButton: UIButton!
+    
+    
+    @IBOutlet weak var startButton: UIButton!
     
     func updateTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.displayDuration), userInfo: nil, repeats: true)
@@ -244,22 +291,13 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             
+            updateWorkout()
             destination.workout = workout
             destination.navigationItem.hidesBackButton = true
             destination.startTime = Date()
             destination.inProgress = true
             destination.firstCall = true
             
-            
-        //end a workout
-        case "FinishWorkout":
-            guard let destination = segue.destination as? PopUpViewController else{
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            
-            updateWorkout()
-            destination.workout = workout
-            destination.duration = Date().timeIntervalSince(startTime!)
             
         case "AddExercise":
             guard let destination = segue.destination as? ExerciseTableViewController else{
@@ -269,6 +307,7 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
             destination.inProgress = inProgress!
             destination.currWorkout = exercises
             destination.delegate = self
+            
             
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")

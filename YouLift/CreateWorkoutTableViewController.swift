@@ -235,8 +235,6 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
             
             self.present(alert, animated: true, completion: nil)
-            
-            
         }
     }
     

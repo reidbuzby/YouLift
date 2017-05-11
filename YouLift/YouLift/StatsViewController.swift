@@ -54,6 +54,12 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = "YouLift"
+        getTableData()
+        workoutTableView.reloadData()
+    }
+    
     func getTableData(){
         completedWorkouts = CoreDataManager.fetchCompletedWorkouts()
         completedWorkouts = completedWorkouts.sorted(by: {$0.1 > $1.1})
@@ -130,6 +136,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             destination.workout = completedWorkouts[indexPath.row].0
             destination.date = completedWorkouts[indexPath.row].1
             destination.duration = completedWorkouts[indexPath.row].2
+            navigationItem.title = "Back"
             
             
             

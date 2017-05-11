@@ -21,6 +21,10 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //self.tabBarController?.navigationItem.title = "YouLift"
+        
+        navigationItem.title = "YouLift"
+        
         self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
         
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -48,9 +52,9 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
         
         customTableView.delegate = self
         customTableView.dataSource = self
-        
-        //CoreDataManager.cleanCoreData(entity: "WorkoutTemplateEntity")
-        //CoreDataManager.cleanCoreData(entity: "CompletedWorkoutEntity")
+                
+        CoreDataManager.cleanCoreData(entity: "WorkoutTemplateEntity")
+        CoreDataManager.cleanCoreData(entity: "CompletedWorkoutEntity")
         
         var workoutOne = Workout(name: "Leg Day", exercises: [
             Exercise(name:"Squat", description:"Stand up straight with feet shoulders width apart holding desired weight, and slowly bend knees down to a 90 degree angle while keeping your back straight, and then slowly stand up back to the starting position.", sets:3, setsArray:[(100, 2), (100, 2), (100, 2)]),
@@ -79,8 +83,16 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getTableData()
+        tableView.reloadData()
+        customTableView.reloadData()
+    }
+    
     func getTableData(){
         workouts = CoreDataManager.fetchWorkoutTemplates()
+        customWorkouts = [Workout]()
+        defaultWorkouts = [Workout]()
         
         for workout in workouts {
             if workout.1 {
