@@ -148,7 +148,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         self.navigationItem.leftBarButtonItem = defaultBackButton
         
 
-        self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
+         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.tableView!.layer.shadowColor = UIColor.black.cgColor
@@ -350,7 +350,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
                     fatalError("Full data not entered for exercise")
                 }
             
-                destination.appendExercise(exercise: Exercise(name: self.exerciseName.text!, description: self.exerciseDescription.text!, sets: self.sets, setsArray: self.setsArray))
+                destination.exercises.append(Exercise(name: self.exerciseName.text!, description: self.exerciseDescription.text!, sets: self.sets, setsArray: self.setsArray))
             
             
             default:

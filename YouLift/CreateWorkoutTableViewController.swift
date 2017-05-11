@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
@@ -52,6 +53,28 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         saveButton.layer.shadowRadius = 5
         saveButton.layer.shadowOpacity = 0.3
         
+
+        var exercise1 = Exercise(name:"Squat", description:"Stand up straight with feet shoulders width apart holding desired weight, and slowly bend knees down to a 90 degree angle while keeping your back straight, and then slowly stand up back to the starting position.", sets:3, setsArray:[(100, 2), (100, 2), (100, 2)])
+        
+        var exercise2 = Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])
+        var exercise3 = Exercise(name: "Deadlift", description: "Grab the weight on the floor with an overhand grip and pull it up to your thighs while keeping your lower back straight, lower weight back to floor and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])
+        var exercise4 = Exercise(name: "Leg Curl", description: "Sit on the machine with the back of your lower legs on the padded lever, pull the lever back to your thighs slowly return to the start position and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])
+        var exercise5 = Exercise(name: "Calf Raises", description: "Stand on the edge of a step with the balls of your feet on it, and raise your heels a few inches, hold it for a second, lower, and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])
+        
+        var exercise6 = Exercise(name: "Bicep Curl", description: "csxdgfgcxg", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])
+        var exercise7 = Exercise(name: "Shoulder Press", description: "This is how to do a calf raise", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])
+        var exercise8 = Exercise(name: "Ab Crunch", description: "This is how to do a calf raise", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])
+        
+        CoreDataManager.storeExercise(exercise: exercise1)
+        CoreDataManager.storeExercise(exercise: exercise2)
+        CoreDataManager.storeExercise(exercise: exercise3)
+        CoreDataManager.storeExercise(exercise: exercise4)
+        CoreDataManager.storeExercise(exercise: exercise5)
+        CoreDataManager.storeExercise(exercise: exercise6)
+        CoreDataManager.storeExercise(exercise: exercise7)
+        CoreDataManager.storeExercise(exercise: exercise8)
+        
+        //getTableData()
 
         
         // Uncomment the following line to preserve selection between presentations
