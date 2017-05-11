@@ -85,6 +85,11 @@ class CoreDataManager: NSObject {
             return false
         }
         
+        if workout.exerciseArray.count < 1 {
+            print("no exercises...")
+            return false
+        }
+        
         let fetchRequest:NSFetchRequest<WorkoutTemplateEntity> = WorkoutTemplateEntity.fetchRequest()
         let predicate = NSPredicate(format: "name == %@", workout.name)
         fetchRequest.predicate = predicate
@@ -374,11 +379,7 @@ class CoreDataManager: NSObject {
         tempStoreDefaultWorkoutTemplate(workout: workoutTwo)
         tempStoreDefaultWorkoutTemplate(workout: workoutThree)
         
-        for workout in [workoutOne, workoutTwo, workoutThree]{
-            for exercise in workout.exerciseArray{
-                storeExercise(exercise: exercise)
-            }
-        }
+        
     }
     
     class func tempStoreDefaultWorkoutTemplate(workout: Workout) -> Bool{
