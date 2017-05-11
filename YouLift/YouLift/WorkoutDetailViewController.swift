@@ -39,7 +39,22 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView!.layer.shadowOpacity = 0.3
         self.tableView!.layer.masksToBounds = false;
         self.tableView!.clipsToBounds = false;
-
+        
+        if startButton != nil {
+            startButton.layer.cornerRadius = 4
+            startButton.layer.borderWidth = 1
+            startButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+            startButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+            startButton.layer.shadowColor = UIColor.black.cgColor
+            startButton.layer.shadowRadius = 5
+            startButton.layer.shadowOpacity = 0.3
+        }
+        
+        if deleteButton != nil {
+            deleteButton.layer.cornerRadius = 4
+            deleteButton.backgroundColor = UIColor(red: 1, green: 0.231, blue: 0.188, alpha: 1)
+            deleteButton.layer.borderWidth = 1
+        }
 
         // Do any additional setup after loading the view.
         

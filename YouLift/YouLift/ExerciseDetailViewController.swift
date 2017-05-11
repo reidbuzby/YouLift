@@ -164,12 +164,21 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
             let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.back(sender:)))
             self.navigationItem.leftBarButtonItem = newBackButton
             
-            prevButton.layer.cornerRadius = 2
+            prevButton.layer.cornerRadius = 4
             prevButton.layer.borderWidth = 1
-            prevButton.layer.borderColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1).cgColor
-            nextButton.layer.cornerRadius = 2
+            prevButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+            prevButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+            prevButton.layer.shadowColor = UIColor.black.cgColor
+            prevButton.layer.shadowRadius = 5
+            prevButton.layer.shadowOpacity = 0.3
+            
+            nextButton.layer.cornerRadius = 4
             nextButton.layer.borderWidth = 1
-            nextButton.layer.borderColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1).cgColor
+            nextButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+            nextButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+            nextButton.layer.shadowColor = UIColor.black.cgColor
+            nextButton.layer.shadowRadius = 5
+            nextButton.layer.shadowOpacity = 0.3
             
             if currIndex == 0 {
                 self.prevButton.isHidden = true
