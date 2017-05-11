@@ -26,6 +26,8 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
+        
         navigationItem.title = "YouLift"
         
         // Uncomment the following line to preserve selection between presentations
