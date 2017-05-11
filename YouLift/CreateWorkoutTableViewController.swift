@@ -14,6 +14,10 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var addButton: UIButton!
+    
+    @IBOutlet weak var saveButton: UIButton!
+    
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
@@ -21,7 +25,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
+        self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.tableView!.layer.shadowColor = UIColor.black.cgColor
@@ -29,7 +33,24 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         self.tableView!.layer.shadowOpacity = 0.3
         self.tableView!.layer.masksToBounds = false;
         self.tableView!.clipsToBounds = false;
+        self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
         
+        
+        addButton.layer.cornerRadius = 4
+        addButton.layer.borderWidth = 1
+        addButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+        addButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        addButton.layer.shadowColor = UIColor.black.cgColor
+        addButton.layer.shadowRadius = 5
+        addButton.layer.shadowOpacity = 0.3
+        
+        saveButton.layer.cornerRadius = 4
+        saveButton.layer.borderWidth = 1
+        saveButton.backgroundColor = UIColor(red: 0.117, green: 0.843, blue: 0.376, alpha: 1)
+        saveButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        saveButton.layer.shadowColor = UIColor.black.cgColor
+        saveButton.layer.shadowRadius = 5
+        saveButton.layer.shadowOpacity = 0.3
         
 
         
@@ -46,6 +67,8 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateWorkoutTableViewController.hideKeyboard)))
         
         tableView.reloadData()
+        
+        tableView.tableFooterView = UIView()
         
 //        CoreDataManager.storeExercise(exercise: Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]))
         
@@ -126,17 +149,12 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         
         switch(segue.identifier ?? ""){
         case "AddExercise":
-//            guard let navController = segue.destination as? UINavigationController else{
-//                fatalError("Unexpected destination: \(segue.destination)")
-//            }
-//            guard let destination = navController.topViewController as? CreateWorkoutDetailViewController else{
-//                fatalError("Unexpected destination: \(segue.destination)")
-//            }
-//            destination.type = .new
-//            destination.callback = { (exerciseName, exerciseDescription, sets, setsArray) in
-//                self.exercises.append(Exercise(name: exerciseName, description: exerciseDescription, sets: sets, setsArray: setsArray))
-//            }
-            print("blah")
+            //do nothing
+            break
+            
+        case "Done":
+            //do nothing
+            break
             
         case "EditExercise":
             guard let destination = segue.destination as? CreateWorkoutDetailViewController else{
@@ -161,26 +179,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
                 exercise.sets = sets
                 exercise.setsArray = setsArray
             }
-            
-        case "SaveWorkout":
-            if exercises.count > 0 {
-                guard let destination = segue.destination as? SaveWorkoutPopupViewController else{
-                    fatalError("Unexpected destination: \(segue.destination)")
-                }
-            
-                var workoutName: String?
-                
-                if workoutNameField.text == nil {
-                    workoutName = "New Workout"
-                }
-                else {
-                    workoutName = workoutNameField.text
-                }
-                
-                let newWorkout = Workout(name: workoutName!, exercises: exercises)
-                
-                destination.workout = newWorkout
-            }
+
             
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")
@@ -207,25 +206,35 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     
     @IBOutlet weak var workoutNameField: UITextField!
     
+    
     @IBAction func saveWorkout(_ sender: Any) {
+    
         if exercises.count > 0 {
             
-            var workoutName: String?
+            let alert = UIAlertController(title: "Are you sure you would like to save this Workout?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
             
-            if workoutNameField.text == nil {
+            alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
+                var workoutName: String?
+                
+                if self.workoutNameField.text == nil {
                 workoutName = "New Workout"
-            }
-            else {
-                workoutName = workoutNameField.text
-            }
+                }
+                else {
+                workoutName = self.workoutNameField.text
+                }
+                
+                let newWorkout = Workout(name: workoutName!, exercises: self.exercises)
+                
+                CoreDataManager.storeWorkoutTemplate(workout: newWorkout)
+                
+                self.exercises.removeAll()
+                
+                self.performSegue(withIdentifier: "Done", sender: self)
+                
+                }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
             
-            let newWorkout = Workout(name: workoutName!, exercises: exercises)
-            
-            //CoreDataManager.storeWorkoutTemplate(workout: newWorkout)
-            
-            exercises.removeAll()
-            
-            AlertManager.saveAlert(sender: self, workout: newWorkout)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

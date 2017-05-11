@@ -22,6 +22,11 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var addSetButton: UIButton!
+    
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    @IBOutlet weak var saveButton: UIButton!
     
     var exercise = Exercise()
     
@@ -59,7 +64,7 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(hue: 0.4, saturation: 0.05, brightness: 0.9, alpha: 1.0)
+        self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.tableView!.layer.shadowColor = UIColor.black.cgColor
@@ -67,6 +72,25 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         self.tableView!.layer.shadowOpacity = 0.3
         self.tableView!.layer.masksToBounds = false;
         self.tableView!.clipsToBounds = false;
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        
+        if addSetButton != nil {
+            addSetButton.layer.cornerRadius = 4
+            addSetButton.backgroundColor = UIColor(red: 0,  green: 0.478431, blue: 1, alpha: 1)
+            addSetButton.layer.borderWidth = 1
+        }
+        
+        cancelButton.layer.cornerRadius = 4
+        cancelButton.backgroundColor = UIColor(red: 1, green: 0.231, blue: 0.188, alpha: 1)
+        cancelButton.layer.borderWidth = 1
+        
+        saveButton.layer.cornerRadius = 4
+        saveButton.backgroundColor = UIColor(red: 0.117, green: 0.843, blue: 0.376, alpha: 1)
+        saveButton.layer.borderWidth = 1
+        
+        tableView.tableHeaderView = UIView()
+        tableView.tableFooterView = UIView()
 
         
         // Do any additional setup after loading the view.
