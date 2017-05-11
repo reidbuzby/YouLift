@@ -11,6 +11,10 @@ import UIKit
 
 class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate {
     
+    var existing:Bool = false
+    var delegate: writeValueBackDelegate?
+    var workout = [Exercise]()
+
     var type: DetailType = .new
     var callback: ((String, String, Int, [(Int, Int)])->Void)?
     
@@ -72,6 +76,7 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         if exerciseDescriptionField != nil {
             exerciseDescriptionField.delegate = self
         }
+        navigationItem.title = "YouLift"
         
         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
@@ -219,24 +224,34 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     @IBAction func saveCustomExercise(_ sender: Any) {
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
         
-        let tableController = viewControllers[0] as! CreateWorkoutTableViewController
-        
         let setsArray = getSetsData(tableView)
         
-        exercise.name = exerciseNameField.text ?? ""
-        exercise.description = exerciseDescriptionField.text ?? ""
-        exercise.sets = setsArray.count
-        exercise.setsArray = setsArray
+        exercise = Exercise(name: exerciseNameField.text!, description: exerciseDescriptionField.text!, sets: setsArray.count, setsArray: setsArray)
         
-        
-        
-        if edit {
-            tableController.exercises[changeIndex] = exercise
-            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true)
+        if !CoreDataManager.storeExercise(exercise: exercise) {
+            AlertManager.nameValidationError(sender: self, name: exercise.name)
+            return
         }
-        else {
-            tableController.exercises.append(exercise)
+        
+        if existing {
+            
+            workout.append(exercise)
+            
+            delegate?.writeValueBack(value: workout, next: -1)
             self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+            
+        } else {
+        
+            let tableController = viewControllers[0] as! CreateWorkoutTableViewController
+        
+            if edit {
+                tableController.exercises[changeIndex] = exercise
+                self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true)
+            }
+            else {
+                tableController.exercises.append(exercise)
+                self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+            }
         }
     }
     

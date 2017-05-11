@@ -87,8 +87,23 @@ class AlertManager: UIAlertController{
             
             if CoreDataManager.storeWorkoutTemplate(workout: workout) {
                 //navigate away
+                
+                sender.exercises.removeAll()
+                
+                sender.performSegue(withIdentifier: "Done", sender: self)
+                
             } else {
-                nameValidationError(sender: sender, name: workout.name)
+                
+                if workout.exerciseArray.count == 0 {
+                    let invalidAlert = UIAlertController(title: "Error", message: "Please add at least one exercise to the workout.", preferredStyle: .alert)
+                    invalidAlert.addAction(UIAlertAction(title: "Ok", style: .cancel) { action in
+                        // perhaps use action.title here
+                    })
+                    
+                    sender.present(invalidAlert, animated: true)
+                } else {
+                    nameValidationError(sender: sender, name: workout.name)
+                }
             }
         })
         

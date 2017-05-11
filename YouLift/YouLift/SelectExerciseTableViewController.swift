@@ -11,11 +11,16 @@ import UIKit
 class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var exercises: [Exercise] = []
+    var workout = [Exercise]()
+    var delegate: writeValueBackDelegate?
+    var existing:Bool = false
 
     @IBOutlet weak var addCustomButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "YouLift"
 
         // Do any additional setup after loading the view.
         
@@ -25,7 +30,7 @@ class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, 
         //Uncomment following line when fetchExercises() is working
         exercises = CoreDataManager.fetchExercises()
         
-//        exercises.append(Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]))
+        exercises.append(Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]))
         
         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
@@ -77,6 +82,18 @@ class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, 
         
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if existing {
+            let exercise = exercises[indexPath.row]
+            let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: 1, setsArray: [(0,0)])
+            
+            workout.append(newExercise)
+        
+            delegate?.writeValueBack(value: workout, next: -1)
+            _ = navigationController?.popViewController(animated: true)
+        }
+    }
 
     
     // MARK: - Navigation
@@ -107,6 +124,17 @@ class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, 
         
         case "AddCustom":
             //do nothing
+            
+            if existing {
+                guard let destination = segue.destination as? CreateWorkoutDetailViewController else{
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                
+                destination.existing = existing
+                destination.delegate = delegate
+                destination.workout = workout
+            }
+            
             break
             
         default:
