@@ -89,6 +89,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A3B22DE41ECF5D5A0081FB81 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				A3DF39081EC0EAF100CC528E /* CoreDataManager.swift */,
+				A3DF38FC1EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift */,
+				A3DF38FD1EC0EAE200CC528E /* ExerciseEntity+CoreDataProperties.swift */,
+				A3DF38FE1EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataClass.swift */,
+				A3DF38FF1EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataProperties.swift */,
+				A3DF39001EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataClass.swift */,
+				A3DF39011EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataProperties.swift */,
+				A3DF38F91EC0EA1C00CC528E /* YouLift.xcdatamodeld */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		A3B22DE51ECF5D7D0081FB81 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				A3DF390A1EC135EA00CC528E /* StatsViewController.swift */,
+				A3DF390C1EC1429400CC528E /* StatsDetailViewController.swift */,
+				A3DF390E1EC149AF00CC528E /* StatsTableViewCell.swift */,
+			);
+			name = Stats;
+			sourceTree = "<group>";
+		};
+		A3B22DE61ECF5DD10081FB81 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				CDF5B0761EB1041C00750A1F /* WorkoutTableViewCell.swift */,
+				CDF5B0781EB1058000750A1F /* WorkoutTableViewController.swift */,
+				CDF5B07C1EB17B4F00750A1F /* WorkoutDetailViewController.swift */,
+			);
+			name = Workout;
+			sourceTree = "<group>";
+		};
+		A3B22DE71ECF5DF10081FB81 /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				CDF5B0841EB197EA00750A1F /* SetTableViewCell.swift */,
+				CDF5B07E1EB18B5400750A1F /* ExerciseTableViewCell.swift */,
+				CDF5B0821EB1931500750A1F /* ExerciseDetailViewController.swift */,
+				CD4DDD521EB1AB0100ABFEA6 /* ExerciseTableViewController.swift */,
+			);
+			name = Exercise;
+			sourceTree = "<group>";
+		};
+		A3B22DE81ECF5E4C0081FB81 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				A3E6C1EB1EC38834009116FE /* CustomNavigationBar.swift */,
+				A3E6C1E91EC36077009116FE /* AlertManager.swift */,
+				A36E6CE31EB96BD5006DF92B /* Protocol.swift */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		A3B22DE91ECF5E740081FB81 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				CD6C058F1EBA64C800FA9538 /* CreateWorkoutTableViewController.swift */,
+				CDFD6C6C1EC16625000EFF3B /* SelectExerciseTableViewController.swift */,
+				CD6C05911EBA653900FA9538 /* CreateWorkoutDetailViewController.swift */,
+			);
+			name = Create;
+			sourceTree = "<group>";
+		};
+		A3B22DEA1ECF7B990081FB81 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				CD4BF9331EB02B950054E940 /* Workout.swift */,
+				CD4BF9351EB02D510054E940 /* Exercise.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 		CD4BF90F1EAFC37B0054E940 = {
 			isa = PBXGroup;
 			children = (
@@ -108,36 +183,17 @@
 		CD4BF91A1EAFC37B0054E940 /* YouLift */ = {
 			isa = PBXGroup;
 			children = (
-				A3DF38FC1EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift */,
-				A3DF38FD1EC0EAE200CC528E /* ExerciseEntity+CoreDataProperties.swift */,
-				A3DF38FE1EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataClass.swift */,
-				A3DF38FF1EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataProperties.swift */,
-				A3DF39001EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataClass.swift */,
-				A3DF39011EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataProperties.swift */,
-				A3DF39081EC0EAF100CC528E /* CoreDataManager.swift */,
-				A3DF390A1EC135EA00CC528E /* StatsViewController.swift */,
-				A3DF390C1EC1429400CC528E /* StatsDetailViewController.swift */,
-				A3DF390E1EC149AF00CC528E /* StatsTableViewCell.swift */,
-				A3DF38F91EC0EA1C00CC528E /* YouLift.xcdatamodeld */,
-				CD4BF9331EB02B950054E940 /* Workout.swift */,
-				CD4BF9351EB02D510054E940 /* Exercise.swift */,
+				A3B22DEA1ECF7B990081FB81 /* Objects */,
+				A3B22DE41ECF5D5A0081FB81 /* Core Data */,
+				A3B22DE51ECF5D7D0081FB81 /* Stats */,
+				A3B22DE81ECF5E4C0081FB81 /* Other */,
 				CD4BF9371EB02E660054E940 /* WorkoutCollection.swift */,
 				CD4BF9391EB030910054E940 /* ExerciseCollection.swift */,
-				CDF5B0761EB1041C00750A1F /* WorkoutTableViewCell.swift */,
-				CDF5B07E1EB18B5400750A1F /* ExerciseTableViewCell.swift */,
-				CDF5B0841EB197EA00750A1F /* SetTableViewCell.swift */,
-				CDF5B0781EB1058000750A1F /* WorkoutTableViewController.swift */,
-				CDF5B07C1EB17B4F00750A1F /* WorkoutDetailViewController.swift */,
-				CDF5B0821EB1931500750A1F /* ExerciseDetailViewController.swift */,
-				CD4DDD521EB1AB0100ABFEA6 /* ExerciseTableViewController.swift */,
-				A3E6C1EB1EC38834009116FE /* CustomNavigationBar.swift */,
-				CD6C058F1EBA64C800FA9538 /* CreateWorkoutTableViewController.swift */,
-				CDFD6C6C1EC16625000EFF3B /* SelectExerciseTableViewController.swift */,
-				CD6C05911EBA653900FA9538 /* CreateWorkoutDetailViewController.swift */,
+				A3B22DE61ECF5DD10081FB81 /* Workout */,
+				A3B22DE71ECF5DF10081FB81 /* Exercise */,
+				A3B22DE91ECF5E740081FB81 /* Create */,
 				CDF5B0751EB1030B00750A1F /* Supporting Files */,
 				CD4BF91F1EAFC37B0054E940 /* Main.storyboard */,
-				A3E6C1E91EC36077009116FE /* AlertManager.swift */,
-				A36E6CE31EB96BD5006DF92B /* Protocol.swift */,
 			);
 			path = YouLift;
 			sourceTree = "<group>";

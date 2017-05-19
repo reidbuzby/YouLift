@@ -8,6 +8,7 @@
 
 import Foundation
 
+//  protocol for writing back workout data
 protocol writeValueBackDelegate {
     func writeValueBack(value: [Exercise], next: Int)
 }

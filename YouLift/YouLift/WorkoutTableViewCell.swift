@@ -10,6 +10,7 @@ import UIKit
 
 class WorkoutTableViewCell: UITableViewCell {
 
+    //  label to display the workout's name
     @IBOutlet weak var workoutName: UILabel!
     
     override func awakeFromNib() {
@@ -23,10 +24,13 @@ class WorkoutTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //  connects the cell's label to the workout's name
     func configureCell(workout: Workout) {
         workoutName.text = workout.name
     }
     
+    //  FOR STATS TAB
+    //  connects the cell's label to the workout's name + date (dd/MM/yyyy format).
     func configureDateCell(workout: Workout, date:Date){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"

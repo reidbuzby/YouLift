@@ -14,6 +14,7 @@
 
 import Foundation
 
+//  basic exercise object. Has a name, description, number of sets, and array of tuples (weight, reps)
 class Exercise{
     
     var name:String

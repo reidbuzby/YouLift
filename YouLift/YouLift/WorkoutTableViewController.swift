@@ -11,22 +11,29 @@ import CoreData
 
 class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //  table views for default and custom workout templates
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var customTableView: UITableView!
     
+    //  current table color
     let tableColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
     
-    //var fetchedResultsController:NSFetchedResultsController!
+    //  arrays to keep track of the workout templates
+    private var workouts = [(Workout, Bool)]()
+    private var defaultWorkouts = [Workout]()
+    private var customWorkouts = [Workout]()
     
+    //  when the view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.tabBarController?.navigationItem.title = "YouLift"
-        
+        //  set the view's title to YouLift
         navigationItem.title = "YouLift"
         
-         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
+        //  set the view's background color
+        self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
+        //  customize the appearance of both tables
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.tableView!.layer.shadowColor = UIColor.black.cgColor
         self.tableView!.layer.shadowRadius = 5
@@ -41,9 +48,8 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
         self.customTableView!.layer.masksToBounds = false;
         self.customTableView!.clipsToBounds = true;
         
-        self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
-        self.customTableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
-
+        self.tableView!.backgroundColor = tableColor
+        self.customTableView!.backgroundColor = tableColor
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -93,31 +99,41 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
         
         CoreDataManager.storeDefaultWorkouts()
         
+        //  get the data for the tables from core data
         getTableData()
         
     }
     
+    //  whenever the view appears
     override func viewWillAppear(_ animated: Bool) {
+        //  get the table data from core data
         getTableData()
+        
+        //  reload the tables
         tableView.reloadData()
         customTableView.reloadData()
     }
     
+    //  get the table data from core data
     func getTableData(){
+        
+        //  fetch all workout templates
         workouts = CoreDataManager.fetchWorkoutTemplates()
         customWorkouts = [Workout]()
         defaultWorkouts = [Workout]()
         
+        //  divide the workout templates based on if they are custom vs default
         for workout in workouts {
             if workout.1 {
                 customWorkouts.append(workout.0)
             }else{
                 defaultWorkouts.append(workout.0)
             }
-            
-            customWorkouts = customWorkouts.sorted(by: {$0.name < $1.name})
-            defaultWorkouts = defaultWorkouts.sorted(by: {$0.name < $1.name})
         }
+        
+        //  sort the workouts alphabetically
+        customWorkouts = customWorkouts.sorted(by: {$0.name < $1.name})
+        defaultWorkouts = defaultWorkouts.sorted(by: {$0.name < $1.name})
     }
 
     override func didReceiveMemoryWarning() {
@@ -126,10 +142,6 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     // MARK: - Table view data source
-    
-    private var workouts = [(Workout, Bool)]()
-    private var defaultWorkouts = [Workout]()
-    private var customWorkouts = [Workout]()
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -146,35 +158,26 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var workout = Workout()
         
+        //  set the cell color to be the same as the table color
         UITableViewCell.appearance().backgroundColor = tableColor
         
+        //  get the cell (error if wrong type)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
+            fatalError("Can't get cell of the right kind")
+        }
+        
+        //  get the workout corresponding to the table/row
         if tableView == self.tableView {
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
-                fatalError("Can't get cell of the right kind")
-            }
-            
-            // Configure the cell...
-            let workout = defaultWorkouts[indexPath.row]
-            cell.configureCell(workout: workout)
-            
-            return cell
+            workout = defaultWorkouts[indexPath.row]
+        } else {
+            workout = customWorkouts[indexPath.row]
         }
-            
-        else{
-            
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
-                fatalError("Can't get cell of the right kind")
-            }
-            
-            // Configure the cell...
-            let workout = customWorkouts[indexPath.row]
-            cell.configureCell(workout: workout)
-            
-            return cell
-
-        }
+        
+        //  configure the cell
+        cell.configureCell(workout: workout)
+        return cell
     }
     
 
@@ -218,14 +221,17 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
 
     */
     
+    //  code to be run prior to segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         switch(segue.identifier ?? ""){
         
+        //  if viewing a default workout
         case "ViewDefaultWorkout":
             
+            //  validate the sender/destination
             guard let destination = segue.destination as? WorkoutDetailViewController else{
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -238,13 +244,14 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
                 fatalError("The selected cell can't be found")
             }
             
-            let workout = defaultWorkouts[indexPath.row]
-            
+            //  pass the relevant workout data to the next view
             destination.custom = false
-            destination.workout = workout
-            
+            destination.workout = defaultWorkouts[indexPath.row]
+          
+        //  if viewing a custom workout
         case "ViewCustomWorkout":
             
+            //  validate the sender/destination
             guard let destination = segue.destination as? WorkoutDetailViewController else{
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -257,10 +264,9 @@ class WorkoutTableViewController: UIViewController, UITableViewDelegate, UITable
                 fatalError("The selected cell can't be found")
             }
             
-            let workout = customWorkouts[indexPath.row]
-            
+            //  pass the relevant workout data to the next view
             destination.custom = true
-            destination.workout = workout
+            destination.workout = customWorkouts[indexPath.row]
             
             
         default:

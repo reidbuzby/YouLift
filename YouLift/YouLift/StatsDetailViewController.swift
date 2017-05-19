@@ -11,23 +11,27 @@ import UIKit
 
 class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //  variables keeping track of the workout data
     var workout = Workout()
     var date = Date()
     var duration = Double()
     
+    //  labels to display the workout data
     @IBOutlet weak var workoutNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     
+    //  table holding the workout data
     @IBOutlet weak var statsTableView: UITableView!
-    
-    //each cell in the table will basically be one big formatted text box with all the data (Exercise name, sets, reps, weight)
-    
+
+    //  when the view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
+        //  set the background color
+        self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
+        //  customize the appearance of the table
         self.statsTableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.statsTableView!.layer.shadowColor = UIColor.black.cgColor
         self.statsTableView!.layer.shadowRadius = 5
@@ -36,6 +40,7 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.statsTableView!.clipsToBounds = true;
         self.statsTableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
         
+        //  set the title of the view to YouLift
         navigationItem.title = "YouLift"
         
         // Uncomment the following line to preserve selection between presentations
@@ -47,14 +52,13 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
         statsTableView.delegate = self
         statsTableView.dataSource = self
         statsTableView.alwaysBounceVertical = false;
-        
-        //statsTableView.estimatedRowHeight = 44.0*4
-        //statsTableView.rowHeight = 44.0*4//UITableViewAutomaticDimension
 
+        //  convert the date to a dd/MM/yyyy string
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         dateLabel.text = dateFormatter.string(from: date)
-        
+
+        //  connect labels to their relevant data
         workoutNameLabel.text = workout.name
         durationLabel.text = "Duration: " + timeFromDouble(time: duration)
     }
@@ -81,21 +85,21 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
             fatalError("Can't get cell of the right kind")
         }
         
-        //cell.sizeToFit()
-        //cell.textLabel?.numberOfLines = 0
-        
+        //  configure the cell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.configureCell(exercise: workout.exerciseArray[indexPath.row])
         
         return cell
     }
     
+    //  set the height of each cell based on the number of sets for that exercise
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return CGFloat(22.0 * Double(workout.exerciseArray[indexPath.row].sets) + 22)
         
     }
     
+    //  convert time from seconds to a displayable string (hh:mm:ss)
     func timeFromDouble(time: Double) -> String {
         
         let ti = NSInteger(time)
@@ -106,17 +110,5 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
         
         return String(format: "%0.2d:%0.2d:%0.2d",hours,minutes,seconds)
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        
-//        tableView.estimatedRowHeight = 44.0 * 3 // standard tableViewCell height
-//        tableView.rowHeight = UITableViewAutomaticDimension
-//        
-//        return UITableViewAutomaticDimension
-//    }
-//    
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
     
 }
