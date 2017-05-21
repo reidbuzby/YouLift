@@ -5,29 +5,31 @@
 //  Created by rbuzby on 4/26/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
+//  A cell representing an individual set for an exercise. Consists of set #, weight (lbs), and # of reps. weight/reps is either fixed or editable depending on context
 
 import UIKit
 
 class SetTableViewCell: UITableViewCell {
 
+    //  labels
     @IBOutlet weak var setNumber: UILabel!
     @IBOutlet weak var weight: UILabel!
     @IBOutlet weak var numberOfReps: UILabel!
+    
+    //  text input fields
     @IBOutlet weak var weightInput: UITextField!
     @IBOutlet weak var repsInput: UITextField!
 
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    //  set the cell labels based on the parameters
     func configureCell(setNumber: Int, weight: Int, numberOfReps: Int) {
         if self.setNumber != nil {
             self.setNumber.text = String(setNumber)
@@ -40,6 +42,7 @@ class SetTableViewCell: UITableViewCell {
         }
     }
     
+    //  set the cell labels/input field text based on the parameters
     func reconfigureCell(setNumber: Int, weight: Int, numberOfReps: Int) {
         if self.setNumber != nil {
             self.setNumber.text = String(setNumber)
@@ -52,6 +55,7 @@ class SetTableViewCell: UITableViewCell {
         }
     }
     
+    //  get the weight/reps data in the cell (defaults to (0, 0))
     func getSetData() -> (Int, Int){
         var weightData = 0
         var repsData = 0

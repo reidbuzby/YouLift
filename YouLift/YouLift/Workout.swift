@@ -7,11 +7,11 @@
 //
 /*
  Class for an entire workout
- 
 */
 
 import Foundation
 
+//  basic workout object. Has a name and an array of exercise objects
 class Workout{
     
     var name:String

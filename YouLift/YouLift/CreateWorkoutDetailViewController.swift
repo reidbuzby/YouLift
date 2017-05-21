@@ -11,47 +11,50 @@ import UIKit
 
 class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UITextViewDelegate {
     
-    var existing:Bool = false
+    //  delegate (for workout tab)
     var delegate: writeValueBackDelegate?
+    
+    //  variables to keep track of workout data
+    var existing:Bool = false
     var workout = [Exercise]()
+    var exercise = Exercise()
+    var overallSetsArray = [(Int, Int)]()
+    var sets: Int = 0
 
+    //  create tab variables
     var type: DetailType = .new
     var callback: ((String, String, Int, [(Int, Int)])->Void)?
     
+    //  text input fields/labels for exercise name/description
     @IBOutlet weak var exerciseNameField: UITextField!
     @IBOutlet weak var exerciseNameLabel: UILabel!
-    
     @IBOutlet weak var exerciseDescriptionField: UITextView!
-    
     @IBOutlet weak var exerciseDescriptionLabel: UITextView!
     
+    //  table that holds all the set data
     @IBOutlet weak var tableView: UITableView!
     
+    //  button to add a new set
     @IBOutlet weak var addSetButton: UIButton!
     
+    //  buttons to save/cancel exercise creation
     @IBOutlet weak var cancelButton: UIButton!
-    
     @IBOutlet weak var saveButton: UIButton!
-    
-    var exercise = Exercise()
-    
-    var overallSetsArray = [(Int, Int)]()
-    
-    var sets: Int = 0
     
     var edit = false
     
     var changeIndex: Int = -1
     
+    //  button function to add a new set
     @IBAction func addSet(_ sender: Any) {
         
         sets += 1
         overallSetsArray.append((0,0))
         
         tableView.reloadData()
-        
     }
     
+    //  button function to remove the last set
     @IBAction func removeSet(_ sender: Any) {
         if (overallSetsArray.count > 1) {
             overallSetsArray.remove(at: (overallSetsArray.count - 1))
@@ -60,26 +63,28 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
             tableView.reloadData()
             
         }
-        else {
-            //do nothing
-        }
     }
     
+    //  function to clear the text field upon start of editing
     func textViewDidBeginEditing(_ textView: UITextView) {
         exerciseDescriptionField.text = ""
     }
     
-    
+    //  when the view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if exerciseDescriptionField != nil {
             exerciseDescriptionField.delegate = self
         }
+        
+        //  set the view's title to YouLift
         navigationItem.title = "YouLift"
         
+        //  set the view's background color
         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
+        //  customize the appearance of the table
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.tableView!.layer.shadowColor = UIColor.black.cgColor
         self.tableView!.layer.shadowRadius = 5
@@ -88,8 +93,10 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         self.tableView!.clipsToBounds = true;
         self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
         
+        //  hide the back button
         self.navigationItem.setHidesBackButton(true, animated: false)
         
+        //  customize the appearance of various buttons
         if addSetButton != nil {
             addSetButton.layer.cornerRadius = 4
             addSetButton.backgroundColor = UIColor(red: 0,  green: 0.478431, blue: 1, alpha: 1)
@@ -109,7 +116,6 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         tableView.alwaysBounceVertical = false;
 
         
-        // Do any additional setup after loading the view.
         switch(type){
         case .new:
             overallSetsArray.append((0,0))
@@ -138,6 +144,7 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         tableView.dataSource = self
         tableView.delegate = self
         
+        //  enable dismissal of keyboard by tapping elsewhere on the screen
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
     }
 
@@ -154,8 +161,6 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
             fatalError("Can't get cell of the right kind")
         }
         
-        // Configure the cell...
-        
         let set = overallSetsArray[indexPath.row]
         
         if edit {
@@ -170,21 +175,10 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         return cell
     }
     
-    
-//    @IBAction func cancel(_ sender: UIBarButtonItem) {
-//        if presentingViewController is UINavigationController{
-//            dismiss(animated: true, completion: nil)
-//        }else if let owningNavController = navigationController{
-//            owningNavController.popViewController(animated: true)
-//        }else{
-//            fatalError("View is not contained by a navigation controller")
-//        }
-//    }
-    
+    //  get the weight/rep data for each cell
     func getSetsData(_ tableView: UITableView) -> [(Int, Int)]{
         let cells = self.tableView.visibleCells as! Array<SetTableViewCell>
         
-        print(cells)
         var newSetsArray = [(Int, Int)]()
         
         for cell in cells {
