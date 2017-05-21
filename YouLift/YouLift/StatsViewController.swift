@@ -158,6 +158,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             
             destination.exerciseData = completedExercises[indexPath.row].data
+            destination.name = completedExercises[indexPath.row].exercise.name
             
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")
