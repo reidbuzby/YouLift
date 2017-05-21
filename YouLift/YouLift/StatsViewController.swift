@@ -5,24 +5,31 @@
 //  Created by Andrew Garland on 5/8/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
+//  View controller for the main stats/history tab. Holds two tables, one for past workouts, and one for individual exercises.
 
 import UIKit
 import CoreData
 
 class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //  table view for the completed workouts
     @IBOutlet weak var workoutTableView: UITableView!
     @IBOutlet weak var exerciseTableView: UITableView!
     
+    //  array of all the completed workouts
     var completedWorkouts = [(Workout, Date, Double)]()
     
     var completedExercises = [ExerciseStats]()
     
+    
+    //  when the view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
+        //  set the background color
+        self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
+        //  customize the appearance of the table
         self.workoutTableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.workoutTableView!.layer.shadowColor = UIColor.black.cgColor
         self.workoutTableView!.layer.shadowRadius = 5
@@ -48,6 +55,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //CoreDataManager.cleanCoreData(entity: "CompletedWorkoutEntity")
         
+
         workoutTableView.delegate = self
         workoutTableView.dataSource = self
         workoutTableView.alwaysBounceVertical = false;
@@ -55,18 +63,28 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         exerciseTableView.delegate = self
         exerciseTableView.dataSource = self
         
+        //  get the table data from core data
         getTableData()
-        
-        print("hasdf")
+
     }
     
+    //  whenever the view appears (not just is loaded)
     override func viewWillAppear(_ animated: Bool) {
+        
+        //  set the view's title to be YouLift
         navigationItem.title = "YouLift"
+        
+        //  get the table data from core data
         getTableData()
+        
+        //  reload the data in the table
         workoutTableView.reloadData()
     }
     
+    //  get the table data from core data
     func getTableData(){
+        
+        //  fetch and sort all completed workouts
         completedWorkouts = CoreDataManager.fetchCompletedWorkouts()
         completedWorkouts = completedWorkouts.sorted(by: {$0.1 > $1.1})
         
@@ -109,6 +127,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseTableViewCell", for: indexPath) as? ExerciseTableViewCell else{
                 fatalError("Can't get cell of the right kind")
             }
+
             
             // Configure the cell...
             let exercise = completedExercises[indexPath.row]
@@ -118,14 +137,17 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    //  code to be run prior to segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         switch(segue.identifier ?? ""){
             
+        //  if seguing to a past workout
         case "ViewPastWorkout":
             
+            //  check that we have a valid sender/destination
             guard let destination = segue.destination as? StatsDetailViewController else{
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -138,6 +160,8 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 fatalError("The selected cell can't be found")
             }
             
+            
+            //  pass the relevant workout/date/duration data to the next view
             destination.workout = completedWorkouts[indexPath.row].0
             destination.date = completedWorkouts[indexPath.row].1
             destination.duration = completedWorkouts[indexPath.row].2
@@ -159,6 +183,9 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             destination.exerciseData = completedExercises[indexPath.row].data
             destination.name = completedExercises[indexPath.row].exercise.name
+            
+            //  set the current view's title to "Back" (temporary work around)
+            navigationItem.title = "Back"
             
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")
