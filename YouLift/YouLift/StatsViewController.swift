@@ -12,9 +12,11 @@ import CoreData
 class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var workoutTableView: UITableView!
-    //@IBOutlet weak var exerciseTableView: UITableView!
+    @IBOutlet weak var exerciseTableView: UITableView!
     
     var completedWorkouts = [(Workout, Date, Double)]()
+    
+    var completedExercises = [ExerciseStats]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +32,12 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.workoutTableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
         
         
-//        self.exerciseTableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        self.exerciseTableView!.layer.shadowColor = UIColor.black.cgColor
-//        self.exerciseTableView!.layer.shadowRadius = 5
-//        self.exerciseTableView!.layer.shadowOpacity = 0.3
-//        self.exerciseTableView!.layer.masksToBounds = false;
-//        self.exerciseTableView!.clipsToBounds = false;
+        self.exerciseTableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.exerciseTableView!.layer.shadowColor = UIColor.black.cgColor
+        self.exerciseTableView!.layer.shadowRadius = 5
+        self.exerciseTableView!.layer.shadowOpacity = 0.3
+        self.exerciseTableView!.layer.masksToBounds = false;
+        self.exerciseTableView!.clipsToBounds = false;
 
         
         // Uncomment the following line to preserve selection between presentations
@@ -50,11 +52,12 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         workoutTableView.dataSource = self
         workoutTableView.alwaysBounceVertical = false;
         
-        //exerciseTableView.delegate = self
-        //exerciseTableView.dataSource = self
+        exerciseTableView.delegate = self
+        exerciseTableView.dataSource = self
         
         getTableData()
         
+        print("hasdf")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +70,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         completedWorkouts = CoreDataManager.fetchCompletedWorkouts()
         completedWorkouts = completedWorkouts.sorted(by: {$0.1 > $1.1})
         
-        //fetch exercise data
+        completedExercises = CoreDataManager.fetchCompletedExercises()
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,40 +83,39 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return completedWorkouts.count
-
-        
-//        if tableView == self.workoutTableView {
-//            return completedWorkouts.count
-//        }else{
-//            //return defaultWorkouts.count
-//            return 1
-//        }
+        if tableView == self.workoutTableView {
+            return completedWorkouts.count
+        }else{
+            return completedExercises.count
+        }
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //if tableView == self.workoutTableView {
+        if tableView == self.workoutTableView {
             
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
-            fatalError("Can't get cell of the right kind")
-        }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutTableViewCell", for: indexPath) as? WorkoutTableViewCell else{
+                fatalError("Can't get cell of the right kind")
+            }
                         
-        // Configure the cell...
-        let workout = completedWorkouts[indexPath.row].0
-        let date = completedWorkouts[indexPath.row].1
-        cell.configureDateCell(workout: workout, date: date)
+            // Configure the cell...
+            let workout = completedWorkouts[indexPath.row].0
+            let date = completedWorkouts[indexPath.row].1
+            cell.configureDateCell(workout: workout, date: date)
             
-        return cell
-        //}
+            return cell
+        }
+        else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExerciseTableViewCell", for: indexPath) as? ExerciseTableViewCell else{
+                fatalError("Can't get cell of the right kind")
+            }
             
-//        else{
-//            
-//            print("w/e")
-//            return UITableViewCell()
-//            
-//        }
+            // Configure the cell...
+            let exercise = completedExercises[indexPath.row]
+            cell.configureCell(exercise: exercise.exercise)
+            
+            return cell
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -141,7 +143,21 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             destination.duration = completedWorkouts[indexPath.row].2
             navigationItem.title = "Back"
             
+        case "ViewExercise":
             
+            guard let destination = segue.destination as? GraphViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let cell = sender as? ExerciseTableViewCell else{
+                fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let indexPath = exerciseTableView.indexPath(for: cell) else{
+                fatalError("The selected cell can't be found")
+            }
+            
+            destination.exerciseData = completedExercises[indexPath.row].data
             
         default:
             fatalError("Unexpeced segue identifier: \(segue.identifier)")

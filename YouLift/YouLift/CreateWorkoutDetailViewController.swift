@@ -5,7 +5,11 @@
 //  Created by rbuzby on 5/1/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
-
+//  This file is the view controller for the detail view in Create. This view is reached either from the
+//  SelectExerciseTableViewController or by selecting a cell in CreateWorkoutTableViewController to edit it
+//
+//  By hitting save exercise on this view, the data from this file gets sent back to CreateWorkoutTableViewController and
+//  the saved exercise is shown in the table
 
 import UIKit
 
@@ -44,12 +48,9 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     var changeIndex: Int = -1
     
     @IBAction func addSet(_ sender: Any) {
-        
         sets += 1
         overallSetsArray.append((0,0))
-        
         tableView.reloadData()
-        
     }
     
     @IBAction func removeSet(_ sender: Any) {
@@ -108,8 +109,8 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         tableView.tableFooterView = UIView()
         tableView.alwaysBounceVertical = false;
 
-        
-        // Do any additional setup after loading the view.
+        // switch statement handles the cases when a premade workout was selected in the previous screen, or a custom workout
+        // was selected, or if an exercise was selected in the main screen for editing
         switch(type){
         case .new:
             overallSetsArray.append((0,0))
@@ -141,6 +142,7 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
     }
 
+    //table functions
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -170,21 +172,9 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
         return cell
     }
     
-    
-//    @IBAction func cancel(_ sender: UIBarButtonItem) {
-//        if presentingViewController is UINavigationController{
-//            dismiss(animated: true, completion: nil)
-//        }else if let owningNavController = navigationController{
-//            owningNavController.popViewController(animated: true)
-//        }else{
-//            fatalError("View is not contained by a navigation controller")
-//        }
-//    }
-    
     func getSetsData(_ tableView: UITableView) -> [(Int, Int)]{
         let cells = self.tableView.visibleCells as! Array<SetTableViewCell>
         
-        print(cells)
         var newSetsArray = [(Int, Int)]()
         
         for cell in cells {
@@ -261,7 +251,6 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch(segue.identifier ?? ""){
             
@@ -310,7 +299,7 @@ class CreateWorkoutDetailViewController: UIViewController, UITableViewDelegate, 
     
 }
 
-
+//enum for handeling different types of exercises
 enum DetailType{
     case new
     case update(String, String, Int, [(Int, Int)], Int)

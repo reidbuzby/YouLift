@@ -5,6 +5,12 @@
 //  Created by rbuzby on 5/8/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
+//  This file is the view controller for the view shown when Add Exercise is pressed on the main screen of Create
+//
+//  The screen lets the user choose between a table of premade exercises (either hardcoded or created by the user before)
+//  or they can create a new custom exercise
+//
+//  The file sends data to CreateWorkoutDetailViewController on the exercise the user has selected
 
 import UIKit
 
@@ -21,18 +27,16 @@ class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, 
         super.viewDidLoad()
         
         navigationItem.title = "YouLift"
-
-        // Do any additional setup after loading the view.
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        //Uncomment following line when fetchExercises() is working
         exercises = CoreDataManager.fetchExercises()
         exercises = exercises.sorted(by: {$0.name.uppercased() < $1.name.uppercased()})
         
         exercises.append(Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]))
         
+        //coloring
         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -60,6 +64,7 @@ class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, 
     
     @IBOutlet weak var tableView: UITableView!
     
+    //table view functions
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -80,12 +85,7 @@ class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, 
         return cell
     }
     
-    @IBAction func goBack(_ sender: Any) {
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
-        
-        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true)
-    }
-    
+    //handels data on selected exercise
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if existing {
             let exercise = exercises[indexPath.row]
@@ -101,14 +101,11 @@ class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, 
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
         switch(segue.identifier ?? ""){
             
-        case "SelectDefault":
+        case "SelectDefault"://when a default exercise is chose
             guard let destination = segue.destination as? CreateWorkoutDetailViewController else{
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -125,8 +122,7 @@ class SelectExerciseTableViewController: UIViewController, UITableViewDelegate, 
             
             destination.type = .deflt(exercise.name, exercise.description, exercise.sets, exercise.setsArray)
         
-        case "AddCustom":
-            //do nothing
+        case "AddCustom"://when Add Custom Exercise is pressed
             
             if existing {
                 guard let destination = segue.destination as? CreateWorkoutDetailViewController else{

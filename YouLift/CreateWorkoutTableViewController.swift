@@ -5,6 +5,12 @@
 //  Created by rbuzby on 5/1/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
+//  This file is the view controller for the first view seen in the create tab
+//
+//  This controller sends data to SelectExerciseTableViewController and CreateWorkoutDetailViewController
+//  and also recieves data from CreateWorkoutDetailViewController
+//
+//
 
 import UIKit
 import CoreData
@@ -22,6 +28,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     var editButton:UIBarButtonItem?
     var doneButton:UIBarButtonItem?
     
+    //reloads the table when view is navigated back to
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = "YouLift"
         tableView.reloadData()
@@ -41,6 +48,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         
         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
+        //coloring for the table
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.tableView!.layer.shadowColor = UIColor.black.cgColor
         self.tableView!.layer.shadowRadius = 5
@@ -49,7 +57,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         self.tableView!.clipsToBounds = true;
         self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
         
-        
+        //coloring for buttons
         addButton.layer.cornerRadius = 4
         addButton.layer.borderWidth = 1
         addButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
@@ -66,7 +74,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         saveButton.layer.shadowRadius = 5
         saveButton.layer.shadowOpacity = 0.3
         
-
+        //Default exercises
         var exercise1 = Exercise(name:"Squat", description: "Stand up straight with feet shoulders width apart holding desired weight, and slowly bend knees down to a 90 degree angle while keeping your back straight, and then slowly stand up back to the starting position.", sets:3, setsArray:[(100, 2), (100, 2), (100, 2)])
         var exercise2 = Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])
         var exercise3 = Exercise(name: "Deadlift", description: "Grab the weight on the floor with an overhand grip and pull it up to your thighs while keeping your lower back straight, lower weight back to floor and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])
@@ -77,7 +85,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         var exercise8 = Exercise(name: "Ab Crunch", description: "Sit in the ab crunch machine and place your feet under the pads and grab the top handles. Lift your legs and crunch your torso in, hold it for a second and slowly return to the starting position.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])
         var exercise9 = Exercise(name: "Floor Press", description: "Lie on the floor on your back and hold two dumbells on your chest, explosively press teh dumbells up and then slowly lower them.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])
 
-        
+        //Storing these default exercises
         CoreDataManager.storeExercise(exercise: exercise1)
         CoreDataManager.storeExercise(exercise: exercise2)
         CoreDataManager.storeExercise(exercise: exercise3)
@@ -88,36 +96,24 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         CoreDataManager.storeExercise(exercise: exercise8)
         CoreDataManager.storeExercise(exercise: exercise9)
         
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        //self.navigationItem.leftBarButtonItem = self.editButtonItem
-        
         tableView.dataSource = self
         tableView.delegate = self
         workoutNameField.delegate = self
         
         tableView.alwaysBounceVertical = false;
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateWorkoutTableViewController.hideKeyboard)))
-        
         tableView.reloadData()
         
         tableView.tableFooterView = UIView()
         
-//        CoreDataManager.storeExercise(exercise: Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)]))
-        
     }
     
+    //handels the keyboard
     func hideKeyboard() {
         workoutNameField.resignFirstResponder()
     }
     
-    
-    // MARK: - Table view data source
-    
+    //table view functions
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -139,62 +135,22 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         return cell
     }
     
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    
-    // Override to support editing the table view.
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            // Delete the row from the data source
-//            //tableView.deleteRows(at: [indexPath], with: .fade)
-//            exercises.remove(at: indexPath.row)
-//            tableView.reloadData()
-//        } else if editingStyle == .insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }
-//    }
-    
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
+
     // MARK: - Navigation
     
-    // prepare to go to the detail view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
         switch(segue.identifier ?? ""){
-        case "AddExercise":
+        case "AddExercise"://when Add Exercise is pressed:
             navigationItem.title = "Back"
             //do nothing
             break
             
-        case "Done":
+        case "Done"://When Save Exercise is pressed
             //do nothing
             break
             
-        case "EditExercise":
+        case "EditExercise"://When an exercise is selected
             guard let destination = segue.destination as? CreateWorkoutDetailViewController else{
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -211,6 +167,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
             
             destination.type = .update(exercise.name, exercise.description, exercise.sets, exercise.setsArray, indexPath.row)
             
+            //pass exercise data to the destination view controller
             destination.callback = { (exerciseName, exerciseDescription, sets, setsArray) in
                 exercise.name = exerciseName
                 exercise.description = exerciseDescription
@@ -224,18 +181,6 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         }
     }
     
-    @IBAction func unwindFromEdit(sender: UIStoryboardSegue){
-        
-        if let sourceViewController = sender.source as? CreateWorkoutDetailViewController {
-            
-            let exercise = sourceViewController.exercise
-            
-            exercises.append(exercise)
-        }
-        tableView.reloadData()
-        
-        
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         workoutNameField.resignFirstResponder()
@@ -246,46 +191,12 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     
     
     @IBAction func saveWorkout(_ sender: Any) {
-    
-//        if exercises.count > 0 {
-//            
-//            let alert = UIAlertController(title: "Are you sure you would like to save this Workout?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-//            
-//            alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
-//                var workoutName: String?
-//                
-//                if self.workoutNameField.text == nil {
-//                workoutName = "New Workout"
-//                }
-//                else {
-//                workoutName = self.workoutNameField.text
-//                }
-//                
-//                let newWorkout = Workout(name: workoutName!, exercises: self.exercises)
-//                
-//                CoreDataManager.storeWorkoutTemplate(workout: newWorkout)
-//                
-//                self.exercises.removeAll()
-//                
-//                self.performSegue(withIdentifier: "Done", sender: self)
-//                
-//                }))
-//            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
-//            
-//            self.present(alert, animated: true, completion: nil)
-//        }
         let workout = Workout(name: workoutNameField.text!, exercises: exercises)
         AlertManager.saveAlert(sender: self, workout: workout)
     }
     
     
-    @IBAction func deleteExercise(_ sender: Any) {
-        exercises.remove(at: exercises.count-1)
-        tableView.reloadData()
-    }
-    
-    
-    
+    //editting functionality for the table
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
@@ -308,7 +219,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
         
-        var exerciseToMove = exercises[fromIndexPath.row]
+        let exerciseToMove = exercises[fromIndexPath.row]
         exercises.remove(at: fromIndexPath.row)
         exercises.insert(exerciseToMove, at: toIndexPath.row)
     }
