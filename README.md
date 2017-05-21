@@ -18,4 +18,4 @@ Next open YouLift in XCode. Select the blue YouLift file and navigate to the Gen
 
 The first build after importing this library will take a few minutes, but be patient it will work eventually.
 
-
+(Simply adding this file to our GitHub repo would not work. We tried many ways to automate this process with no luck, hopefully manually downloading and importing wont be too difficult.)
