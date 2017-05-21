@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		A319F4CB1ED108CB002DAF94 /* defaultWorkouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A319F4CA1ED108CB002DAF94 /* defaultWorkouts.swift */; };
 		A36E6CE41EB96BD5006DF92B /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E6CE31EB96BD5006DF92B /* Protocol.swift */; };
-		A3999A261ED1E700001A5432 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3999A1F1ED1E670001A5432 /* Charts.framework */; };
-		A3999A271ED1E700001A5432 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3999A1F1ED1E670001A5432 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A3DF38FB1EC0EA1C00CC528E /* YouLift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38F91EC0EA1C00CC528E /* YouLift.xcdatamodeld */; };
 		A3DF39021EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38FC1EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift */; };
 		A3DF39031EC0EAE200CC528E /* ExerciseEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38FD1EC0EAE200CC528E /* ExerciseEntity+CoreDataProperties.swift */; };
@@ -33,6 +31,8 @@
 		CD6A4B2E1ED0ACE2008244BF /* ExerciseStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A4B2D1ED0ACE2008244BF /* ExerciseStats.swift */; };
 		CD6C05901EBA64C800FA9538 /* CreateWorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C058F1EBA64C800FA9538 /* CreateWorkoutTableViewController.swift */; };
 		CD6C05921EBA653900FA9538 /* CreateWorkoutDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C05911EBA653900FA9538 /* CreateWorkoutDetailViewController.swift */; };
+		CDC5C4281ECA46FA00AA5F84 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDC5C4251ECA46AE00AA5F84 /* Charts.framework */; };
+		CDC5C4291ECA46FA00AA5F84 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CDC5C4251ECA46AE00AA5F84 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CDF5B0771EB1041C00750A1F /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5B0761EB1041C00750A1F /* WorkoutTableViewCell.swift */; };
 		CDF5B0791EB1058000750A1F /* WorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5B0781EB1058000750A1F /* WorkoutTableViewController.swift */; };
 		CDF5B07D1EB17B4F00750A1F /* WorkoutDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF5B07C1EB17B4F00750A1F /* WorkoutDetailViewController.swift */; };
@@ -43,23 +43,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A3999A1E1ED1E670001A5432 /* PBXContainerItemProxy */ = {
+		CDC5C4241ECA46AE00AA5F84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A3999A191ED1E670001A5432 /* Charts.xcodeproj */;
+			containerPortal = CDC5C41F1ECA46AE00AA5F84 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06165F241D8110E600722320;
 			remoteInfo = Charts;
 		};
-		A3999A201ED1E670001A5432 /* PBXContainerItemProxy */ = {
+		CDC5C4261ECA46AE00AA5F84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A3999A191ED1E670001A5432 /* Charts.xcodeproj */;
+			containerPortal = CDC5C41F1ECA46AE00AA5F84 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06165F2E1D8110E600722320;
 			remoteInfo = ChartsTests;
 		};
-		A3999A281ED1E700001A5432 /* PBXContainerItemProxy */ = {
+		CDC5C42A1ECA46FA00AA5F84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A3999A191ED1E670001A5432 /* Charts.xcodeproj */;
+			containerPortal = CDC5C41F1ECA46AE00AA5F84 /* Charts.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 06165F231D8110E600722320;
 			remoteInfo = Charts;
@@ -73,7 +73,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A3999A271ED1E700001A5432 /* Charts.framework in Embed Frameworks */,
+				CDC5C4291ECA46FA00AA5F84 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,7 +83,6 @@
 /* Begin PBXFileReference section */
 		A319F4CA1ED108CB002DAF94 /* defaultWorkouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defaultWorkouts.swift; sourceTree = "<group>"; };
 		A36E6CE31EB96BD5006DF92B /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
-		A3999A191ED1E670001A5432 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-master/Charts.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		A3DF38FA1EC0EA1C00CC528E /* YouLift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YouLift.xcdatamodel; sourceTree = "<group>"; };
 		A3DF38FC1EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExerciseEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A3DF38FD1EC0EAE200CC528E /* ExerciseEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ExerciseEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -108,6 +107,7 @@
 		CD6A4B2D1ED0ACE2008244BF /* ExerciseStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseStats.swift; sourceTree = "<group>"; };
 		CD6C058F1EBA64C800FA9538 /* CreateWorkoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateWorkoutTableViewController.swift; path = ../CreateWorkoutTableViewController.swift; sourceTree = "<group>"; };
 		CD6C05911EBA653900FA9538 /* CreateWorkoutDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateWorkoutDetailViewController.swift; sourceTree = "<group>"; };
+		CDC5C41F1ECA46AE00AA5F84 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		CDF5B0761EB1041C00750A1F /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		CDF5B0781EB1058000750A1F /* WorkoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewController.swift; sourceTree = "<group>"; };
 		CDF5B07C1EB17B4F00750A1F /* WorkoutDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDetailViewController.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3999A261ED1E700001A5432 /* Charts.framework in Frameworks */,
+				CDC5C4281ECA46FA00AA5F84 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +132,9 @@
 		A319F4C81ED10656002DAF94 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				CD4BF91A1EAFC37B0054E940 /* YouLift */,
+				CD4BF9191EAFC37B0054E940 /* Products */,
+				CDC5C41F1ECA46AE00AA5F84 /* Charts.xcodeproj */,
 				A3E6C1E91EC36077009116FE /* AlertManager.swift */,
 				A3DF39081EC0EAF100CC528E /* CoreDataManager.swift */,
 			);
@@ -149,15 +152,6 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
-		A3999A1A1ED1E670001A5432 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A3999A1F1ED1E670001A5432 /* Charts.framework */,
-				A3999A211ED1E670001A5432 /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		A3B22DE41ECF5D5A0081FB81 /* Core Data Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +161,8 @@
 				A3DF38FF1EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataProperties.swift */,
 				A3DF39001EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataClass.swift */,
 				A3DF39011EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataProperties.swift */,
+				A3DF39081EC0EAF100CC528E /* CoreDataManager.swift */,
+				CD6A4B2D1ED0ACE2008244BF /* ExerciseStats.swift */,
 				A3DF38F91EC0EA1C00CC528E /* YouLift.xcdatamodeld */,
 			);
 			name = "Core Data Entities";
@@ -196,8 +192,8 @@
 			children = (
 				CDF5B0821EB1931500750A1F /* ExerciseDetailViewController.swift */,
 				CD6C05911EBA653900FA9538 /* CreateWorkoutDetailViewController.swift */,
-				CDFD6C6C1EC16625000EFF3B /* SelectExerciseTableViewController.swift */,
 				CD6A4B2B1ED099EA008244BF /* GraphViewController.swift */,
+				CDFD6C6C1EC16625000EFF3B /* SelectExerciseTableViewController.swift */,
 			);
 			name = "Exercise VCs";
 			sourceTree = "<group>";
@@ -207,7 +203,6 @@
 			children = (
 				CD4BF9331EB02B950054E940 /* Workout.swift */,
 				CD4BF9351EB02D510054E940 /* Exercise.swift */,
-				CD6A4B2D1ED0ACE2008244BF /* ExerciseStats.swift */,
 				A319F4CA1ED108CB002DAF94 /* defaultWorkouts.swift */,
 			);
 			name = Objects;
@@ -245,10 +240,18 @@
 			path = YouLift;
 			sourceTree = "<group>";
 		};
+		CDC5C4201ECA46AE00AA5F84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CDC5C4251ECA46AE00AA5F84 /* Charts.framework */,
+				CDC5C4271ECA46AE00AA5F84 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CDF5B0751EB1030B00750A1F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A3999A191ED1E670001A5432 /* Charts.xcodeproj */,
 				A36E6CE31EB96BD5006DF92B /* Protocol.swift */,
 				CD4BF91B1EAFC37B0054E940 /* AppDelegate.swift */,
 				CD4BF9221EAFC37B0054E940 /* Assets.xcassets */,
@@ -273,7 +276,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				A3999A291ED1E700001A5432 /* PBXTargetDependency */,
+				CDC5C42B1ECA46FA00AA5F84 /* PBXTargetDependency */,
 			);
 			name = YouLift;
 			productName = YouLift;
@@ -311,8 +314,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = A3999A1A1ED1E670001A5432 /* Products */;
-					ProjectRef = A3999A191ED1E670001A5432 /* Charts.xcodeproj */;
+					ProductGroup = CDC5C4201ECA46AE00AA5F84 /* Products */;
+					ProjectRef = CDC5C41F1ECA46AE00AA5F84 /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -323,18 +326,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A3999A1F1ED1E670001A5432 /* Charts.framework */ = {
+		CDC5C4251ECA46AE00AA5F84 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = A3999A1E1ED1E670001A5432 /* PBXContainerItemProxy */;
+			remoteRef = CDC5C4241ECA46AE00AA5F84 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A3999A211ED1E670001A5432 /* ChartsTests.xctest */ = {
+		CDC5C4271ECA46AE00AA5F84 /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = A3999A201ED1E670001A5432 /* PBXContainerItemProxy */;
+			remoteRef = CDC5C4261ECA46AE00AA5F84 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -391,10 +394,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A3999A291ED1E700001A5432 /* PBXTargetDependency */ = {
+		CDC5C42B1ECA46FA00AA5F84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Charts;
-			targetProxy = A3999A281ED1E700001A5432 /* PBXContainerItemProxy */;
+			targetProxy = CDC5C42A1ECA46FA00AA5F84 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
