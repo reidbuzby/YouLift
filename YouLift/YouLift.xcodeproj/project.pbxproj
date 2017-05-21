@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A319F4CB1ED108CB002DAF94 /* defaultWorkouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A319F4CA1ED108CB002DAF94 /* defaultWorkouts.swift */; };
+		A36BD8981ED1EAB6005D3BB2 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36BD8941ED1E98F005D3BB2 /* Charts.framework */; };
+		A36BD8991ED1EAB6005D3BB2 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A36BD8941ED1E98F005D3BB2 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A36E6CE41EB96BD5006DF92B /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E6CE31EB96BD5006DF92B /* Protocol.swift */; };
 		A3DF38FB1EC0EA1C00CC528E /* YouLift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38F91EC0EA1C00CC528E /* YouLift.xcdatamodeld */; };
 		A3DF39021EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38FC1EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift */; };
@@ -55,6 +57,13 @@
 			remoteGlobalIDString = 06165F2E1D8110E600722320;
 			remoteInfo = ChartsTests;
 		};
+		A36BD89A1ED1EAB6005D3BB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A36BD88E1ED1E98F005D3BB2 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 06165F231D8110E600722320;
+			remoteInfo = Charts;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,6 +73,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A36BD8991ED1EAB6005D3BB2 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36BD8981ED1EAB6005D3BB2 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +273,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A36BD89B1ED1EAB6005D3BB2 /* PBXTargetDependency */,
 			);
 			name = YouLift;
 			productName = YouLift;
@@ -377,6 +389,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A36BD89B1ED1EAB6005D3BB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = A36BD89A1ED1EAB6005D3BB2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CD4BF91F1EAFC37B0054E940 /* Main.storyboard */ = {
