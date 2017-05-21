@@ -288,6 +288,78 @@ class CoreDataManager: NSObject {
         return workouts
     }
     
+    class func fetchCompletedExercises() -> [ExerciseStats] {
+        let workouts = fetchCompletedWorkouts()
+        var exercises = [ExerciseStats]()
+        var dup = -1
+        
+        for workout in workouts {
+            let exrcs = workout.0.exerciseArray
+            for e in exrcs {
+                if exercises.count > 0 {
+                    dup = -1
+                    for i in 0 ..< exercises.count {
+                        if exercises[i].exercise.name == e.name {
+                            dup = i
+                            break
+                        }
+                    }
+                    if dup != -1 {
+                        var avgWeight = 0.0
+                        var avgReps = 0.0
+                        for weight in e.setsArray {
+                            avgWeight = avgWeight + Double(weight.0)
+                        }
+                        for reps in e.setsArray {
+                            avgReps = avgReps +  Double(reps.1)
+                        }
+                        avgWeight = avgWeight / Double(e.sets)
+                        avgReps = avgReps / Double(e.sets)
+                        
+                        let onerepmax = avgWeight/(1.0278 - (0.0278 * Double(avgReps)))
+                        
+                        exercises[dup].data.append((onerepmax, workout.1))
+                    }
+                    else {
+                        var avgWeight = 0.0
+                        var avgReps = 0.0
+                        for weight in e.setsArray {
+                            avgWeight = avgWeight + Double(weight.0)
+                        }
+                        for reps in e.setsArray {
+                            avgReps = avgReps +  Double(reps.1)
+                        }
+                        avgWeight = avgWeight / Double(e.sets)
+                        avgReps = avgReps / Double(e.sets)
+                        
+                        let onerepmax = avgWeight/(1.0278 - (0.0278 * Double(avgReps)))
+                        
+                        exercises.append(ExerciseStats(exercise: e, data: [(onerepmax, workout.1)]))
+                    }
+                    
+                }
+                else {
+                    var avgWeight = 0.0
+                    var avgReps = 0.0
+                    for weight in e.setsArray {
+                        avgWeight = avgWeight + Double(weight.0)
+                    }
+                    for reps in e.setsArray {
+                        avgReps = avgReps +  Double(reps.1)
+                    }
+                    avgWeight = avgWeight / Double(e.sets)
+                    avgReps = avgReps / Double(e.sets)
+                    
+                    let onerepmax = avgWeight/(1.0278 - (0.0278 * Double(avgReps)))
+                    
+                    exercises.append(ExerciseStats(exercise: e, data: [(onerepmax, workout.1)]))
+                }
+            }
+        }
+        
+        return exercises
+    }
+    
     //  fetch all workout templates from core data
     class func fetchWorkoutTemplates() -> [(Workout, Bool)] {
         //  return an array of workouts, each with a boolean signifying if it's custom or not

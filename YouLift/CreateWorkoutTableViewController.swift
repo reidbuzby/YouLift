@@ -5,6 +5,12 @@
 //  Created by rbuzby on 5/1/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
+//  This file is the view controller for the first view seen in the create tab
+//
+//  This controller sends data to SelectExerciseTableViewController and CreateWorkoutDetailViewController
+//  and also recieves data from CreateWorkoutDetailViewController
+//
+//
 
 import UIKit
 import CoreData
@@ -64,6 +70,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         self.tableView!.clipsToBounds = true;
         self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
         
+
         //  customize the appearance of the add button
         addButton.layer.cornerRadius = 4
         addButton.layer.borderWidth = 1
@@ -81,7 +88,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         saveButton.layer.shadowColor = UIColor.black.cgColor
         saveButton.layer.shadowRadius = 5
         saveButton.layer.shadowOpacity = 0.3
-        
+     
 
         //var exercise1 = Exercise(name:"Squat", description: "Stand up straight with feet shoulders width apart holding desired weight, and slowly bend knees down to a 90 degree angle while keeping your back straight, and then slowly stand up back to the starting position.", sets:3, setsArray:[(100, 2), (100, 2), (100, 2)])
         //var exercise2 = Exercise(name: "Leg Press", description: "Place your legs on the platform and push them forward until they fully extend, then slow bring your legs back to a 90 degree angle and repeat.", sets: 3, setsArray: [(100, 3), (100, 3), (100, 3)])
@@ -103,6 +110,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         //CoreDataManager.storeExercise(exercise: exercise7)
         //CoreDataManager.storeExercise(exercise: exercise8)
         //CoreDataManager.storeExercise(exercise: exercise9)
+
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -110,6 +118,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         
         tableView.alwaysBounceVertical = false;
         
+
         //  enable keyboard dismissal by tapping elsewhere on the screen
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateWorkoutTableViewController.hideKeyboard)))
         
@@ -118,15 +127,15 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         
     }
     
+
+
     
     //  function to hide the keyboard
     func hideKeyboard() {
         workoutNameField.resignFirstResponder()
     }
     
-    
-    // MARK: - Table view data source
-    
+    //table view functions
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -148,25 +157,24 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         return cell
     }
     
+
     
     // MARK: - Navigation
     
     //  code to be run prior to segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
         switch(segue.identifier ?? ""){
-        case "AddExercise":
+        case "AddExercise"://when Add Exercise is pressed:
             navigationItem.title = "Back"
             //do nothing
             break
             
-        case "Done":
+        case "Done"://When Save Exercise is pressed
             //do nothing
             break
             
-        case "EditExercise":
+        case "EditExercise"://When an exercise is selected
             guard let destination = segue.destination as? CreateWorkoutDetailViewController else{
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -183,6 +191,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
             
             destination.type = .update(exercise.name, exercise.description, exercise.sets, exercise.setsArray, indexPath.row)
             
+            //pass exercise data to the destination view controller
             destination.callback = { (exerciseName, exerciseDescription, sets, setsArray) in
                 exercise.name = exerciseName
                 exercise.description = exerciseDescription
@@ -196,18 +205,6 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         }
     }
     
-    @IBAction func unwindFromEdit(sender: UIStoryboardSegue){
-        
-        if let sourceViewController = sender.source as? CreateWorkoutDetailViewController {
-            
-            let exercise = sourceViewController.exercise
-            
-            exercises.append(exercise)
-        }
-        tableView.reloadData()
-        
-        
-    }
     
     //  function to dismiss the keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -225,6 +222,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
         AlertManager.saveAlert(sender: self, workout: workout, custom: true)
     }
     
+
     //  function to delete an exercise
     @IBAction func deleteExercise(_ sender: Any) {
         //  remove the exercise from the exercise list; reload the table
@@ -255,6 +253,7 @@ class CreateWorkoutTableViewController: UIViewController, UITableViewDataSource,
     
     //  when rearranging rows, update both the table and the list of exercises
     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
+
         var exerciseToMove = exercises[fromIndexPath.row]
         exercises.remove(at: fromIndexPath.row)
         exercises.insert(exerciseToMove, at: toIndexPath.row)
