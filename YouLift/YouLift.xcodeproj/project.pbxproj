@@ -132,9 +132,6 @@
 		A319F4C81ED10656002DAF94 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				CD4BF91A1EAFC37B0054E940 /* YouLift */,
-				CD4BF9191EAFC37B0054E940 /* Products */,
-				CDC5C41F1ECA46AE00AA5F84 /* Charts.xcodeproj */,
 				A3E6C1E91EC36077009116FE /* AlertManager.swift */,
 				A3DF39081EC0EAF100CC528E /* CoreDataManager.swift */,
 			);
@@ -161,8 +158,6 @@
 				A3DF38FF1EC0EAE200CC528E /* CompletedWorkoutEntity+CoreDataProperties.swift */,
 				A3DF39001EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataClass.swift */,
 				A3DF39011EC0EAE200CC528E /* WorkoutTemplateEntity+CoreDataProperties.swift */,
-				A3DF39081EC0EAF100CC528E /* CoreDataManager.swift */,
-				CD6A4B2D1ED0ACE2008244BF /* ExerciseStats.swift */,
 				A3DF38F91EC0EA1C00CC528E /* YouLift.xcdatamodeld */,
 			);
 			name = "Core Data Entities";
@@ -173,6 +168,7 @@
 			children = (
 				A3DF390A1EC135EA00CC528E /* StatsViewController.swift */,
 				A3DF390C1EC1429400CC528E /* StatsDetailViewController.swift */,
+				CD6A4B2B1ED099EA008244BF /* GraphViewController.swift */,
 			);
 			name = Stats;
 			sourceTree = "<group>";
@@ -192,7 +188,6 @@
 			children = (
 				CDF5B0821EB1931500750A1F /* ExerciseDetailViewController.swift */,
 				CD6C05911EBA653900FA9538 /* CreateWorkoutDetailViewController.swift */,
-				CD6A4B2B1ED099EA008244BF /* GraphViewController.swift */,
 				CDFD6C6C1EC16625000EFF3B /* SelectExerciseTableViewController.swift */,
 			);
 			name = "Exercise VCs";
@@ -203,6 +198,7 @@
 			children = (
 				CD4BF9331EB02B950054E940 /* Workout.swift */,
 				CD4BF9351EB02D510054E940 /* Exercise.swift */,
+				CD6A4B2D1ED0ACE2008244BF /* ExerciseStats.swift */,
 				A319F4CA1ED108CB002DAF94 /* defaultWorkouts.swift */,
 			);
 			name = Objects;
@@ -252,6 +248,7 @@
 		CDF5B0751EB1030B00750A1F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CDC5C41F1ECA46AE00AA5F84 /* Charts.xcodeproj */,
 				A36E6CE31EB96BD5006DF92B /* Protocol.swift */,
 				CD4BF91B1EAFC37B0054E940 /* AppDelegate.swift */,
 				CD4BF9221EAFC37B0054E940 /* Assets.xcassets */,

@@ -44,7 +44,8 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.exerciseTableView!.layer.shadowRadius = 5
         self.exerciseTableView!.layer.shadowOpacity = 0.3
         self.exerciseTableView!.layer.masksToBounds = false;
-        self.exerciseTableView!.clipsToBounds = false;
+        self.exerciseTableView!.clipsToBounds = true;
+        self.exerciseTableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
 
         
         // Uncomment the following line to preserve selection between presentations

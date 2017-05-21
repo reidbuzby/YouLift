@@ -288,13 +288,17 @@ class CoreDataManager: NSObject {
         return workouts
     }
     
+    //  function to fetch data on all completed exercises
     class func fetchCompletedExercises() -> [ExerciseStats] {
         let workouts = fetchCompletedWorkouts()
         var exercises = [ExerciseStats]()
         var dup = -1
         
+        //  cycle through each completed workout
         for workout in workouts {
             let exrcs = workout.0.exerciseArray
+            
+            //  cycle through each exercise in that workout, parse the weight/reps data, and add it to the relevant exercise stats object
             for e in exrcs {
                 if exercises.count > 0 {
                     dup = -1
@@ -357,6 +361,7 @@ class CoreDataManager: NSObject {
             }
         }
         
+        //  return the exercise statistics on all exercises
         return exercises
     }
     

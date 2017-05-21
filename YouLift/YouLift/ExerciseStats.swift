@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+//  class for storing all the completed data for an exercise
 class ExerciseStats {
     
     var exercise: Exercise
