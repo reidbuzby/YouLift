@@ -27,6 +27,7 @@
 		CD4BF9261EAFC37B0054E940 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4BF9241EAFC37B0054E940 /* LaunchScreen.storyboard */; };
 		CD4BF9341EB02B950054E940 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF9331EB02B950054E940 /* Workout.swift */; };
 		CD4BF9361EB02D510054E940 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BF9351EB02D510054E940 /* Exercise.swift */; };
+		CD4C06E31ED1E5250027306D /* Charts-master in Resources */ = {isa = PBXBuildFile; fileRef = CD4C06E21ED1E5250027306D /* Charts-master */; };
 		CD6A4B2C1ED099EA008244BF /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A4B2B1ED099EA008244BF /* GraphViewController.swift */; };
 		CD6A4B2E1ED0ACE2008244BF /* ExerciseStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A4B2D1ED0ACE2008244BF /* ExerciseStats.swift */; };
 		CD6C05901EBA64C800FA9538 /* CreateWorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C058F1EBA64C800FA9538 /* CreateWorkoutTableViewController.swift */; };
@@ -94,6 +95,7 @@
 		CD4BF9271EAFC37B0054E940 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD4BF9331EB02B950054E940 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		CD4BF9351EB02D510054E940 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		CD4C06E21ED1E5250027306D /* Charts-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Charts-master"; path = "../../Charts-master"; sourceTree = "<group>"; };
 		CD6A4B2B1ED099EA008244BF /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		CD6A4B2D1ED0ACE2008244BF /* ExerciseStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseStats.swift; sourceTree = "<group>"; };
 		CD6C058F1EBA64C800FA9538 /* CreateWorkoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateWorkoutTableViewController.swift; path = ../CreateWorkoutTableViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				CD4BF91A1EAFC37B0054E940 /* YouLift */,
+				CD4C06E21ED1E5250027306D /* Charts-master */,
 				CD4BF9191EAFC37B0054E940 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -232,6 +235,15 @@
 				CD4BF91F1EAFC37B0054E940 /* Main.storyboard */,
 			);
 			path = YouLift;
+			sourceTree = "<group>";
+		};
+		CD4C06DA1ED1E3DA0027306D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD4C06DF1ED1E3DA0027306D /* Charts.framework */,
+				CD4C06E11ED1E3DA0027306D /* ChartsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		CDF5B0751EB1030B00750A1F /* Supporting Files */ = {
@@ -335,6 +347,7 @@
 				CD4BF9261EAFC37B0054E940 /* LaunchScreen.storyboard in Resources */,
 				CD4BF9231EAFC37B0054E940 /* Assets.xcassets in Resources */,
 				CD4BF9211EAFC37B0054E940 /* Main.storyboard in Resources */,
+				CD4C06E31ED1E5250027306D /* Charts-master in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
