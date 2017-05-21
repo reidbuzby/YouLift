@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A319F4CB1ED108CB002DAF94 /* defaultWorkouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A319F4CA1ED108CB002DAF94 /* defaultWorkouts.swift */; };
+		A36BD8881ED1E84D005D3BB2 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3999A1F1ED1E670001A5432 /* Charts.framework */; };
+		A36BD8891ED1E84D005D3BB2 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3999A1F1ED1E670001A5432 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A36E6CE41EB96BD5006DF92B /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E6CE31EB96BD5006DF92B /* Protocol.swift */; };
-		A3999A261ED1E700001A5432 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3999A1F1ED1E670001A5432 /* Charts.framework */; };
-		A3999A271ED1E700001A5432 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3999A1F1ED1E670001A5432 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A3DF38FB1EC0EA1C00CC528E /* YouLift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38F91EC0EA1C00CC528E /* YouLift.xcdatamodeld */; };
 		A3DF39021EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38FC1EC0EAE200CC528E /* ExerciseEntity+CoreDataClass.swift */; };
 		A3DF39031EC0EAE200CC528E /* ExerciseEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DF38FD1EC0EAE200CC528E /* ExerciseEntity+CoreDataProperties.swift */; };
@@ -43,6 +43,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A36BD88A1ED1E84D005D3BB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A3999A191ED1E670001A5432 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 06165F231D8110E600722320;
+			remoteInfo = Charts;
+		};
 		A3999A1E1ED1E670001A5432 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A3999A191ED1E670001A5432 /* Charts.xcodeproj */;
@@ -57,23 +64,16 @@
 			remoteGlobalIDString = 06165F2E1D8110E600722320;
 			remoteInfo = ChartsTests;
 		};
-		A3999A281ED1E700001A5432 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A3999A191ED1E670001A5432 /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 06165F231D8110E600722320;
-			remoteInfo = Charts;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CDC5C42C1ECA46FA00AA5F84 /* Embed Frameworks */ = {
+		A36BD88C1ED1E84D005D3BB2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A3999A271ED1E700001A5432 /* Charts.framework in Embed Frameworks */,
+				A36BD8891ED1E84D005D3BB2 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3999A261ED1E700001A5432 /* Charts.framework in Frameworks */,
+				A36BD8881ED1E84D005D3BB2 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,12 +268,12 @@
 				CD4BF9141EAFC37B0054E940 /* Sources */,
 				CD4BF9151EAFC37B0054E940 /* Frameworks */,
 				CD4BF9161EAFC37B0054E940 /* Resources */,
-				CDC5C42C1ECA46FA00AA5F84 /* Embed Frameworks */,
+				A36BD88C1ED1E84D005D3BB2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A3999A291ED1E700001A5432 /* PBXTargetDependency */,
+				A36BD88B1ED1E84D005D3BB2 /* PBXTargetDependency */,
 			);
 			name = YouLift;
 			productName = YouLift;
@@ -391,10 +391,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A3999A291ED1E700001A5432 /* PBXTargetDependency */ = {
+		A36BD88B1ED1E84D005D3BB2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Charts;
-			targetProxy = A3999A281ED1E700001A5432 /* PBXContainerItemProxy */;
+			targetProxy = A36BD88A1ED1E84D005D3BB2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
