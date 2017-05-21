@@ -18,6 +18,5 @@ extension WorkoutTemplateEntity {
 
     @NSManaged public var name: String
     @NSManaged public var custom: Bool
-    //@NSManaged public var exerciseArray: NSObject
 
 }

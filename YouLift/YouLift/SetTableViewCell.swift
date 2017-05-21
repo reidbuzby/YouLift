@@ -5,6 +5,7 @@
 //  Created by rbuzby on 4/26/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
+//  A cell representing an individual set for an exercise. Consists of set #, weight (lbs), and # of reps. weight/reps is either fixed or editable depending on context
 
 import UIKit
 
@@ -22,13 +23,10 @@ class SetTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     //  set the cell labels based on the parameters

@@ -5,6 +5,7 @@
 //  Created by rbuzby on 4/26/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
+//  View controller for an individual workout. Holds one table with a list of exercises. Has various buttons/displays depending on state (in progress or not)
 
 import UIKit
 
@@ -320,11 +321,6 @@ class WorkoutDetailViewController: UIViewController, UITableViewDelegate, UITabl
     func updateWorkout(){
         workout = Workout(name: workout.name, exercises: exercises)
     }
-    
-
-    /*
-    // MARK: - Navigation
-    */
     
     //  code to be run prior to segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

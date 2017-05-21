@@ -5,6 +5,7 @@
 //  Created by Andrew Garland on 5/8/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
+//  View controller for viewing past workout data. Displays the relevant information (workout name, date, duration) and has a table listing the specifics of the workout (exercises, weights, reps)
 
 import Foundation
 import UIKit
@@ -43,12 +44,6 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
         //  set the title of the view to YouLift
         navigationItem.title = "YouLift"
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         statsTableView.delegate = self
         statsTableView.dataSource = self
         statsTableView.alwaysBounceVertical = false;
@@ -85,7 +80,7 @@ class StatsDetailViewController: UIViewController, UITableViewDelegate, UITableV
             fatalError("Can't get cell of the right kind")
         }
         
-        //  configure the cell
+        //  configure the cell with the exercise data
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.configureCell(exercise: workout.exerciseArray[indexPath.row])
         

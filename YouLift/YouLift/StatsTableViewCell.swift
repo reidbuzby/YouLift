@@ -5,6 +5,7 @@
 //  Created by Andrew Garland on 5/8/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
+//  A cell for the table in StatsDetailViewController. Each cell has the name of an exercise, and then weight/rep information for each performed set.
 
 import Foundation
 import UIKit
@@ -16,13 +17,10 @@ class StatsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
     //  configure the cell accordingly.

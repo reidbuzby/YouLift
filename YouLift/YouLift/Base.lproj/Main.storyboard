@@ -870,7 +870,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WqE-cq-GPN">
-                                <rect key="frame" x="16" y="515" width="343" height="95"/>
+                                <rect key="frame" x="16" y="515" width="343" height="100"/>
                                 <state key="normal" title="Or Add a Custom Exercise">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1880,9 +1880,9 @@
         <image name="workout_icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L61-wX-nAP"/>
+        <segue reference="zCD-G5-mh4"/>
         <segue reference="5GZ-t5-u4g"/>
-        <segue reference="fDx-fu-bxG"/>
+        <segue reference="BBJ-Pv-0vd"/>
         <segue reference="yGy-0B-pWV"/>
     </inferredMetricsTieBreakers>
 </document>

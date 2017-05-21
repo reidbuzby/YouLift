@@ -19,6 +19,5 @@ extension CompletedWorkoutEntity {
     @NSManaged public var name: String
     @NSManaged public var date: Date
     @NSManaged public var duration: Double
-    //@NSManaged public var exerciseArray: NSObject
 
 }

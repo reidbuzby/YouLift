@@ -7,7 +7,6 @@
 //
 /*
  Class for an entire workout
- 
 */
 
 import Foundation

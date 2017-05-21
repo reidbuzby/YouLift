@@ -5,41 +5,58 @@
 //  Created by rbuzby on 4/26/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
+//  View controller for an individual exercise. Displays the exercise name, description, and has a table of set data (weight/reps)
 
 import UIKit
 
 class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    //  delegate
     var delegate: writeValueBackDelegate?
+    
+    //  if the workout is in progress
     var inProgress:Bool = false
     
+    //  current exercise/workout data
     var exercise = Exercise()
     var exercises = [Exercise]()
+    var sets = 0
+    var setsArray = [(Int, Int)]()
+    
+    //  position within the workout
     var currIndex = 0
     var transitionIndex = 0
     
-    var sets = 0
-    var setsArray = [(Int, Int)]()
-
+    //  label for the exercise name
     @IBOutlet weak var exerciseName: UILabel!
     
+    //  custom button to add a new set
     @IBOutlet weak var addSetButton: UIButton!
     
+    //  label for the exercise description
     @IBOutlet weak var exerciseDescription: UITextView!
     
+    //  custom save/cancel buttons
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
+    //  table for the sets/reps/weight data
     @IBOutlet weak var tableView: UITableView!
     
+    //  picker for the rest timer
     @IBOutlet weak var restTimerPicker: UIPickerView!
+    
+    //  label for displaying the current rest time
     @IBOutlet weak var countdownLabel: UILabel!
+    
+    //  variables for controlling the rest timer
     var countdownTimer = Timer()
     var currentMin:Int = 1
     var currentSec:Int = 0
     var countingDown:Bool = false
     var paused:Bool = false
     
+    //  custom button to pause/resume the rest timer
     @IBOutlet weak var pauseButton: UIButton!
     @IBAction func pauseButton(_ sender: Any) {
         if paused {
@@ -53,6 +70,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
+    //  custom button to start/stop the rest timer
     @IBOutlet weak var startButton: UIButton!
     @IBAction func startStopButton(_ sender: Any) {
         if countingDown {
@@ -67,8 +85,6 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
             currentMin = restTimerPicker.selectedRow(inComponent: 0)
             currentSec = restTimerPicker.selectedRow(inComponent: 2)
             
-            //reseteverything
-            
         }else{
             countingDown = true
             startButton.setTitle("Cancel", for: UIControlState.normal)
@@ -82,6 +98,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
+    //  custom function to add a set
     @IBAction func addSetButton(_ sender: Any) {
         UIView.setAnimationsEnabled(true)
         sets += 1
@@ -90,6 +107,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         tableView.reloadData()
     }
     
+    //  custom function to delete a set when pressed
     @IBAction func deleteSetButton(_ sender: UIButton) {
         
         if let superview = sender.superview {
@@ -105,128 +123,108 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
 
     }
     
+    //  button that takes the user to the previous exercise in the workout (if applicable)
     @IBAction func prevButton(_ sender: UIButton) {
+        
+        //  temporarily disable transition animations
         UIView.setAnimationsEnabled(false)
+        
+        //  index for target exercise
         transitionIndex = currIndex - 1
-        let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: sets, setsArray: getSetsData(self.tableView))
         
+        //  update the current exercise with any changes that may have occurred
+        let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: sets, setsArray: getSetsData(self.tableView))
         exercises[currIndex] = newExercise
         
-        UIView.setAnimationsEnabled(false)
+        //  send the updated workout data + index of next exercise to the workout detail view controller
         delegate?.writeValueBack(value: exercises, next: transitionIndex)
-        //UIView.setAnimationsEnabled(true)
         
-        // Go back to the previous ViewController
-        //_ = navigationController?.popViewController(animated: false)
     }
     
+    //  button that takes the user to the next exercise in the workout (if applicable)
     @IBAction func nextButton(_ sender: UIButton) {
-        UIView.setAnimationsEnabled(false)
-        transitionIndex = currIndex + 1
-        let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: sets, setsArray: getSetsData(self.tableView))
         
+        //  temporarily disable transition animations
+        UIView.setAnimationsEnabled(false)
+        
+        //  index for the target exercise
+        transitionIndex = currIndex + 1
+        
+        //  update the current exercise with any changes that may have occurred
+        let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: sets, setsArray: getSetsData(self.tableView))
         exercises[currIndex] = newExercise
         
-        UIView.setAnimationsEnabled(false)
+        //  send the updated workout data + index of next exercise to the workout detail view controller
         delegate?.writeValueBack(value: exercises, next: transitionIndex)
-        //UIView.setAnimationsEnabled(true)
         
-        // Go back to the previous ViewController
-        //_ = navigationController?.popViewController(animated: false)
     }
     
+    //  outlets for the next/previous buttons
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
 
-    
+    //  when the view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //  set the view's title to YouLift
         navigationItem.title = "YouLift"
         
+        //  enable keyboard dismissal by tapping elsewhere on the screen
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: Selector("endEditing:")))
         
+        //  implement a custom back button in the nav bar
         self.navigationItem.hidesBackButton = true
         let defaultBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.defaultBack(sender:)))
         self.navigationItem.leftBarButtonItem = defaultBackButton
         
-
-         self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
+        //  set the view's background color
+        self.view.backgroundColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.51, alpha: 1.0)
         
+        //  customize the appearance of the table
         self.tableView!.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.tableView!.layer.shadowColor = UIColor.black.cgColor
         self.tableView!.layer.shadowRadius = 5
         self.tableView!.layer.shadowOpacity = 0.3
         self.tableView!.layer.masksToBounds = false;
         self.tableView!.clipsToBounds = true;
+        self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
         
+        //  customize button appearances
         if addSetButton != nil {
-            addSetButton.layer.cornerRadius = 4
-            addSetButton.layer.borderWidth = 1
-            addSetButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
-            addSetButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-            addSetButton.layer.shadowColor = UIColor.black.cgColor
-            addSetButton.layer.shadowRadius = 5
-            addSetButton.layer.shadowOpacity = 0.3
+            customizeButtonAppearance(button: addSetButton)
         }
         
         if startButton != nil {
-            startButton.layer.cornerRadius = 4
-            startButton.layer.borderWidth = 1
-            startButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
-            startButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-            startButton.layer.shadowColor = UIColor.black.cgColor
-            startButton.layer.shadowRadius = 5
-            startButton.layer.shadowOpacity = 0.3
+            customizeButtonAppearance(button: startButton)
         }
         
         if pauseButton != nil {
-            pauseButton.layer.cornerRadius = 4
-            pauseButton.layer.borderWidth = 1
-            pauseButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
-            pauseButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-            pauseButton.layer.shadowColor = UIColor.black.cgColor
-            pauseButton.layer.shadowRadius = 5
-            pauseButton.layer.shadowOpacity = 0.3
+            customizeButtonAppearance(button: pauseButton)
         }
         
-        
-        self.tableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
-
-        
+        //  if the workout is in progress
         if inProgress {
                         
-            //self.navigationItem.hidesBackButton = true
+            //  implement a different custom back button in the nav bar
             let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ExerciseDetailViewController.back(sender:)))
             self.navigationItem.leftBarButtonItem = newBackButton
             
-            prevButton.layer.cornerRadius = 4
-            prevButton.layer.borderWidth = 1
-            prevButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
-            prevButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-            prevButton.layer.shadowColor = UIColor.black.cgColor
-            prevButton.layer.shadowRadius = 5
-            prevButton.layer.shadowOpacity = 0.3
+            //  customize button appearances
+            customizeButtonAppearance(button: prevButton)
+            customizeButtonAppearance(button: nextButton)
             
-            nextButton.layer.cornerRadius = 4
-            nextButton.layer.borderWidth = 1
-            nextButton.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
-            nextButton.layer.shadowOffset = CGSize(width: 0, height: 0)
-            nextButton.layer.shadowColor = UIColor.black.cgColor
-            nextButton.layer.shadowRadius = 5
-            nextButton.layer.shadowOpacity = 0.3
-            
+            //  hide buttons based on where we are in the workout
             if currIndex == 0 {
                 self.prevButton.isHidden = true
-                //self.prevButton.isEnabled = false
             }else if currIndex == exercises.count - 1 {
                 self.nextButton.isHidden = true
-                //self.nextButton.isEnabled = false
             }
             
             restTimerPicker.dataSource = self
             restTimerPicker.delegate = self
             
+            //  show/hide buttons based on the state of the rest timer
             if !countingDown {
                 pauseButton.isEnabled = false
                 countdownLabel.isHidden = true
@@ -237,18 +235,18 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
                 countdownLabel.isHidden = false
             }
             
+            //  start/resume the rest timer if applicable
             if countingDown && !paused{
                 updateCountdown()
             }
             
         }
         
-        
-        // Do any additional setup after loading the view.
-        
+        //  assign values to the name/description labels
         exerciseName.text = self.exercise.name
         exerciseDescription.text = self.exercise.description
         
+        //  update workout variable values
         self.sets = exercise.sets
         self.setsArray = exercise.setsArray
         
@@ -261,6 +259,17 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //  customize the appearance of a button
+    func customizeButtonAppearance(button: UIButton) {
+        button.layer.cornerRadius = 4
+        button.layer.borderWidth = 1
+        button.backgroundColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+        button.layer.shadowOffset = CGSize(width: 0, height: 0)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowRadius = 5
+        button.layer.shadowOpacity = 0.3
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -276,7 +285,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
             fatalError("Can't get cell of the right kind")
         }
         
-        // Configure the cell...
+        //  configre the cell with set data
         let set = setsArray[indexPath.row]
         
         cell.selectionStyle = UITableViewCellSelectionStyle.none
@@ -291,10 +300,12 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
+    //  get the data for each set in the table
     func getSetsData(_ tableView: UITableView) -> [(Int, Int)]{
         let cells = self.tableView.visibleCells as! Array<SetTableViewCell>
         var newSetsArray = [(Int, Int)]()
         
+        //  get the data from each cell
         for cell in cells {
             newSetsArray.append(cell.getSetData())
         }
@@ -302,35 +313,40 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         return newSetsArray
     }
     
+    //  custom back function -- just pops the view off
     func defaultBack(sender:UIBarButtonItem) {
         _ = navigationController?.popViewController(animated: true)
     }
     
+    //  custom back function -- updates the overarching workout data and pops the view off
     func back(sender: UIBarButtonItem) {
+        
+        //  enable transition animations
         UIView.setAnimationsEnabled(true)
         
-        // Perform your custom actions
+        //  update the current exercise with any changes that may have occurred
         let newExercise = Exercise(name: exercise.name, description: exercise.description, sets: sets, setsArray: getSetsData(self.tableView))
-        
         exercises[currIndex] = newExercise
         
+        //  send the updated workout data to the workout detail view controller and indicate there is no next exercise to transition to
         delegate?.writeValueBack(value: exercises, next: -1)
         
-        // Go back to the previous ViewController
+        //  go back to the previous ViewController
         _ = navigationController?.popViewController(animated: true)
     }
     
+    //  rest timer picker functions
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
+        //  middle component (':') should only have 1 row
         if component == 1{
             return 1
         } else {
             return 61
-
         }
     }
     
@@ -343,7 +359,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    //Adjust width of each picker column
+    //  adjust width of each picker column
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         
         if (component == 1) {
@@ -353,10 +369,12 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
+    //  timer that calls for the rest timer display to update every second
     func updateCountdown() {
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.displayCountdown), userInfo: nil, repeats: true)
     }
     
+    //  function to display the current rest time remaining (counts down to 00:00)
     func displayCountdown() {
         if currentSec == 0{
             if currentMin == 0{
@@ -371,53 +389,7 @@ class ExerciseDetailViewController: UIViewController, UITableViewDataSource, UIT
         
         countdownLabel.text = String(format: "%02d", currentMin) + " : " + String(format: "%02d", currentSec)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        switch(segue.identifier ?? ""){
-            
-            case "SaveExercise":
-            
-                guard let destination = segue.destination as? ExerciseTableViewController else{
-                    fatalError("Unexpected destination: \(segue.destination)")
-                }
-                
-                if (self.exerciseName.text == nil || self.exerciseDescription.text == nil) {
-                    fatalError("Full data not entered for exercise")
-                }
-            
-                destination.exercises.append(Exercise(name: self.exerciseName.text!, description: self.exerciseDescription.text!, sets: self.sets, setsArray: self.setsArray))
-            
-            
-            default:
-                fatalError("Unexpeced segue identifier: \(segue.identifier)")
-        }
-    }
-        
-//        guard let button = sender as? UIBarButtonItem, button === saveButton else{
-//            print("The save button was not pressed")
-//            
-//            return
-//        }
-//        
-//        let name = exerciseName.text ?? ""
-//        let description = exerciseDescription.text ?? ""
-//        //let weight = weightInput.text ?? ""
-//        //let reps = repsInput.text ?? ""
-//        
-//        exercise = Exercise(name: name, description: description, sets: sets, setsArray: setsArray)
-    
-        
+     
 }
 
 

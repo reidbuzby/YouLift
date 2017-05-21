@@ -5,6 +5,7 @@
 //  Created by Andrew Garland on 5/8/17.
 //  Copyright © 2017 rbuzby. All rights reserved.
 //
+//  View controller for the main stats/history tab. Holds two tables, one for past workouts, and one for individual exercises.
 
 import UIKit
 import CoreData
@@ -34,16 +35,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.workoutTableView!.layer.masksToBounds = false;
         self.workoutTableView!.clipsToBounds = true;
         self.workoutTableView!.backgroundColor = UIColor(red: 0.73, green: 0.89, blue: 0.94, alpha: 1)
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        //CoreDataManager.cleanCoreData(entity: "CompletedWorkoutEntity")
-        
+                
         workoutTableView.delegate = self
         workoutTableView.dataSource = self
         workoutTableView.alwaysBounceVertical = false;
